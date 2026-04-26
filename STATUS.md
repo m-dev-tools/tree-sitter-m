@@ -3,17 +3,21 @@
 Snapshot of where the project sits against `docs/spec.md`. Updated
 on commit; the live progression history lives in `docs/build-log.md`.
 
-**Headline.** Real-source coverage at **98.49% clean on the full
+**Headline.** Real-source coverage at **99.06% clean on the full
 39,330-routine VistA corpus**. All grammar work for v1.0 scope is
 effectively complete; remaining work is delivery (bindings, CI,
 editor integration) plus a few small fit-and-finish items.
 
-**Residual analysis** (594 failing files): ~half is **out of scope**
-(ObjectScript) or **upstream** (vendor `$Z*` functions and `ZW`
-abbreviation missing from m-standard's grammar-surface). 100% of
-clinical packages parse cleanly. The two parser-side opportunities
-flagged at the 98.39% baseline are now landed: Kernel `$PD`-style
-vendor SV extension and USE/OPEN `:(param:list)` I/O parameters.
+**Residual analysis** (371 failing files): the bulk is **out of
+scope** (ObjectScript: `OBJ.method()`, `##class`, `&sql`) or
+**upstream** (vendor `$Z*` functions and `ZW` abbreviation missing
+from m-standard's grammar-surface). 100% of clinical packages parse
+cleanly. The grammar opportunities flagged at the 98.39% baseline
+have all landed: Kernel `$PD`-style vendor SV extension, USE/OPEN
+`:(param:list)`, empty-slot postcond `::N`, comparison shorthands
+`>=`/`<=`/`!=`/`'!`/`'&`, numeric local-label calls `D 12(args)`,
+`$$NUM` extrinsic, system globals `^$JOB`/`^$ROUTINE`, indirection
+in entry_reference's routine slot.
 
 ---
 
@@ -82,8 +86,7 @@ naked global refs (`^(...)`), case-insensitive keywords.
 - **Corpus tests:** 100 across 14 files in `test/corpus/`. 100% pass.
 - **Lib tests:** 18 in `lib/*.test.js` (stamp.js metadata join). 100% pass.
 - **Real-source smoke gate:** `tools/smoke-corpus.js`. Full corpus
-  39,330 routines / 162 MB at **98.49% clean** (33.9s wall, 4.8 MB/s).
-  1000-routine deterministic sample at 99.0%.
+  39,330 routines / 162 MB at **99.06% clean** (34s wall, 4.7 MB/s).
   Run full: `node tools/smoke-corpus.js ~/vista-meta/vista/vista-m-host/Packages --by-package`.
 - **Error bucket triage:** `tools/error-buckets.js` categorises
   remaining ERROR nodes by syntactic shape.

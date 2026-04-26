@@ -345,7 +345,7 @@ module.exports = grammar({
     entry_reference: $ => prec(1, seq(
       choice($.identifier, $.number, $.indirection),
       '^',
-      $.identifier,
+      choice($.identifier, $.indirection),
       optional($.subscripts),
     )),
 
@@ -613,14 +613,18 @@ module.exports = grammar({
     vendor_sv_extension: $ => /[A-Za-z][A-Za-z0-9]*/,
 
     // Extrinsic function: `$$LABEL`, `$$LABEL^ROUTINE`, `$$^ROUTINE`
-    // (no label — the routine's default entry), or `$$@expr[^ROUTINE]`
-    // (indirection on the label part). Each form may carry a
-    // parenthesised argument list. Real M uses `$$^FOO()` in single-
-    // entry libraries and `$$@TAG^FOO` in dispatch tables.
+    // (no label — the routine's default entry), `$$@expr[^ROUTINE]`
+    // (indirection on the label part), or `$$NUM[^ROUTINE]` (numeric
+    // local label, used in older VistA routines that pre-date
+    // alphabetic labelling). Each form may carry a parenthesised
+    // argument list. Real M uses `$$^FOO()` in single-entry libraries,
+    // `$$@TAG^FOO` in dispatch tables, and `$$509(N,RX)` in numeric-
+    // label routines.
     extrinsic_function: $ => prec.right(seq(
       '$$',
       choice(
         seq($.identifier, optional(seq('^', $.identifier))),
+        seq($.number, optional(seq('^', $.identifier))),
         seq($.indirection, optional(seq('^', $.identifier))),
         seq('^', $.identifier),
       ),

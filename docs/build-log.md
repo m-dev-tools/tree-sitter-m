@@ -669,3 +669,66 @@ context-sensitive recognition. Short version:
   optional vendor_sv_extension` pattern from this commit is the
   GLR-alternative approach; `io_param_list` requiring `repeat1` of
   colons is the disjoint-by-structure approach.
+
+---
+
+## 2026-04-26 (later × 11) — pure-grammar residual cleanup
+
+After bucketing the 584 ERROR nodes that remained at 98.49%, four
+distinct pure-grammar patterns were fixable without scope changes:
+
+- **Empty-slot postconditional** (`::N` in `J EN^FOO::5`,
+  `O IO::1`, `U IO::"TCP"`). The `argument_postconditional` rule
+  required an expression after each `:`. Real M permits empty
+  slots — `::N` is "skip param 1, use N as param 2" for JOB
+  timeouts and inline OPEN/USE positional params. Made every chain
+  slot `optional()`. **+24 files clean.**
+- **Comparison shorthands** `>=`, `<=`, `!=`, plus negated logical
+  ops `'&` / `'!`. m-standard's grammar-surface still ships only
+  the base comparison set (`<`, `>`, `=`, ...) and the negated
+  morphological compounds (`'<`, `'>`, `'=`, `'[`, `']`, `']]`),
+  but real VistA / YDB / IRIS code uses `>=`/`<=`/`!=` heavily.
+  Added explicit choices in the `operator` rule alongside the
+  negated forms. **+105 files clean — biggest single win this
+  round.**
+- **Numeric local-label call** `D 12(arg1,arg2)` and **numeric
+  extrinsic** `$$509(N,RX)`. Older VistA routines use integer
+  line-number labels exclusively. Added `numeric_label_call` rule
+  (`number subscripts`) to `_expression`, and a `number` choice in
+  `extrinsic_function`. **+20 files clean.**
+- **System globals + indirected globals** `^$JOB(X)`,
+  `^$ROUTINE(R)`, `^@expr(...)`. The system-global form is a
+  YDB/IRIS extension; indirected globals (`^@G`) appear in dispatch
+  tables. Added two more choices to `global_variable`'s post-`^`
+  branch. Also: extended `entry_reference`'s routine slot to
+  accept `indirection` so `@TAG^@RTN` parses cleanly (real M
+  pattern in indirection-heavy dispatch code). **+16 files clean.**
+
+Combined: **98.49% → 99.06% (+0.57pp; 165 files cleaned).** 6 new
+corpus tests, 110 corpus tests total, all pass.
+
+**Smoke-gate progression (cont'd):**
+
+| Milestone | Clean | Δ |
+|-----------|------:|--:|
+| (vendor SV extension + USE/OPEN params) | 38,736 (98.49%) | — |
+| + empty-slot `::N` postconditional | 38,760 (98.55%) | +0.06pp |
+| + `>=`/`<=`/`!=`/`'!`/`'&` operators | 38,865 (98.82%) | +0.27pp |
+| + numeric label-calls + system globals + ^@expr | 38,901 (98.91%) | +0.09pp |
+| + indirection in entry-ref routine + `$$NUM` extrinsic | 38,959 (99.06%) | +0.15pp |
+
+**Remaining residual (~371 files / ~370 ERROR nodes), by class:**
+
+- ~150-200 ObjectScript (`OBJ.method()`, `##class`, `&sql`,
+  `.code`-style property access). **Out of scope** per the
+  scope-lock decision (separate `tree-sitter-objectscript` grammar
+  is the right home).
+- ~80 vendor `$Z*` functions (`$ZBITOR`, `$ZGETSYI`, `$ZC`, `$ZU`,
+  `$ZCALL`) plus `ZW` command. **Upstream** — m-standard's
+  grammar-surface needs these added.
+- ~50 odd patterns (malformed `F  FHDEL=0:0`, complex nested
+  indirections, `&(...)` ampersand-paren extension, various
+  WRITE format-control edge cases like `?I#2*40`). Some
+  fixable in principle but each is one-off; diminishing returns.
+
+99.06% is the natural plateau for the parser's actual scope.

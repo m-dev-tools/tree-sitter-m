@@ -141,3 +141,81 @@ Extrinsic function with indirection on routine ($$@routine)
                   (variable
                     (local_variable
                       (identifier))))))))))))
+
+================================================================================
+DO with numeric local-label call (no ^routine)
+================================================================================
+
+ D 12(X,Y)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (numeric_label_call
+              (number)
+              (subscripts
+                (variable
+                  (local_variable
+                    (identifier)))
+                (variable
+                  (local_variable
+                    (identifier)))))))))))
+
+================================================================================
+Extrinsic with numeric label
+================================================================================
+
+ S X=$$509(N)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (extrinsic_function
+                (number)
+                (variable
+                  (local_variable
+                    (identifier)))))))))))
+
+================================================================================
+System global ^$JOB
+================================================================================
+
+ I '$D(^$JOB(X))
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (unary_expression
+              (operator)
+              (function_call
+                (intrinsic_function_keyword)
+                (variable
+                  (global_variable
+                    (identifier)
+                    (subscripts
+                      (variable
+                        (local_variable
+                          (identifier))))))))))))))

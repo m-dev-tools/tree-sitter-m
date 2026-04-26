@@ -77,3 +77,45 @@ USE with binary-expression I/O parameters
                       (identifier)))
                   (operator)
                   (number))))))))))
+
+================================================================================
+JOB with timeout (empty first slot in postcond chain)
+================================================================================
+
+ J EN^FOO::5
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (entry_reference
+              (identifier)
+              (identifier))
+            (argument_postconditional
+              (number))))))))
+
+================================================================================
+OPEN with empty-first-slot timeout
+================================================================================
+
+ O IO::1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (variable
+              (local_variable
+                (identifier)))
+            (argument_postconditional
+              (number))))))))

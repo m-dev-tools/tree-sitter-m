@@ -365,3 +365,25 @@ Function call with omitted first argument
               (subscripts
                 (string)
                 (string)))))))))
+
+================================================================================
+Comparison operators >= and <=
+================================================================================
+
+ I X>=10
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number))))))))
