@@ -296,6 +296,7 @@ module.exports = grammar({
       $.function_call,
       $.extrinsic_function,
       $.entry_reference,
+      $.numeric_label_call,
       $.by_reference,
       $.variable,
       $.parenthesized,
@@ -346,6 +347,19 @@ module.exports = grammar({
       '^',
       $.identifier,
       optional($.subscripts),
+    )),
+
+    // Numeric local label called with parentheses but no `^routine`:
+    // `D 12(arg1,arg2)` calls the local label `12` with arguments.
+    // Alphabetic local labels (`D LABEL(args)`) parse as
+    // `local_variable` with subscripts — same source syntax, the
+    // parser doesn't disambiguate function-call vs subscripted-var
+    // there since DO/GOTO context determines meaning. Numeric labels
+    // need a dedicated form because `number` has no `subscripts`
+    // option in standard M expressions.
+    numeric_label_call: $ => prec(1, seq(
+      $.number,
+      $.subscripts,
     )),
 
     // Pass-by-reference parameter: `.VAR` (or `.VAR(subscripts)`) in an
@@ -498,15 +512,23 @@ module.exports = grammar({
     )),
 
     // M's negated comparison operators: `'` prefix on `=`, `<`, `>`,
-    // `[`, `]`, `]]`. Lexically distinct from unary `'` because of the
-    // following character; tree-sitter's longest-match resolves
-    // `A'=B` to `A` `'=` `B` (2-char op) rather than `A` `'` `=` `B`.
-    // m-standard's grammar-surface lists only the base 17 operators
-    // because the negation is morphological, but real M lexers treat
-    // these as compound tokens.
+    // `[`, `]`, `]]`, `&`, `!`. Lexically distinct from unary `'`
+    // because of the following character; tree-sitter's longest-match
+    // resolves `A'=B` to `A` `'=` `B` (2-char op) rather than
+    // `A` `'` `=` `B`. m-standard's grammar-surface lists only the
+    // base 17 operators because the negation is morphological, but
+    // real M lexers treat these as compound tokens.
+    //
+    // Also adds the YDB/IRIS-extension comparison shorthands `>=`,
+    // `<=`, and the not-equal `!=` (sugar for `'=`). m-standard's
+    // current export doesn't include these (they're in
+    // grammar-surface as separate vendor entries pending v2.0 of the
+    // schema), but they show up in 100+ VistA routines so it's
+    // worth taking the explicit-list hit here.
     operator: $ => choice(
       ...K.operators,
-      "'=", "'<", "'>", "'[", "']", "']]",
+      "'=", "'<", "'>", "'[", "']", "']]", "'&", "'!",
+      ">=", "<=", "!=",
     ),
 
     string: $ => seq(
@@ -523,13 +545,18 @@ module.exports = grammar({
 
     local_variable: $ => seq($.identifier, optional($.subscripts)),
 
-    // Global variable: `^NAME`, `^NAME(subs)`, or naked `^(subs)`.
-    // The naked form omits the global name and refers to the most
-    // recently used global at the same subscript depth ("naked
-    // indicator"). Common in VistA. Disambiguated by the lexer:
-    // `^(` is the naked form; `^IDENT` is the named form.
+    // Global variable: `^NAME`, `^NAME(subs)`, naked `^(subs)`, or
+    // a few extension forms common in VistA / YDB:
+    //   `^$NAME(...)`   — system globals (`^$JOB`, `^$ROUTINE`,
+    //                     `^$WINDOW`). YDB / IRIS extension.
+    //   `^@expr(...)`   — global whose NAME is computed via
+    //                     indirection at runtime.
+    // Disambiguated by lookahead after `^`: `(` → naked,
+    // `IDENT` → named, `$` → system, `@` → indirected name.
     global_variable: $ => seq('^', choice(
       seq($.identifier, optional($.subscripts)),
+      seq('$', $.identifier, optional($.subscripts)),
+      seq($.indirection, optional($.subscripts)),
       $.subscripts,
     )),
 

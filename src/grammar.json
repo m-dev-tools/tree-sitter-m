@@ -1761,6 +1761,10 @@
         },
         {
           "type": "SYMBOL",
+          "name": "numeric_label_call"
+        },
+        {
+          "type": "SYMBOL",
           "name": "by_reference"
         },
         {
@@ -1879,6 +1883,23 @@
                 "type": "BLANK"
               }
             ]
+          }
+        ]
+      }
+    },
+    "numeric_label_call": {
+      "type": "PREC",
+      "value": 1,
+      "content": {
+        "type": "SEQ",
+        "members": [
+          {
+            "type": "SYMBOL",
+            "name": "number"
+          },
+          {
+            "type": "SYMBOL",
+            "name": "subscripts"
           }
         ]
       }
@@ -2363,6 +2384,26 @@
         {
           "type": "STRING",
           "value": "']]"
+        },
+        {
+          "type": "STRING",
+          "value": "'&"
+        },
+        {
+          "type": "STRING",
+          "value": "'!"
+        },
+        {
+          "type": "STRING",
+          "value": ">="
+        },
+        {
+          "type": "STRING",
+          "value": "<="
+        },
+        {
+          "type": "STRING",
+          "value": "!="
         }
       ]
     },
@@ -2449,6 +2490,52 @@
                 {
                   "type": "SYMBOL",
                   "name": "identifier"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "subscripts"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "STRING",
+                  "value": "$"
+                },
+                {
+                  "type": "SYMBOL",
+                  "name": "identifier"
+                },
+                {
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "subscripts"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "SEQ",
+              "members": [
+                {
+                  "type": "SYMBOL",
+                  "name": "indirection"
                 },
                 {
                   "type": "CHOICE",
