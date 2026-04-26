@@ -21,6 +21,7 @@
 enum TokenType {
   SP1,
   SP2PLUS,
+  SP_TRAILING,
 };
 
 // Required tree-sitter scanner ABI ---------------------------------------
@@ -61,17 +62,16 @@ bool tree_sitter_m_external_scanner_scan(void *payload,
   // Neither token is needed in the current parser state — bail so the
   // auto-lexer can match its own tokens (which it won't for ' ', but
   // keeping the early-out makes intent clear).
-  if (!valid_symbols[SP1] && !valid_symbols[SP2PLUS]) return false;
+  if (!valid_symbols[SP1] && !valid_symbols[SP2PLUS] && !valid_symbols[SP_TRAILING]) {
+    return false;
+  }
 
   // Consume contiguous spaces and count them.
   int count = 0;
   while (lexer->lookahead == ' ') {
     lexer->advance(lexer, false);
     count++;
-    // Stop counting at 2 once we've passed the threshold — the grammar
-    // doesn't care whether it's 2 or 200 spaces.
     if (count == 2) {
-      // Keep advancing through the rest so mark_end captures the full run.
       while (lexer->lookahead == ' ') {
         lexer->advance(lexer, false);
       }
@@ -79,13 +79,25 @@ bool tree_sitter_m_external_scanner_scan(void *payload,
     }
   }
 
+  // Peek the char after the run. If it's a line break or EOF, this is
+  // trailing whitespace with no semantic role (not a separator, not
+  // before a comment). Emit SP_TRAILING — a token only the line rule's
+  // line-end optional accepts. command_sequence's separator rule
+  // accepts SP1/SP2PLUS but NOT SP_TRAILING, so the run cannot be
+  // mistakenly absorbed into another iteration.
+  int c = lexer->lookahead;
+  bool at_line_end = (c == '\n' || c == '\r' || c == 0);
+
+  if (at_line_end && valid_symbols[SP_TRAILING]) {
+    lexer->result_symbol = SP_TRAILING;
+    return true;
+  }
+
   if (count >= 2) {
     if (valid_symbols[SP2PLUS]) {
       lexer->result_symbol = SP2PLUS;
       return true;
     }
-    // Parser only wants SP1 here (rare — would mean grammar restricts to
-    // one space, but input has more). Fall through false.
     return false;
   }
 

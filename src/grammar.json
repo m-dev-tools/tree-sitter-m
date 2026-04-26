@@ -86,8 +86,16 @@
                   "name": "_sp"
                 },
                 {
-                  "type": "SYMBOL",
-                  "name": "_line_body"
+                  "type": "CHOICE",
+                  "members": [
+                    {
+                      "type": "SYMBOL",
+                      "name": "_line_body"
+                    },
+                    {
+                      "type": "BLANK"
+                    }
+                  ]
                 }
               ]
             },
@@ -103,6 +111,30 @@
             {
               "type": "SYMBOL",
               "name": "_sp"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "comment"
+            },
+            {
+              "type": "BLANK"
+            }
+          ]
+        },
+        {
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "_sp_trailing"
             },
             {
               "type": "BLANK"
@@ -136,50 +168,12 @@
             {
               "type": "SYMBOL",
               "name": "command_sequence"
-            },
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SEQ",
-                  "members": [
-                    {
-                      "type": "SYMBOL",
-                      "name": "_sp"
-                    },
-                    {
-                      "type": "SYMBOL",
-                      "name": "comment"
-                    }
-                  ]
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
             }
           ]
         },
         {
-          "type": "SEQ",
-          "members": [
-            {
-              "type": "CHOICE",
-              "members": [
-                {
-                  "type": "SYMBOL",
-                  "name": "dot_block_prefix"
-                },
-                {
-                  "type": "BLANK"
-                }
-              ]
-            },
-            {
-              "type": "SYMBOL",
-              "name": "comment"
-            }
-          ]
+          "type": "SYMBOL",
+          "name": "dot_block_prefix"
         }
       ]
     },
@@ -5011,9 +5005,6 @@
   "conflicts": [
     [
       "command_sequence"
-    ],
-    [
-      "_line_body"
     ]
   ],
   "precedences": [],
@@ -5025,6 +5016,10 @@
     {
       "type": "SYMBOL",
       "name": "_sp2plus"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_sp_trailing"
     }
   ],
   "inline": [],

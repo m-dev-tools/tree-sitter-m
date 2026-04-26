@@ -175,6 +175,7 @@ disambiguation:
 | + dot-block compact + spaced forms | 457 (45.7%) | +7.6pp | `.I X=1` and `. . N X` accepted |
 | + negated comparison operators (`'=` etc.) | 532 (53.2%) | +7.5pp | `'=` `'<` `'>` `'[` `']` `']]` as binops |
 | + multi-target SET/KILL/NEW lists | 569 (56.9%) | +3.7pp | `S (A,B,C)=v`, `K (A,B)`, `N (X,Y)` |
+| + trailing-space-before-EOL via SP_TRAILING | 579 (57.9%) | +1.0pp | scanner emits SP_TRAILING for `Q ` + EOL pattern |
 
 ---
 
@@ -312,3 +313,49 @@ colon-chain change shifts LALR error recovery so files that
 previously had a *contained* error now produce an error chain that
 poisons the rest of the line. Worth investigating with
 `tree-sitter parse --debug` later. Deferred.
+
+---
+
+## 2026-04-26 (later still still) — B5 sub: trailing-space + line shape
+
+**Done:**
+
+- New external token `SP_TRAILING` in `src/scanner.c`. After consuming
+  spaces, the scanner peeks one char ahead. If that char is `\n`,
+  `\r`, or 0 (EOF) AND the parser has `SP_TRAILING` in its valid
+  symbols, emit `SP_TRAILING` instead of `SP1`/`SP2PLUS`.
+- New `_sp_trailing` external in grammar.js, used ONLY in the line
+  rule's pre-EOL slot: `optional($._sp_trailing), $._eol`.
+  command_sequence's separator still uses `_sp` (SP1/SP2PLUS) so
+  trailing whitespace can't be mistakenly absorbed into another
+  command_sequence iteration.
+- Restructured `line` and `_line_body` to hoist trailing-comment
+  handling to line level (`optional($.comment)` between trailing-sp
+  slots). The previous `optional(seq($._sp, $.comment))` inside
+  `_line_body` was the LR-trap: the parser committed `_sp` into the
+  optional, failed to find a comment, and couldn't unwind across an
+  atomic `optional`. Hoisting gives `_sp` and `comment` independent
+  optional slots.
+- `_line_body` now has two branches: command_sequence (with optional
+  dot-block prefix), or dot_block_prefix alone (for ` . ;text`
+  patterns where the dot prefix has no command, just a trailing
+  comment). Bare `;text` lines are matched by line-level
+  `optional($.comment)` with no body.
+- 4 new corpus tests in `lines.txt`: trailing-space after argless
+  command, trailing-space after command-with-args, trailing-space
+  after argless chain, dot-prefix-then-comment.
+- Smoke gate **56.9% → 57.9% clean (+1.0pp)**. Modest jump because
+  the trailing-space-eol bucket was only 59 errors, but it's a
+  correctness fix more than a coverage one.
+
+**Tried and reverted:**
+
+- Extending `format_control` to accept `?N` (tab-to-column) and
+  `*N` (ASCII char) in WRITE. With `_format_rhs = number`, the smoke
+  gate dropped 57.9% → 56.6% — the GLR explored too many parses for
+  `?` (which also opens pattern-match) and `*` (which is binary
+  multiplication). The pattern-numeric error bucket dropped from
+  1796 to 919 (real wins on simple `W !?5` cases) but the parser's
+  exploration cost regressed neighbouring parses. Reverted; needs
+  a tighter discriminator (e.g. only allow `?N`/`*N` immediately
+  after `!` or `#` or at the start of a WRITE arg).

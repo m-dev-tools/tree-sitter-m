@@ -90,3 +90,71 @@ LOOP
 (source_file
   (line
     (label)))
+
+================================================================================
+Trailing single space after argless command before EOL
+================================================================================
+
+ Q 
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)))))
+
+================================================================================
+Trailing single space after command-with-args
+================================================================================
+
+ S X=1 
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable (local_variable (identifier)))
+              (operator)
+              (number))))))))
+
+================================================================================
+Trailing space after argless command chain
+================================================================================
+
+ D ^FOO Q 
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (variable
+              (global_variable
+                (identifier))))))
+      (command
+        (command_keyword)))))
+
+================================================================================
+Dot-block prefix followed by comment (no command)
+================================================================================
+
+ . ;commented out
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (dot_block_prefix)
+    (comment)))

@@ -30,11 +30,16 @@ module.exports = grammar({
   // External tokens emitted by src/scanner.c. The auto-generated lexer
   // can't distinguish "exactly 1 space" from "2+ spaces" in a way that
   // also lets the parser pick by context — the scanner does.
-  // _sp1     = exactly one space (between command keyword and args)
-  // _sp2plus = two or more spaces (between argless command and next)
+  // _sp1         = exactly one space (between command keyword and args)
+  // _sp2plus     = two or more spaces (between argless command and next)
+  // _sp_trailing = any spaces immediately before \n / \r / EOF — line
+  //                rule's trailing-whitespace slot only. Keeps trailing
+  //                spaces from being absorbed into command_sequence's
+  //                "is the next thing another command?" repeat.
   externals: $ => [
     $._sp1,
     $._sp2plus,
+    $._sp_trailing,
   ],
 
   conflicts: $ => [
@@ -42,9 +47,6 @@ module.exports = grammar({
     // command in the sequence or precede the trailing comment. GLR
     // lookahead at the next non-space token resolves it.
     [$.command_sequence],
-    // After command_sequence, trailing ` ` could be a comment lead-in
-    // or just trailing whitespace before EOL.
-    [$._line_body],
   ],
 
   rules: {
@@ -62,23 +64,44 @@ module.exports = grammar({
     //   - leading space followed by body and/or comment, OR
     //   - bare comment at column 0.
 
+    // Line shape with trailing whitespace + optional comment handled at
+    // line level, NOT inside _line_body. Putting them inside _line_body
+    // creates an `optional(seq($._sp, $.comment))` that traps a single
+    // trailing space before EOL: the LR parser commits the _sp into the
+    // optional, fails to find a comment, and can't backtrack across the
+    // atomic optional. Hoisting the comment + trailing-sp to line level
+    // gives them their own optional slots with no nested seq, so the
+    // parser handles `_sp + EOL` cleanly.
+    // Line shape with trailing whitespace + optional comment handled at
+    // line level, NOT inside _line_body. Putting them inside _line_body
+    // creates an `optional(seq($._sp, $.comment))` that traps a single
+    // trailing space before EOL: the LR parser commits the _sp into the
+    // optional, fails to find a comment, and can't backtrack across the
+    // atomic optional. Hoisting the comment + trailing-sp to line level
+    // gives them their own optional slots with no nested seq, so the
+    // parser handles `_sp + EOL` cleanly.
     line: $ => seq(
       choice(
         seq($.label, optional($.formals), optional(seq($._sp, optional($._line_body)))),
-        seq($._sp, $._line_body),
+        seq($._sp, optional($._line_body)),
         $.comment,
       ),
-      optional($._sp),  // allow trailing whitespace before EOL
+      optional($._sp),
+      optional($.comment),
+      optional($._sp_trailing),
       $._eol,
     ),
 
+    // Body of a line is either:
+    //   - command_sequence (with optional dot-block prefix)
+    //   - dot_block_prefix alone, followed by a comment matched at
+    //     line level (`. ;comment` patterns)
+    // Bare leading-space comments (` ;text`) don't appear here — the
+    // line rule has body as optional and the line-level
+    // `optional($.comment)` matches them.
     _line_body: $ => choice(
-      seq(
-        optional($.dot_block_prefix),
-        $.command_sequence,
-        optional(seq($._sp, $.comment)),
-      ),
-      seq(optional($.dot_block_prefix), $.comment),
+      seq(optional($.dot_block_prefix), $.command_sequence),
+      $.dot_block_prefix,
     ),
 
     // Dot-block continuation: ` . S X=1` is a line inside an argless
@@ -202,17 +225,14 @@ module.exports = grammar({
       $.format_control,
     ),
 
-    // WRITE format control characters: `!` (newline) and `#` (form
-    // feed). M's WRITE allows these to chain without comma separators —
-    // `W !!` writes two newlines, `W !,X` writes newline then X.
+    // WRITE format control: `!` (newline) and `#` (form feed). M's
+    // WRITE chains these without comma separators — `W !!`, `W !,X`.
     // Both characters double as binary operators (logical OR / modulo);
-    // GLR explores both via an explicit token with prec 3.
-    //
-    // `?expr` (tab-to-column) is not handled — it collides with the
-    // pattern-match operator. SET-list / KILL-list `(A,B,C)=val` is
-    // also deferred — adding it as `tuple` regressed the smoke gate
-    // 2pp because of confusion with subscripts and parenthesized
-    // expressions. Both wait for B5 disambiguation work.
+    // GLR resolves via the prec(3) token bias. `?N` (tab-to-column)
+    // and `*N` (ASCII char) are deferred — adding them as
+    // `format_control` extensions regressed the smoke gate because GLR
+    // explored too many parses for `?` (which also opens pattern-match)
+    // and `*` (also a binary multiplication op).
     format_control: $ => prec(3, repeat1($._format_char)),
 
     _format_char: $ => token(prec(3, /[!#]/)),
