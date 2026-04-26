@@ -26,8 +26,11 @@
   "scripts": {
     "build-grammar": "node tools/build-grammar.js",
     "generate": "tree-sitter generate",
-    "test": "tree-sitter test",
-    "regen": "node tools/build-grammar.js && tree-sitter generate && tree-sitter test"
+    "test": "tree-sitter test && node --test lib/",
+    "test:corpus": "tree-sitter test",
+    "test:lib": "node --test lib/",
+    "smoke": "node tools/smoke-corpus.js",
+    "regen": "node tools/build-grammar.js && tree-sitter generate && npm test"
   },
   "devDependencies": {
     "tree-sitter-cli": "^0.25.0"
