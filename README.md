@@ -140,6 +140,7 @@ CI; see [`RELEASE.md`](RELEASE.md) §3 for the rollout plan.
 | [`docs/spec.md`](docs/spec.md) | Full design, milestones, success criteria |
 | [`docs/adr/`](docs/adr/) | Architectural decisions (AD-01..06) — one file per decision |
 | [`docs/build-log.md`](docs/build-log.md) | Chronological per-feature progression (every commit) |
+| [`docs/discoveries.md`](docs/discoveries.md) | Findings surfaced by real-world use — upstream gaps and parser-side limitations (DISC-NNN) |
 | [`docs/tree-sitter-notes.md`](docs/tree-sitter-notes.md) | Tree-sitter implementation notes — token precedence rules, regex limitations, recurring patterns. **Read before adding grammar rules.** |
 | [`CLAUDE.md`](CLAUDE.md) | Hard rules and project conventions |
 

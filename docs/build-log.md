@@ -13,6 +13,38 @@ implementation, and any drift from `spec.md`.
 
 ---
 
+## 2026-04-26 — Discoveries log seeded (DISC-001..003)
+
+Authoring the seven category-focused test routines in
+`tree-sitter-m-vscode/test-routines/` surfaced three findings that
+deserve persistent records rather than living only in commit
+messages. Created [`docs/discoveries.md`](discoveries.md) as the
+canonical log; it follows m-standard's `BL-NNN` convention but uses
+the `DISC-NNN` prefix to keep streams visually distinct.
+
+- **DISC-001** — YDB/IRIS list-function abbreviations missing from
+  m-standard's `grammar-surface.json`. The canonicals (`$LISTBUILD`,
+  `$LISTGET`, `$LISTLENGTH`, etc.) parse fine; the standard 2-letter
+  YDB/IRIS forms (`$LB`, `$LI`, `$LL`, ...) don't because the
+  upstream extractor populated `abbreviation=""`. **Upstream**:
+  cross-linked to [m-standard BL-014](../../m-standard/docs/build-log.md#bl-014).
+- **DISC-002** — Compound negated operators `'[`, `']`, `']]` need
+  no whitespace before the rhs. Cosmetic only; real M doesn't have
+  this whitespace. **Won't fix** — the relaxation creates real
+  shift-reduce ambiguity with the unary `'` (NOT) prefix.
+- **DISC-003** — `by_reference` rejects `global_variable`. Pass-by-ref
+  of a global is semantically meaningless in M (globals are already
+  by-name). **Won't fix** — relaxing the rule creates conflicts with
+  naked-ref `^(...)` and per-arg postcond `LBL:cond^RTN`.
+
+The log structure documents how to add new entries (next free
+DISC-NNN, fill in phase / statement / evidence / impact / workaround
+/ resolution status, cross-link both ways). Resolved discoveries
+get a `**Resolution:**` line with date + commit/release that closed
+them.
+
+---
+
 ## 2026-04-26 — Sibling `tree-sitter-m-vscode` Phase 2 (criterion #8 implementation)
 
 Live at `github.com/rafael5/tree-sitter-m-vscode`. Substantively

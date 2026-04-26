@@ -100,6 +100,11 @@ naked global refs (`^(...)`), case-insensitive keywords.
   Largest real routine: 12.20 ms. Local-only (CI lacks the corpus).
 - **Error bucket triage:** `tools/error-buckets.js` categorises
   remaining ERROR nodes by syntactic shape.
+- **Discoveries log:** [`docs/discoveries.md`](docs/discoveries.md)
+  records findings surfaced by real-world use. Currently 3 entries
+  (DISC-001..003) covering one upstream gap (m-standard list-function
+  abbreviations missing — cross-linked to m-standard BL-014) and two
+  parser-side limitations marked won't-fix with rationale.
 
 ---
 
