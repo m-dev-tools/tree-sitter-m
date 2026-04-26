@@ -171,3 +171,49 @@ disambiguation:
 | + entry_reference + trailing sp | 183 (18.3%) | +5.1pp | big WRITE/DO unlock |
 | + format_control | 216 (21.6%) | +3.3pp | |
 | + dot-block prefix + unary restrict | 213 (21.3%) | -0.3pp | net stable |
+| + two-space rule (external scanner) | 381 (38.1%) | +16.8pp | argless commands now disambiguated |
+
+---
+
+## 2026-04-26 — B5 sub: two-space rule via external scanner
+
+**Done:**
+
+- `src/scanner.c` — stateless external scanner emitting two tokens:
+  `_sp1` (exactly one space) and `_sp2plus` (two or more spaces).
+  Counts contiguous space chars; stops counting at 2 once over the
+  threshold. Both required scanner-ABI hooks present
+  (`create`/`destroy`/`serialize`/`deserialize`).
+- `grammar.js` declares `externals: [_sp1, _sp2plus]`. The
+  command-keyword-to-args gap is now `_sp1` (strict one space);
+  `command_sequence` uses `_sp` = `choice(_sp1, _sp2plus)` (either
+  separator). Net effect: an argless command followed by 2+ spaces
+  parses as command-then-separator, while a command-with-args takes
+  exactly one space before its arg list.
+- 4 new corpus tests in `commands.txt` pin the rule:
+  argless+command, argless+comment, FOR-with-body single-space,
+  mixed argless-in-the-middle.
+- Smoke gate jumped **21.3% → 38.1% clean (+16.8pp)** — the largest
+  single feature win in the project so far. Confirms the two-space
+  rule was the dominant blocker for B4.
+
+**Why it works.** Tree-sitter's auto-generated lexer can't pick
+between two regex tokens by parser context alone (longest-match wins
+unconditionally). An external scanner can, because tree-sitter
+passes `valid_symbols[]` per-state — so `_sp1` only fires where the
+grammar declares it valid (the keyword-to-args slot), and `_sp2plus`
+fires elsewhere. The grammar then naturally rejects 2+ spaces after
+an argless-eligible keyword, forcing it to be the chain separator.
+
+**Remaining post-two-space failures (619/1000, mostly 1 ERROR each):**
+
+1. Multi-value FOR: `F II=2,5,10,101 ...` — comma-separated FOR
+   iteration values (not the same as range form `start:incr:limit`).
+2. Trailing-space-then-EOL after argless command: ` Q ` (single
+   trailing space). Boundary case where _sp_ optional-trailing
+   conflicts with command-keyword-to-args.
+3. Space-separated dot-block prefix: ` . . N RCCARCD` (IRIS-style
+   indent, two levels via dot-space-dot rather than `..`).
+4. Long opaque chains using indirection in argument positions.
+
+These are next-turn work; none required the scanner.

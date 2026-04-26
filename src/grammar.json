@@ -249,8 +249,17 @@
       "value": "[%A-Za-z][%A-Za-z0-9]*"
     },
     "_sp": {
-      "type": "PATTERN",
-      "value": " +"
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "SYMBOL",
+          "name": "_sp1"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "_sp2plus"
+        }
+      ]
     },
     "_eol": {
       "type": "PATTERN",
@@ -324,7 +333,7 @@
                 "members": [
                   {
                     "type": "SYMBOL",
-                    "name": "_sp"
+                    "name": "_sp1"
                   },
                   {
                     "type": "SYMBOL",
@@ -4917,7 +4926,16 @@
     ]
   ],
   "precedences": [],
-  "externals": [],
+  "externals": [
+    {
+      "type": "SYMBOL",
+      "name": "_sp1"
+    },
+    {
+      "type": "SYMBOL",
+      "name": "_sp2plus"
+    }
+  ],
   "inline": [],
   "supertypes": [],
   "reserved": {}

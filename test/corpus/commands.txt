@@ -131,3 +131,105 @@ Trailing comment on a command line
               (operator)
               (number))))))
     (comment)))
+
+================================================================================
+Argless command followed by another command (two-space rule)
+================================================================================
+
+ Q  D ^FOO
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword))
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (variable
+              (global_variable
+                (identifier)))))))))
+
+================================================================================
+Argless command followed by trailing comment (two-space rule)
+================================================================================
+
+ Q  ;quit then comment
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)))
+    (comment)))
+
+================================================================================
+FOR with body command on same line (single-space after FOR args)
+================================================================================
+
+ F I=1:1:10 W I
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number))
+            (argument_postconditional
+              (number)
+              (number)))))
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (variable
+              (local_variable
+                (identifier)))))))))
+
+================================================================================
+Mixed: command-with-args, then argless, then command-with-args
+================================================================================
+
+ S X=1 Q  S Y=2
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number)))))
+      (command
+        (command_keyword))
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number))))))))

@@ -676,8 +676,12 @@ parts) and B5 (error recovery for editor quality).
 **Tree-sitter's incremental-parsing assumptions.** Tree-sitter
 expects grammars to be context-free with limited lookahead. M's
 two-space rule (argumentless commands) and dot-block nesting can
-be modelled but require care. May need an external scanner
-(`scanner.c` companion to `parser.c`) for the whitespace rules.
+be modelled but require care. The two-space rule is now handled
+by `src/scanner.c` (stateless external scanner emitting `_sp1` /
+`_sp2plus` tokens — the auto-lexer can't pick between them by
+parser context alone). Dot-block depth tracking remains a
+context-free prefix in the grammar; depth-vs-enclosing-scope
+validation is left to a downstream pass.
 
 **Indirection complexity.** `@expr` can appear almost anywhere a
 name can. The parser records the indirection node but doesn't

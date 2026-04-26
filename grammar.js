@@ -27,6 +27,16 @@ module.exports = grammar({
 
   extras: $ => [],
 
+  // External tokens emitted by src/scanner.c. The auto-generated lexer
+  // can't distinguish "exactly 1 space" from "2+ spaces" in a way that
+  // also lets the parser pick by context — the scanner does.
+  // _sp1     = exactly one space (between command keyword and args)
+  // _sp2plus = two or more spaces (between argless command and next)
+  externals: $ => [
+    $._sp1,
+    $._sp2plus,
+  ],
+
   conflicts: $ => [
     // After a command, the next ` ` could either separate another
     // command in the sequence or precede the trailing comment. GLR
@@ -93,19 +103,12 @@ module.exports = grammar({
 
     identifier: $ => /[%A-Za-z][%A-Za-z0-9]*/,
 
-    _sp: $ => / +/,
+    // _sp accepts either form — used in line-shape positions (leading
+    // indent, trailing whitespace, separator before comment) where M
+    // doesn't distinguish single vs double space. The two externals
+    // come from src/scanner.c.
+    _sp: $ => choice($._sp1, $._sp2plus),
     _eol: $ => /\r?\n/,
-
-    // M's two-space rule (single space = arg-separator, two spaces =
-    // argless-command boundary) requires lexical context the LR(1)
-    // grammar can't supply on its own — `F I=1:1:10 W I` is one space
-    // between F's args and the body command, but `D  Q` is two spaces
-    // marking D as argless. Implementing the distinction faithfully
-    // needs an external scanner (src/scanner.c). Until then the grammar
-    // uses a single `_sp` token and biases right (commands consume
-    // arguments greedily). Reported errors on real VistA where the
-    // distinction matters: trace to argless commands chained on one
-    // line, e.g. ` Q  D ^FOO`.
 
     // -------- Comments --------
 
@@ -113,15 +116,25 @@ module.exports = grammar({
 
     // -------- Command sequence --------
 
+    // Command_sequence chains commands. The separator is _sp (either
+    // 1 or 2+ spaces) — both are legal between commands in M:
+    //   1 space:  previous command finished its args (` ` ends the
+    //             arg list), the next command follows
+    //   2+ spaces: previous command was argless; the extra space is
+    //             the explicit "no args" signal
     command_sequence: $ => seq(
       $.command,
       repeat(seq($._sp, $.command)),
     ),
 
+    // Within one command, the keyword-to-args gap is exactly ONE space
+    // (_sp1). A keyword followed by 2+ spaces means the command is
+    // argless and the next thing is the chain separator (_sp2plus).
+    // The external scanner makes the distinction.
     command: $ => prec.right(seq(
       $.command_keyword,
       optional($.postconditional),
-      optional(seq($._sp, $.argument_list)),
+      optional(seq($._sp1, $.argument_list)),
     )),
 
     command_keyword: $ => choice(...K.commands),
