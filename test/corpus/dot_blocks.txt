@@ -1,0 +1,102 @@
+================================================================================
+Argless DO with single-level dot-block continuation
+================================================================================
+
+ D
+ . S X=1
+ . W X
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number)))))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (variable
+              (local_variable
+                (identifier)))))))))
+
+================================================================================
+Nested dot-block (two levels deep)
+================================================================================
+
+ D
+ . D
+ .. S Y=2
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number))))))))
+
+================================================================================
+Dot-block line with multiple spaces after dots
+================================================================================
+
+ .   I X=1 D SOMETHING
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number)))))
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (variable
+              (local_variable
+                (identifier)))))))))

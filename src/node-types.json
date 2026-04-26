@@ -589,6 +589,10 @@
           "named": true
         },
         {
+          "type": "dot_block_prefix",
+          "named": true
+        },
+        {
           "type": "formals",
           "named": true
         },
@@ -4756,6 +4760,10 @@
   {
     "type": "_",
     "named": false
+  },
+  {
+    "type": "dot_block_prefix",
+    "named": true
   },
   {
     "type": "number",

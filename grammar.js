@@ -35,11 +35,6 @@ module.exports = grammar({
     // After command_sequence, trailing ` ` could be a comment lead-in
     // or just trailing whitespace before EOL.
     [$._line_body],
-    // `!` and `#` are both format-control atoms (in WRITE args) AND
-    // binary/unary operators (logical OR, modulo). Tree-sitter
-    // explores both via GLR; precedence on format_control biases
-    // the standalone case.
-    [$.format_control, $.operator],
   ],
 
   rules: {
@@ -68,9 +63,25 @@ module.exports = grammar({
     ),
 
     _line_body: $ => choice(
-      seq($.command_sequence, optional(seq($._sp, $.comment))),
-      $.comment,
+      seq(
+        optional($.dot_block_prefix),
+        $.command_sequence,
+        optional(seq($._sp, $.comment)),
+      ),
+      seq(optional($.dot_block_prefix), $.comment),
     ),
+
+    // Dot-block continuation: ` . S X=1` is a line inside an argless
+    // DO/IF/ELSE block opened on a previous line. The dots count nesting
+    // depth — `.` is one level deep, `..` is two, etc. Per spec §5.7
+    // the parser records the prefix; structural validation (that the
+    // depth matches an enclosing block) is left to a downstream pass
+    // since tree-sitter's stateless rules can't track block scope here.
+    //
+    // Tokenised as a single chunk to avoid colliding with decimal
+    // number `.5` (which has no following space) and pattern repeat
+    // counts (which appear after `?`, not at line start).
+    dot_block_prefix: $ => token(prec(2, /\.+ +/)),
 
     label: $ => /[%A-Za-z][%A-Za-z0-9]*/,
 
@@ -155,13 +166,15 @@ module.exports = grammar({
     // WRITE format control characters: `!` (newline) and `#` (form
     // feed). M's WRITE allows these to chain without comma separators —
     // `W !!` writes two newlines, `W !,X` writes newline then X.
-    // Both characters double as operators (logical OR / modulo); the
-    // GLR parser explores both branches and prec(1) biases the
-    // standalone case.
+    // Both characters double as binary operators (logical OR / modulo);
+    // GLR explores both. Format_control matches the longest run of
+    // `!`/`#` greedily as a single atom.
     //
     // `?expr` (tab-to-column) is not currently handled — it collides
     // with the pattern-match operator. Deferred for v0.2.
-    format_control: $ => prec(1, repeat1(choice('!', '#'))),
+    format_control: $ => prec(3, repeat1($._format_char)),
+
+    _format_char: $ => token(prec(3, /[!#]/)),
 
     // Entry reference: `LABEL^ROUTINE`. Used as DO/GOTO/JOB arguments
     // and as the target of $$extrinsic calls. Plain `^ROUTINE` is
@@ -275,8 +288,12 @@ module.exports = grammar({
       $._expression,
     )),
 
+    // M's only true unary operators are `+`, `-`, `'` (NOT). Other
+    // operators in K.operators (`!`, `#`, etc.) are binary-only;
+    // restricting unary here prevents them being mis-recognised as
+    // unary prefixes (which would shadow format_control for `!`).
     unary_expression: $ => prec(2, seq(
-      $.operator,
+      alias(choice('+', '-', "'"), $.operator),
       $._expression,
     )),
 
