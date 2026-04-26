@@ -1,0 +1,61 @@
+================================================================================
+Lowercase command keywords (case-insensitive matching)
+================================================================================
+
+ s X=1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number))))))))
+
+================================================================================
+Mixed-case command keyword
+================================================================================
+
+ Quit
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)))))
+
+================================================================================
+Lowercase intrinsic function
+================================================================================
+
+ S X=$g(Y)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (function_call
+                (intrinsic_function_keyword)
+                (variable
+                  (local_variable
+                    (identifier)))))))))))

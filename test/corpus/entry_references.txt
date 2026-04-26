@@ -51,3 +51,93 @@ Trailing whitespace before EOL is ignored
     (command_sequence
       (command
         (command_keyword)))))
+
+================================================================================
+DO with numeric line-number label
+================================================================================
+
+ D 2^FBAAUTL1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (entry_reference
+              (number)
+              (identifier))))))))
+
+================================================================================
+DO with indirection-as-label entry reference
+================================================================================
+
+ D @LINETAG^SCDXMSG1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (entry_reference
+              (indirection
+                (variable
+                  (local_variable
+                    (identifier))))
+              (identifier))))))))
+
+================================================================================
+Extrinsic function with no label ($$^ROUTINE)
+================================================================================
+
+ S X=$$^FOO
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (extrinsic_function
+                (identifier)))))))))
+
+================================================================================
+Extrinsic function with indirection on routine ($$@routine)
+================================================================================
+
+ S X=$$@STAG
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (extrinsic_function
+                (indirection
+                  (variable
+                    (local_variable
+                      (identifier))))))))))))

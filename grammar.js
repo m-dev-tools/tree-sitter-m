@@ -22,6 +22,23 @@
 
 const K = require('./keywords.generated.js');
 
+// Case-insensitive keyword token. M's standard says keywords are
+// case-insensitive (AnnoStd 6.1) and real-world code uses both upper
+// (`S X=1`) and lower (`s x=1`) consistently. Each letter becomes a
+// 2-char class; non-letters are escaped. Regex tokens compile into the
+// shared lexer DFA so per-keyword cost is negligible. The ci-form is
+// only used for command/function/ISV keywords — operators and pattern
+// codes are already letter-or-symbol so they need no transformation.
+function ci(s) {
+  let pattern = '';
+  for (const c of s) {
+    if (c >= 'A' && c <= 'Z') pattern += `[${c}${c.toLowerCase()}]`;
+    else if (c >= 'a' && c <= 'z') pattern += `[${c.toUpperCase()}${c}]`;
+    else pattern += c.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  }
+  return new RegExp(pattern);
+}
+
 module.exports = grammar({
   name: 'm',
 
@@ -55,6 +72,20 @@ module.exports = grammar({
     // only the format-atom branch can consume — pattern_match needs
     // `?` literal — so the format-atom branch wins at runtime.
     [$.format_tab, $.pattern_match],
+    // Forms shared between intrinsic_function and special_variable
+    // (e.g. $P, $S, $D, $ST) lex as a single shared token. GLR forks:
+    // the function-call branch consumes a following `(`; the SV branch
+    // doesn't. Lookahead at `(` resolves cleanly at runtime.
+    [$.intrinsic_function_keyword, $.special_variable_keyword],
+    // Optional-subscripts shift-reduce: after matching `IDENT` (or
+    // `^IDENT`, or by-ref `.IDENT`), a following `(` could be its
+    // subscript list or the start of something at the parent rule
+    // level. Arises in indirection-subject and by-reference contexts
+    // where the same identifier sits at multiple nesting depths.
+    [$.local_variable],
+    [$.global_variable],
+    [$.by_reference],
+    [$.entry_reference],
   ],
 
   rules: {
@@ -183,7 +214,7 @@ module.exports = grammar({
       optional(seq($._sp1, $.argument_list)),
     )),
 
-    command_keyword: $ => choice(...K.commands),
+    command_keyword: $ => choice(...K.commands.map(ci)),
 
     postconditional: $ => seq(':', $._expression),
 
@@ -214,9 +245,14 @@ module.exports = grammar({
       optional(seq('=', $._expression)),
     )),
 
+    // Arguments accept an optional `+`/`-` prefix on a parenthesised
+    // target list — the LOCK form: `L -(A,B)` releases locks on a
+    // multi-target list, `L +(A,B)` requests them incrementally.
+    // SET/KILL/NEW use the same list shape without prefix; the
+    // grammar accepts the union and the linter rejects misuse.
     argument: $ => prec.right(choice(
       seq($._expression, optional($.argument_postconditional)),
-      $.set_target_list,
+      seq(optional(choice('+', '-')), $.set_target_list),
     )),
 
     argument_postconditional: $ => prec.right(seq(
@@ -269,11 +305,17 @@ module.exports = grammar({
     // already covered by global_variable (same syntax — the parser
     // treats both the same; downstream interprets by command context).
     //
+    // Label can be an identifier OR a numeric line-number label
+    // (`D 2^FBAAUTL1`, `G 1^DIE17`). Pre-VistA-style M routines often
+    // use numeric labels exclusively. Sharing `$.number` here is
+    // benign per AD-01 — `2.5^X` is malformed but syntactically
+    // accepted; a downstream linter rejects non-integer labels.
+    //
     // The `LABEL+offset^ROUTINE` form (offset by N lines) is deferred:
     // adding `+expr` would conflict with binary `+` inside parens, and
     // it's used in only a small fraction of routines.
     entry_reference: $ => prec(1, seq(
-      $.identifier,
+      choice($.identifier, $.number, $.indirection),
       '^',
       $.identifier,
       optional($.subscripts),
@@ -287,7 +329,7 @@ module.exports = grammar({
     // requires an identifier (letter or `%`) immediately after the dot.
     by_reference: $ => seq(
       '.',
-      $.identifier,
+      choice($.identifier, $.indirection),
       optional($.subscripts),
     ),
 
@@ -315,7 +357,14 @@ module.exports = grammar({
       $.pattern,
     )),
 
-    pattern: $ => repeat1($.pattern_atom),
+    // Pattern is either a sequence of literal atoms, or indirection
+    // (`?@expr` where the runtime value of expr is the pattern string).
+    // Real M pattern indirection is whole-pattern only — not mixed
+    // atoms-and-indirection within one pattern.
+    pattern: $ => choice(
+      repeat1($.pattern_atom),
+      $.indirection,
+    ),
 
     pattern_atom: $ => seq(
       $.pattern_repeat_count,
@@ -350,12 +399,18 @@ module.exports = grammar({
 
     pattern_string: $ => $.string,
 
+    // Pattern alternation: `(branch, branch, ...)`. Each branch is a
+    // SEQUENCE of pattern atoms — `(1"X",1"Y".E)` has three atoms in
+    // the third branch (`1"Y"` then `.E`). The earlier rule treated
+    // each branch as a single atom and rejected this VistA-common form.
     pattern_alternation: $ => seq(
       '(',
-      $.pattern_atom,
-      repeat(seq(',', $.pattern_atom)),
+      $.pattern_alt_branch,
+      repeat(seq(',', $.pattern_alt_branch)),
       ')',
     ),
+
+    pattern_alt_branch: $ => repeat1($.pattern_atom),
 
     // M indirection: `@expr` evaluates `expr` at runtime to get a name
     // (variable, label, routine, etc.) and substitutes it. With trailing
@@ -380,6 +435,7 @@ module.exports = grammar({
       $.function_call,
       $.extrinsic_function,
       $.indirection,
+      $.unary_expression,
     ),
 
     indirection_subscripts: $ => seq(
@@ -401,12 +457,16 @@ module.exports = grammar({
       $._expression,
     )),
 
-    // M's only true unary operators are `+`, `-`, `'` (NOT). Other
-    // operators in K.operators (`!`, `#`, etc.) are binary-only;
+    // M's true unary operators are `+`, `-`, `'` (NOT), plus `*` as
+    // a READ modifier (`R *X` reads a single character code into X).
+    // `*` is also binary multiplication; the post-expression position
+    // resolves to binary unambiguously, while expression-start `*X` is
+    // unary. WRITE's `*N` (output ASCII char) shares this unary form.
+    // Other operators in K.operators (`!`, `#`, etc.) stay binary-only;
     // restricting unary here prevents them being mis-recognised as
     // unary prefixes (which would shadow format_control for `!`).
     unary_expression: $ => prec(2, seq(
-      alias(choice('+', '-', "'"), $.operator),
+      alias(choice('+', '-', "'", '*'), $.operator),
       $._expression,
     )),
 
@@ -472,16 +532,24 @@ module.exports = grammar({
       ')',
     ),
 
-    intrinsic_function_keyword: $ => choice(...K.intrinsic_functions),
+    intrinsic_function_keyword: $ => choice(...K.intrinsic_functions.map(ci)),
 
     special_variable: $ => $.special_variable_keyword,
 
-    special_variable_keyword: $ => choice(...K.intrinsic_special_variables),
+    special_variable_keyword: $ => choice(...K.intrinsic_special_variables.map(ci)),
 
+    // Extrinsic function: `$$LABEL`, `$$LABEL^ROUTINE`, `$$^ROUTINE`
+    // (no label — the routine's default entry), or `$$@expr[^ROUTINE]`
+    // (indirection on the label part). Each form may carry a
+    // parenthesised argument list. Real M uses `$$^FOO()` in single-
+    // entry libraries and `$$@TAG^FOO` in dispatch tables.
     extrinsic_function: $ => prec.right(seq(
       '$$',
-      $.identifier,
-      optional(seq('^', $.identifier)),
+      choice(
+        seq($.identifier, optional(seq('^', $.identifier))),
+        seq($.indirection, optional(seq('^', $.identifier))),
+        seq('^', $.identifier),
+      ),
       optional(seq('(', optional($._inner_arglist), ')')),
     )),
 

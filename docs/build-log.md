@@ -493,3 +493,67 @@ scanner state ("inside WRITE arg") to gate emission.
 | + `?expr` tab-to-column via FORMAT_TAB external | 885 (88.5%) | +9.5pp |
 | + negated pattern match `'?` | 933 (93.3%) | +4.8pp |
 | + multi-letter pattern code `?.ANP` | 960 (96.0%) | +2.7pp |
+
+---
+
+## 2026-04-26 (later × 9) — pure-M residual sweep
+
+**Context.** After bucket-checking the 40 residual failing files, only
+3 actually used Caché ObjectScript markers (`##class`, `OBJ.Method()`,
+`$Z*`). The other 37 were pure standard M failing for fixable reasons
+— previous "deferred" framing was wrong. Earlier memory claim that
+"VistA is overwhelmingly Caché/IRIS dialect" was inaccurate; >95% of
+VistA is pure standard M.
+
+**Done (single session, six related fixes — pattern dominated by
+"add to existing union, declare conflicts as needed"):**
+
+- **Numeric label entry-reference** (`D 2^FBAAUTL1`, `G 1^DIE17`).
+  Older VistA routines use integer line-number labels exclusively.
+  `entry_reference` now accepts `choice($.identifier, $.number)` for
+  the label part. `2.5^X` is malformed but syntactically benign per
+  AD-01.
+- **Star-prefixed READ argument** (`R *VAR` reads a single character
+  code into VAR). Added `*` to unary operators alongside `+`/`-`/`'`.
+  Binary `*` (multiplication) still works because expression-after
+  position never expects unary. Side-benefit: WRITE's `*N` (output
+  ASCII char) now also parses as unary star + number, so the
+  long-deferred `*N` format atom is implicitly handled.
+- **LOCK with prefix on parenthesised list** (`L -(A,B)` releases
+  multi-target lock, `L +(A,B)` acquires incrementally). `argument`
+  rule's set_target_list branch now accepts an optional `+`/`-`
+  prefix.
+- **Case-insensitive keywords** (`s X=1`, `Quit`, `$g(Y)`). M's
+  standard says keywords are case-insensitive (AnnoStd 6.1) and real
+  routines mix cases. Each keyword string maps to a regex like
+  `[Ss][Ee][Tt]` via a `ci()` helper in grammar.js; operators and
+  pattern codes already accept both cases via existing regexes.
+  `lib/stamp.js` normalises form via `text.toUpperCase()` before
+  metadata lookup.
+- **`$$^routine` and `$$@expr` extrinsic forms** (no label /
+  indirection-as-label). `$$^FOO()` is common in single-entry
+  libraries; `$$@TAG^FOO` shows up in dispatch tables.
+- **Indirection in entry_reference, by_reference, and pattern**:
+  `D @LBL^RTN`, `.@VAR` (by-ref of indirected var), `X?@P` (pattern
+  computed at runtime). Three ambiguity-class additions; tree-sitter
+  required conflict declarations for the optional-subscripts
+  shift-reduce on local_variable / global_variable / by_reference /
+  entry_reference, plus the function/SV shared-token conflict that
+  case-insensitive lex made visible.
+- 8 new corpus tests (numeric label, indirection-label,
+  `$$^FOO`, `$$@STAG`, multi-atom pattern alt-branch, lowercase
+  command, mixed-case command, lowercase intrinsic). 100 corpus
+  tests total, 100% pass.
+- Combined session delta: **79.0% → 99.0% (+20.0pp).** The 10
+  remaining residual ERROR nodes are: 1 COS object-method (deferred),
+  3-4 vendor commands/functions not in m-standard yet (`ZW`
+  abbreviation, `$ZU`, `$ZCALL`), and 3 `D ;...` argless-DO-with-
+  comment shift-reduce edge cases.
+
+**Smoke-gate progression (cont'd):**
+
+| Milestone | Clean | Δ |
+|-----------|------:|--:|
+| + numeric label entry-ref + `*var` unary + LOCK prefix | 978 (97.8%) | +1.8pp |
+| + case-insensitive keywords + `$$^routine` | 983 (98.3%) | +0.5pp |
+| + entry-ref/by-ref/pattern indirection + alt-branch seq | 990 (99.0%) | +0.7pp |

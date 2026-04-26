@@ -104,14 +104,54 @@ Pattern: alternation
                 (pattern_atom
                   (pattern_repeat_count)
                   (pattern_alternation
-                    (pattern_atom
-                      (pattern_repeat_count)
-                      (pattern_code
-                        (pattern_letter)))
-                    (pattern_atom
-                      (pattern_repeat_count)
-                      (pattern_code
-                        (pattern_letter)))))))))))))
+                    (pattern_alt_branch
+                      (pattern_atom
+                        (pattern_repeat_count)
+                        (pattern_code
+                          (pattern_letter))))
+                    (pattern_alt_branch
+                      (pattern_atom
+                        (pattern_repeat_count)
+                        (pattern_code
+                          (pattern_letter))))))))))))))
+
+================================================================================
+Pattern: alternation with multi-atom branch
+================================================================================
+
+ I X?1(1"A",1"B".E)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (pattern_match
+              (variable
+                (local_variable
+                  (identifier)))
+              (pattern
+                (pattern_atom
+                  (pattern_repeat_count)
+                  (pattern_alternation
+                    (pattern_alt_branch
+                      (pattern_atom
+                        (pattern_repeat_count)
+                        (pattern_string
+                          (string))))
+                    (pattern_alt_branch
+                      (pattern_atom
+                        (pattern_repeat_count)
+                        (pattern_string
+                          (string)))
+                      (pattern_atom
+                        (pattern_repeat_count)
+                        (pattern_code
+                          (pattern_letter))))))))))))))
 
 ================================================================================
 Pattern: NOT (apostrophe-prefixed code)

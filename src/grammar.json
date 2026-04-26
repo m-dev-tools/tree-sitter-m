@@ -363,1100 +363,1100 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "KSUBSCRIPTS"
+          "type": "PATTERN",
+          "value": "[Kk][Ss][Uu][Bb][Ss][Cc][Rr][Ii][Pp][Tt][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "ZDEALLOCATE"
+          "type": "PATTERN",
+          "value": "[Zz][Dd][Ee][Aa][Ll][Ll][Oo][Cc][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZDEALLOCAT"
+          "type": "PATTERN",
+          "value": "[Zz][Dd][Ee][Aa][Ll][Ll][Oo][Cc][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "TROLLBACK"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Oo][Ll][Ll][Bb][Aa][Cc][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "ZALLOCATE"
+          "type": "PATTERN",
+          "value": "[Zz][Aa][Ll][Ll][Oo][Cc][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZCONTINUE"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Nn][Tt][Ii][Nn][Uu][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZDEALLOCA"
+          "type": "PATTERN",
+          "value": "[Zz][Dd][Ee][Aa][Ll][Ll][Oo][Cc][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZWITHDRAW"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Ii][Tt][Hh][Dd][Rr][Aa][Ww]"
         },
         {
-          "type": "STRING",
-          "value": "AUNBLOCK"
+          "type": "PATTERN",
+          "value": "[Aa][Uu][Nn][Bb][Ll][Oo][Cc][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "CONTINUE"
+          "type": "PATTERN",
+          "value": "[Cc][Oo][Nn][Tt][Ii][Nn][Uu][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ETRIGGER"
+          "type": "PATTERN",
+          "value": "[Ee][Tt][Rr][Ii][Gg][Gg][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "TRESTART"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Ee][Ss][Tt][Aa][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "TROLLBAC"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Oo][Ll][Ll][Bb][Aa][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "ZALLOCAT"
+          "type": "PATTERN",
+          "value": "[Zz][Aa][Ll][Ll][Oo][Cc][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZCOMPILE"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Mm][Pp][Ii][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZCONTINU"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Nn][Tt][Ii][Nn][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "ZDEALLOC"
+          "type": "PATTERN",
+          "value": "[Zz][Dd][Ee][Aa][Ll][Ll][Oo][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "ZMESSAGE"
+          "type": "PATTERN",
+          "value": "[Zz][Mm][Ee][Ss][Ss][Aa][Gg][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZRUPDATE"
+          "type": "PATTERN",
+          "value": "[Zz][Rr][Uu][Pp][Dd][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZTCOMMIT"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Cc][Oo][Mm][Mm][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZTRIGGER"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Rr][Ii][Gg][Gg][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "ZWITHDRA"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Ii][Tt][Hh][Dd][Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZYDECODE"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Dd][Ee][Cc][Oo][Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZYENCODE"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Ee][Nn][Cc][Oo][Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "AUNBLOC"
+          "type": "PATTERN",
+          "value": "[Aa][Uu][Nn][Bb][Ll][Oo][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "TCOMMIT"
+          "type": "PATTERN",
+          "value": "[Tt][Cc][Oo][Mm][Mm][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "TRESTAR"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Ee][Ss][Tt][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "TROLLBA"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Oo][Ll][Ll][Bb][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZALLOCA"
+          "type": "PATTERN",
+          "value": "[Zz][Aa][Ll][Ll][Oo][Cc][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZCOMPIL"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Mm][Pp][Ii][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "ZCONTIN"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Nn][Tt][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "ZDEALLO"
+          "type": "PATTERN",
+          "value": "[Zz][Dd][Ee][Aa][Ll][Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ZINSERT"
+          "type": "PATTERN",
+          "value": "[Zz][Ii][Nn][Ss][Ee][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZMESSAG"
+          "type": "PATTERN",
+          "value": "[Zz][Mm][Ee][Ss][Ss][Aa][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "ZNSPACE"
+          "type": "PATTERN",
+          "value": "[Zz][Nn][Ss][Pp][Aa][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZREMOVE"
+          "type": "PATTERN",
+          "value": "[Zz][Rr][Ee][Mm][Oo][Vv][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZRUPDAT"
+          "type": "PATTERN",
+          "value": "[Zz][Rr][Uu][Pp][Dd][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZSYSTEM"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Yy][Ss][Tt][Ee][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "ZTCOMMI"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Cc][Oo][Mm][Mm][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZTRIGGE"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Rr][Ii][Gg][Gg][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZTSTART"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Ss][Tt][Aa][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZWITHDR"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Ii][Tt][Hh][Dd][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "ZYDECOD"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Dd][Ee][Cc][Oo][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "ZYENCOD"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Ee][Nn][Cc][Oo][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "ZZPRINT"
+          "type": "PATTERN",
+          "value": "[Zz][Zz][Pp][Rr][Ii][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZZWRITE"
+          "type": "PATTERN",
+          "value": "[Zz][Zz][Ww][Rr][Ii][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ABLOCK"
+          "type": "PATTERN",
+          "value": "[Aa][Bb][Ll][Oo][Cc][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "ASSIGN"
+          "type": "PATTERN",
+          "value": "[Aa][Ss][Ss][Ii][Gg][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "ASTART"
+          "type": "PATTERN",
+          "value": "[Aa][Ss][Tt][Aa][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "AUNBLO"
+          "type": "PATTERN",
+          "value": "[Aa][Uu][Nn][Bb][Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ELSEIF"
+          "type": "PATTERN",
+          "value": "[Ee][Ll][Ss][Ee][Ii][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "ESTART"
+          "type": "PATTERN",
+          "value": "[Ee][Ss][Tt][Aa][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "KVALUE"
+          "type": "PATTERN",
+          "value": "[Kk][Vv][Aa][Ll][Uu][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "RETURN"
+          "type": "PATTERN",
+          "value": "[Rr][Ee][Tt][Uu][Rr][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "TCOMMI"
+          "type": "PATTERN",
+          "value": "[Tt][Cc][Oo][Mm][Mm][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "TRESTA"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Ee][Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "TROLLB"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Oo][Ll][Ll][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "TSTART"
+          "type": "PATTERN",
+          "value": "[Tt][Ss][Tt][Aa][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "XECUTE"
+          "type": "PATTERN",
+          "value": "[Xx][Ee][Cc][Uu][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZALLOC"
+          "type": "PATTERN",
+          "value": "[Zz][Aa][Ll][Ll][Oo][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "ZBREAK"
+          "type": "PATTERN",
+          "value": "[Zz][Bb][Rr][Ee][Aa][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "ZCOMPI"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Mm][Pp][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZCONTI"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Nn][Tt][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZDEALL"
+          "type": "PATTERN",
+          "value": "[Zz][Dd][Ee][Aa][Ll][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "ZMESSA"
+          "type": "PATTERN",
+          "value": "[Zz][Mm][Ee][Ss][Ss][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZPRINT"
+          "type": "PATTERN",
+          "value": "[Zz][Pp][Rr][Ii][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZRUPDA"
+          "type": "PATTERN",
+          "value": "[Zz][Rr][Uu][Pp][Dd][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZSYSTE"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Yy][Ss][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZTCOMM"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Cc][Oo][Mm][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "ZTRIGG"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Rr][Ii][Gg][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "ZTSTAR"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Ss][Tt][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "ZWITHD"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Ii][Tt][Hh][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "ZWRITE"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Rr][Ii][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZYDECO"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Dd][Ee][Cc][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ZYENCO"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Ee][Nn][Cc][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ZZDUMP"
+          "type": "PATTERN",
+          "value": "[Zz][Zz][Dd][Uu][Mm][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "ABLOC"
+          "type": "PATTERN",
+          "value": "[Aa][Bb][Ll][Oo][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "ASTAR"
+          "type": "PATTERN",
+          "value": "[Aa][Ss][Tt][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "ASTOP"
+          "type": "PATTERN",
+          "value": "[Aa][Ss][Tt][Oo][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "AUNBL"
+          "type": "PATTERN",
+          "value": "[Aa][Uu][Nn][Bb][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "BREAK"
+          "type": "PATTERN",
+          "value": "[Bb][Rr][Ee][Aa][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "CATCH"
+          "type": "PATTERN",
+          "value": "[Cc][Aa][Tt][Cc][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "CLOSE"
+          "type": "PATTERN",
+          "value": "[Cc][Ll][Oo][Ss][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ESTAR"
+          "type": "PATTERN",
+          "value": "[Ee][Ss][Tt][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "ESTOP"
+          "type": "PATTERN",
+          "value": "[Ee][Ss][Tt][Oo][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "MERGE"
+          "type": "PATTERN",
+          "value": "[Mm][Ee][Rr][Gg][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "PRINT"
+          "type": "PATTERN",
+          "value": "[Pp][Rr][Ii][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "RLOAD"
+          "type": "PATTERN",
+          "value": "[Rr][Ll][Oo][Aa][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "RSAVE"
+          "type": "PATTERN",
+          "value": "[Rr][Ss][Aa][Vv][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "TCOMM"
+          "type": "PATTERN",
+          "value": "[Tt][Cc][Oo][Mm][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "THROW"
+          "type": "PATTERN",
+          "value": "[Tt][Hh][Rr][Oo][Ww]"
         },
         {
-          "type": "STRING",
-          "value": "TREST"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Ee][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "TROLL"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Oo][Ll][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "TSTAR"
+          "type": "PATTERN",
+          "value": "[Tt][Ss][Tt][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "WHILE"
+          "type": "PATTERN",
+          "value": "[Ww][Hh][Ii][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "WRITE"
+          "type": "PATTERN",
+          "value": "[Ww][Rr][Ii][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "XECUT"
+          "type": "PATTERN",
+          "value": "[Xx][Ee][Cc][Uu][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZALLO"
+          "type": "PATTERN",
+          "value": "[Zz][Aa][Ll][Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ZBREA"
+          "type": "PATTERN",
+          "value": "[Zz][Bb][Rr][Ee][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZCOMP"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Mm][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "ZCONT"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZDEAL"
+          "type": "PATTERN",
+          "value": "[Zz][Dd][Ee][Aa][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "ZEDIT"
+          "type": "PATTERN",
+          "value": "[Zz][Ee][Dd][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZGOTO"
+          "type": "PATTERN",
+          "value": "[Zz][Gg][Oo][Tt][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ZHALT"
+          "type": "PATTERN",
+          "value": "[Zz][Hh][Aa][Ll][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZHELP"
+          "type": "PATTERN",
+          "value": "[Zz][Hh][Ee][Ll][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "ZKILL"
+          "type": "PATTERN",
+          "value": "[Zz][Kk][Ii][Ll][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "ZLINK"
+          "type": "PATTERN",
+          "value": "[Zz][Ll][Ii][Nn][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "ZLOAD"
+          "type": "PATTERN",
+          "value": "[Zz][Ll][Oo][Aa][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "ZMESS"
+          "type": "PATTERN",
+          "value": "[Zz][Mm][Ee][Ss][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "ZPRIN"
+          "type": "PATTERN",
+          "value": "[Zz][Pp][Rr][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "ZRUPD"
+          "type": "PATTERN",
+          "value": "[Zz][Rr][Uu][Pp][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "ZSAVE"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Aa][Vv][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZSHOW"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Hh][Oo][Ww]"
         },
         {
-          "type": "STRING",
-          "value": "ZSTEP"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Tt][Ee][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "ZSYST"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Yy][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZTCOM"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Cc][Oo][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "ZTRAP"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Rr][Aa][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "ZTRIG"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Rr][Ii][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "ZTSTA"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZWITH"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Ii][Tt][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "ZWRIT"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Rr][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZYDEC"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Dd][Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "ZYENC"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Ee][Nn][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "ABLO"
+          "type": "PATTERN",
+          "value": "[Aa][Bb][Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ASTA"
+          "type": "PATTERN",
+          "value": "[Aa][Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ASTO"
+          "type": "PATTERN",
+          "value": "[Aa][Ss][Tt][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "AUNB"
+          "type": "PATTERN",
+          "value": "[Aa][Uu][Nn][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "BREA"
+          "type": "PATTERN",
+          "value": "[Bb][Rr][Ee][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "CLOS"
+          "type": "PATTERN",
+          "value": "[Cc][Ll][Oo][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "ELSE"
+          "type": "PATTERN",
+          "value": "[Ee][Ll][Ss][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ESTA"
+          "type": "PATTERN",
+          "value": "[Ee][Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "GOTO"
+          "type": "PATTERN",
+          "value": "[Gg][Oo][Tt][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "HALT"
+          "type": "PATTERN",
+          "value": "[Hh][Aa][Ll][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "HANG"
+          "type": "PATTERN",
+          "value": "[Hh][Aa][Nn][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "KILL"
+          "type": "PATTERN",
+          "value": "[Kk][Ii][Ll][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "LOCK"
+          "type": "PATTERN",
+          "value": "[Ll][Oo][Cc][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "MERG"
+          "type": "PATTERN",
+          "value": "[Mm][Ee][Rr][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "OPEN"
+          "type": "PATTERN",
+          "value": "[Oo][Pp][Ee][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "QUIT"
+          "type": "PATTERN",
+          "value": "[Qq][Uu][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "READ"
+          "type": "PATTERN",
+          "value": "[Rr][Ee][Aa][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "TCOM"
+          "type": "PATTERN",
+          "value": "[Tt][Cc][Oo][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "THEN"
+          "type": "PATTERN",
+          "value": "[Tt][Hh][Ee][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "TRES"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Ee][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "TROL"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Oo][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "TSTA"
+          "type": "PATTERN",
+          "value": "[Tt][Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "VIEW"
+          "type": "PATTERN",
+          "value": "[Vv][Ii][Ee][Ww]"
         },
         {
-          "type": "STRING",
-          "value": "WRIT"
+          "type": "PATTERN",
+          "value": "[Ww][Rr][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "XECU"
+          "type": "PATTERN",
+          "value": "[Xx][Ee][Cc][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "ZALL"
+          "type": "PATTERN",
+          "value": "[Zz][Aa][Ll][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "ZBRE"
+          "type": "PATTERN",
+          "value": "[Zz][Bb][Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZCOM"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "ZCON"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "ZDEA"
+          "type": "PATTERN",
+          "value": "[Zz][Dd][Ee][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZEDI"
+          "type": "PATTERN",
+          "value": "[Zz][Ee][Dd][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZGOT"
+          "type": "PATTERN",
+          "value": "[Zz][Gg][Oo][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZHEL"
+          "type": "PATTERN",
+          "value": "[Zz][Hh][Ee][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "ZKIL"
+          "type": "PATTERN",
+          "value": "[Zz][Kk][Ii][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "ZLIN"
+          "type": "PATTERN",
+          "value": "[Zz][Ll][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "ZMES"
+          "type": "PATTERN",
+          "value": "[Zz][Mm][Ee][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "ZPRI"
+          "type": "PATTERN",
+          "value": "[Zz][Pp][Rr][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZRUP"
+          "type": "PATTERN",
+          "value": "[Zz][Rr][Uu][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "ZSHO"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Hh][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ZSTE"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZSYS"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Yy][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "ZTCO"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Cc][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ZTRI"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Rr][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZTST"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZWIT"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZWRI"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Rr][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZYDE"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZYEN"
+          "type": "PATTERN",
+          "value": "[Zz][Yy][Ee][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "ABL"
+          "type": "PATTERN",
+          "value": "[Aa][Bb][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "BRE"
+          "type": "PATTERN",
+          "value": "[Bb][Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "CLO"
+          "type": "PATTERN",
+          "value": "[Cc][Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ELS"
+          "type": "PATTERN",
+          "value": "[Ee][Ll][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "FOR"
+          "type": "PATTERN",
+          "value": "[Ff][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "GOT"
+          "type": "PATTERN",
+          "value": "[Gg][Oo][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "HAL"
+          "type": "PATTERN",
+          "value": "[Hh][Aa][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "HAN"
+          "type": "PATTERN",
+          "value": "[Hh][Aa][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "JOB"
+          "type": "PATTERN",
+          "value": "[Jj][Oo][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "KIL"
+          "type": "PATTERN",
+          "value": "[Kk][Ii][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "LOC"
+          "type": "PATTERN",
+          "value": "[Ll][Oo][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "MER"
+          "type": "PATTERN",
+          "value": "[Mm][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "NEW"
+          "type": "PATTERN",
+          "value": "[Nn][Ee][Ww]"
         },
         {
-          "type": "STRING",
-          "value": "OPE"
+          "type": "PATTERN",
+          "value": "[Oo][Pp][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "QUI"
+          "type": "PATTERN",
+          "value": "[Qq][Uu][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "REA"
+          "type": "PATTERN",
+          "value": "[Rr][Ee][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "SET"
+          "type": "PATTERN",
+          "value": "[Ss][Ee][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "TCO"
+          "type": "PATTERN",
+          "value": "[Tt][Cc][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "TRE"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "TRO"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "TRY"
+          "type": "PATTERN",
+          "value": "[Tt][Rr][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "TST"
+          "type": "PATTERN",
+          "value": "[Tt][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "USE"
+          "type": "PATTERN",
+          "value": "[Uu][Ss][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "VIE"
+          "type": "PATTERN",
+          "value": "[Vv][Ii][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "WRI"
+          "type": "PATTERN",
+          "value": "[Ww][Rr][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "XEC"
+          "type": "PATTERN",
+          "value": "[Xx][Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "ZAL"
+          "type": "PATTERN",
+          "value": "[Zz][Aa][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "ZBR"
+          "type": "PATTERN",
+          "value": "[Zz][Bb][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "ZCO"
+          "type": "PATTERN",
+          "value": "[Zz][Cc][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ZDE"
+          "type": "PATTERN",
+          "value": "[Zz][Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZED"
+          "type": "PATTERN",
+          "value": "[Zz][Ee][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "ZGO"
+          "type": "PATTERN",
+          "value": "[Zz][Gg][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ZHE"
+          "type": "PATTERN",
+          "value": "[Zz][Hh][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZKI"
+          "type": "PATTERN",
+          "value": "[Zz][Kk][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZLI"
+          "type": "PATTERN",
+          "value": "[Zz][Ll][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZME"
+          "type": "PATTERN",
+          "value": "[Zz][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZPR"
+          "type": "PATTERN",
+          "value": "[Zz][Pp][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "ZSH"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "ZST"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "ZSU"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "ZSY"
+          "type": "PATTERN",
+          "value": "[Zz][Ss][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "ZTC"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "ZTR"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "ZTS"
+          "type": "PATTERN",
+          "value": "[Zz][Tt][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "ZWI"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "ZWR"
+          "type": "PATTERN",
+          "value": "[Zz][Ww][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "AB"
+          "type": "PATTERN",
+          "value": "[Aa][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "BR"
+          "type": "PATTERN",
+          "value": "[Bb][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "CL"
+          "type": "PATTERN",
+          "value": "[Cc][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "DO"
+          "type": "PATTERN",
+          "value": "[Dd][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "EL"
+          "type": "PATTERN",
+          "value": "[Ee][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "FO"
+          "type": "PATTERN",
+          "value": "[Ff][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "GO"
+          "type": "PATTERN",
+          "value": "[Gg][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "HA"
+          "type": "PATTERN",
+          "value": "[Hh][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "IF"
+          "type": "PATTERN",
+          "value": "[Ii][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "JO"
+          "type": "PATTERN",
+          "value": "[Jj][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "KI"
+          "type": "PATTERN",
+          "value": "[Kk][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "LO"
+          "type": "PATTERN",
+          "value": "[Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "ME"
+          "type": "PATTERN",
+          "value": "[Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "NE"
+          "type": "PATTERN",
+          "value": "[Nn][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "OP"
+          "type": "PATTERN",
+          "value": "[Oo][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "QU"
+          "type": "PATTERN",
+          "value": "[Qq][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "RE"
+          "type": "PATTERN",
+          "value": "[Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "SE"
+          "type": "PATTERN",
+          "value": "[Ss][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "TC"
+          "type": "PATTERN",
+          "value": "[Tt][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "TS"
+          "type": "PATTERN",
+          "value": "[Tt][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "US"
+          "type": "PATTERN",
+          "value": "[Uu][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "VI"
+          "type": "PATTERN",
+          "value": "[Vv][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "WR"
+          "type": "PATTERN",
+          "value": "[Ww][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "XE"
+          "type": "PATTERN",
+          "value": "[Xx][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "ZA"
+          "type": "PATTERN",
+          "value": "[Zz][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "ZB"
+          "type": "PATTERN",
+          "value": "[Zz][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "ZC"
+          "type": "PATTERN",
+          "value": "[Zz][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "ZD"
+          "type": "PATTERN",
+          "value": "[Zz][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "ZG"
+          "type": "PATTERN",
+          "value": "[Zz][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "ZH"
+          "type": "PATTERN",
+          "value": "[Zz][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "ZK"
+          "type": "PATTERN",
+          "value": "[Zz][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "ZL"
+          "type": "PATTERN",
+          "value": "[Zz][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "ZM"
+          "type": "PATTERN",
+          "value": "[Zz][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "ZP"
+          "type": "PATTERN",
+          "value": "[Zz][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "B"
+          "type": "PATTERN",
+          "value": "[Bb]"
         },
         {
-          "type": "STRING",
-          "value": "C"
+          "type": "PATTERN",
+          "value": "[Cc]"
         },
         {
-          "type": "STRING",
-          "value": "D"
+          "type": "PATTERN",
+          "value": "[Dd]"
         },
         {
-          "type": "STRING",
-          "value": "E"
+          "type": "PATTERN",
+          "value": "[Ee]"
         },
         {
-          "type": "STRING",
-          "value": "F"
+          "type": "PATTERN",
+          "value": "[Ff]"
         },
         {
-          "type": "STRING",
-          "value": "G"
+          "type": "PATTERN",
+          "value": "[Gg]"
         },
         {
-          "type": "STRING",
-          "value": "H"
+          "type": "PATTERN",
+          "value": "[Hh]"
         },
         {
-          "type": "STRING",
-          "value": "I"
+          "type": "PATTERN",
+          "value": "[Ii]"
         },
         {
-          "type": "STRING",
-          "value": "J"
+          "type": "PATTERN",
+          "value": "[Jj]"
         },
         {
-          "type": "STRING",
-          "value": "K"
+          "type": "PATTERN",
+          "value": "[Kk]"
         },
         {
-          "type": "STRING",
-          "value": "L"
+          "type": "PATTERN",
+          "value": "[Ll]"
         },
         {
-          "type": "STRING",
-          "value": "M"
+          "type": "PATTERN",
+          "value": "[Mm]"
         },
         {
-          "type": "STRING",
-          "value": "N"
+          "type": "PATTERN",
+          "value": "[Nn]"
         },
         {
-          "type": "STRING",
-          "value": "O"
+          "type": "PATTERN",
+          "value": "[Oo]"
         },
         {
-          "type": "STRING",
-          "value": "Q"
+          "type": "PATTERN",
+          "value": "[Qq]"
         },
         {
-          "type": "STRING",
-          "value": "R"
+          "type": "PATTERN",
+          "value": "[Rr]"
         },
         {
-          "type": "STRING",
-          "value": "S"
+          "type": "PATTERN",
+          "value": "[Ss]"
         },
         {
-          "type": "STRING",
-          "value": "U"
+          "type": "PATTERN",
+          "value": "[Uu]"
         },
         {
-          "type": "STRING",
-          "value": "V"
+          "type": "PATTERN",
+          "value": "[Vv]"
         },
         {
-          "type": "STRING",
-          "value": "W"
+          "type": "PATTERN",
+          "value": "[Ww]"
         },
         {
-          "type": "STRING",
-          "value": "X"
+          "type": "PATTERN",
+          "value": "[Xx]"
         },
         {
-          "type": "STRING",
-          "value": "Z"
+          "type": "PATTERN",
+          "value": "[Zz]"
         }
       ]
     },
@@ -1584,8 +1584,34 @@
             ]
           },
           {
-            "type": "SYMBOL",
-            "name": "set_target_list"
+            "type": "SEQ",
+            "members": [
+              {
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "STRING",
+                        "value": "+"
+                      },
+                      {
+                        "type": "STRING",
+                        "value": "-"
+                      }
+                    ]
+                  },
+                  {
+                    "type": "BLANK"
+                  }
+                ]
+              },
+              {
+                "type": "SYMBOL",
+                "name": "set_target_list"
+              }
+            ]
           }
         ]
       }
@@ -1735,8 +1761,21 @@
         "type": "SEQ",
         "members": [
           {
-            "type": "SYMBOL",
-            "name": "identifier"
+            "type": "CHOICE",
+            "members": [
+              {
+                "type": "SYMBOL",
+                "name": "identifier"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "number"
+              },
+              {
+                "type": "SYMBOL",
+                "name": "indirection"
+              }
+            ]
           },
           {
             "type": "STRING",
@@ -1769,8 +1808,17 @@
           "value": "."
         },
         {
-          "type": "SYMBOL",
-          "name": "identifier"
+          "type": "CHOICE",
+          "members": [
+            {
+              "type": "SYMBOL",
+              "name": "identifier"
+            },
+            {
+              "type": "SYMBOL",
+              "name": "indirection"
+            }
+          ]
         },
         {
           "type": "CHOICE",
@@ -1817,11 +1865,20 @@
       }
     },
     "pattern": {
-      "type": "REPEAT1",
-      "content": {
-        "type": "SYMBOL",
-        "name": "pattern_atom"
-      }
+      "type": "CHOICE",
+      "members": [
+        {
+          "type": "REPEAT1",
+          "content": {
+            "type": "SYMBOL",
+            "name": "pattern_atom"
+          }
+        },
+        {
+          "type": "SYMBOL",
+          "name": "indirection"
+        }
+      ]
     },
     "pattern_atom": {
       "type": "SEQ",
@@ -1918,7 +1975,7 @@
         },
         {
           "type": "SYMBOL",
-          "name": "pattern_atom"
+          "name": "pattern_alt_branch"
         },
         {
           "type": "REPEAT",
@@ -1931,7 +1988,7 @@
               },
               {
                 "type": "SYMBOL",
-                "name": "pattern_atom"
+                "name": "pattern_alt_branch"
               }
             ]
           }
@@ -1941,6 +1998,13 @@
           "value": ")"
         }
       ]
+    },
+    "pattern_alt_branch": {
+      "type": "REPEAT1",
+      "content": {
+        "type": "SYMBOL",
+        "name": "pattern_atom"
+      }
     },
     "indirection": {
       "type": "PREC_RIGHT",
@@ -2001,6 +2065,10 @@
         {
           "type": "SYMBOL",
           "name": "indirection"
+        },
+        {
+          "type": "SYMBOL",
+          "name": "unary_expression"
         }
       ]
     },
@@ -2101,6 +2169,10 @@
                 {
                   "type": "STRING",
                   "value": "'"
+                },
+                {
+                  "type": "STRING",
+                  "value": "*"
                 }
               ]
             },
@@ -2399,1420 +2471,1420 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "$LISTFROMSTRING"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Ff][Rr][Oo][Mm][Ss][Tt][Rr][Ii][Nn][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$ISVALIDDOUBLE"
+          "type": "PATTERN",
+          "value": "\\$[Ii][Ss][Vv][Aa][Ll][Ii][Dd][Dd][Oo][Uu][Bb][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$VECTORDEFINED"
+          "type": "PATTERN",
+          "value": "\\$[Vv][Ee][Cc][Tt][Oo][Rr][Dd][Ee][Ff][Ii][Nn][Ee][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTTOSTRING"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Tt][Oo][Ss][Tt][Rr][Ii][Nn][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$CLASSMETHOD"
+          "type": "PATTERN",
+          "value": "\\$[Cc][Ll][Aa][Ss][Ss][Mm][Ee][Tt][Hh][Oo][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$PREFETCHOFF"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Ee][Ff][Ee][Tt][Cc][Hh][Oo][Ff][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$ZATRANSFORM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Tt][Rr][Aa][Nn][Ss][Ff][Oo][Rr][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYISSQLNULL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ii][Ss][Ss][Qq][Ll][Nn][Uu][Ll][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ISVALIDNUM"
+          "type": "PATTERN",
+          "value": "\\$[Ii][Ss][Vv][Aa][Ll][Ii][Dd][Nn][Uu][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTLENGTH"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Ll][Ee][Nn][Gg][Tt][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTUPDATE"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Uu][Pp][Dd][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$PREFETCHON"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Ee][Ff][Ee][Tt][Cc][Hh][Oo][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$QSUBSCRIPT"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ss][Uu][Bb][Ss][Cc][Rr][Ii][Pp][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATETIMEH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Ee][Tt][Ii][Mm][Ee][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRANSLATE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Aa][Nn][Ss][Ll][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$CLASSNAME"
+          "type": "PATTERN",
+          "value": "\\$[Cc][Ll][Aa][Ss][Ss][Nn][Aa][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$INCREMENT"
+          "type": "PATTERN",
+          "value": "\\$[Ii][Nn][Cc][Rr][Ee][Mm][Ee][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTBUILD"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Bb][Uu][Ii][Ll][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTVALID"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Vv][Aa][Ll][Ii][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$NORMALIZE"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Oo][Rr][Mm][Aa][Ll][Ii][Zz][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$PARAMETER"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Aa][Rr][Aa][Mm][Ee][Tt][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$QSUBSCRIP"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ss][Uu][Bb][Ss][Cc][Rr][Ii][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$SORTBEGIN"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Oo][Rr][Tt][Bb][Ee][Gg][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$TRANSLATE"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Aa][Nn][Ss][Ll][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATETIME"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Ee][Tt][Ii][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPREVIOUS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr][Ee][Vv][Ii][Oo][Uu][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRANSLAT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Aa][Nn][Ss][Ll][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUADITLOG"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Aa][Dd][Ii][Tt][Ll][Oo][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYCOMPILE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Cc][Oo][Mm][Pp][Ii][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$BITCOUNT"
+          "type": "PATTERN",
+          "value": "\\$[Bb][Ii][Tt][Cc][Oo][Uu][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$BITLOGIC"
+          "type": "PATTERN",
+          "value": "\\$[Bb][Ii][Tt][Ll][Oo][Gg][Ii][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$DEXTRACT"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Xx][Tt][Rr][Aa][Cc][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ISOBJECT"
+          "type": "PATTERN",
+          "value": "\\$[Ii][Ss][Oo][Bb][Jj][Ee][Cc][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ISVECTOR"
+          "type": "PATTERN",
+          "value": "\\$[Ii][Ss][Vv][Ee][Cc][Tt][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTDATA"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Dd][Aa][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTFIND"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Ff][Ii][Nn][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTNEXT"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Nn][Ee][Xx][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTSAME"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Ss][Aa][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$NCONVERT"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Cc][Oo][Nn][Vv][Ee][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$PROPERTY"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Oo][Pp][Ee][Rr][Tt][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$QSUBSCRI"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ss][Uu][Bb][Ss][Cc][Rr][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$SCONVERT"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Cc][Oo][Nn][Vv][Ee][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$SEQUENCE"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Ee][Qq][Uu][Ee][Nn][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$TRANSLAT"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Aa][Nn][Ss][Ll][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$VECTOROP"
+          "type": "PATTERN",
+          "value": "\\$[Vv][Ee][Cc][Tt][Oo][Rr][Oo][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$WEXTRACT"
+          "type": "PATTERN",
+          "value": "\\$[Ww][Ee][Xx][Tt][Rr][Aa][Cc][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$WREVERSE"
+          "type": "PATTERN",
+          "value": "\\$[Ww][Rr][Ee][Vv][Ee][Rr][Ss][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZAHANDLE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Hh][Aa][Nn][Dd][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZBOOLEAN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Bb][Oo][Oo][Ll][Ee][Aa][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOLLATE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Ll][Ll][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCONVERT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Nn][Vv][Ee][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEXTRACT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Xx][Tt][Rr][Aa][Cc][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJOBEXAM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj][Oo][Bb][Ee][Xx][Aa][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJUSTIFY"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj][Uu][Ss][Tt][Ii][Ff][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMESSAGE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Ee][Ss][Ss][Aa][Gg][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPREVIOU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr][Ee][Vv][Ii][Oo][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZQGBLMOD"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Qq][Gg][Bb][Ll][Mm][Oo][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSIGPROC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Ii][Gg][Pp][Rr][Oo][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRANSLA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Aa][Nn][Ss][Ll][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRIGGER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Ii][Gg][Gg][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYSUFFIX"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ss][Uu][Ff][Ff][Ii][Xx]"
         },
         {
-          "type": "STRING",
-          "value": "$ZZENKAKU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Zz][Ee][Nn][Kk][Aa][Kk][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$BITFIND"
+          "type": "PATTERN",
+          "value": "\\$[Bb][Ii][Tt][Ff][Ii][Nn][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$COMPILE"
+          "type": "PATTERN",
+          "value": "\\$[Cc][Oo][Mm][Pp][Ii][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$DECIMAL"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Cc][Ii][Mm][Aa][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$DEXTRAC"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Xx][Tt][Rr][Aa][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$EXTRACT"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Xx][Tt][Rr][Aa][Cc][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$FNUMBER"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Nn][Uu][Mm][Bb][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$HOROLOG"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr][Oo][Ll][Oo][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$INUMBER"
+          "type": "PATTERN",
+          "value": "\\$[Ii][Nn][Uu][Mm][Bb][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$JUSTIFY"
+          "type": "PATTERN",
+          "value": "\\$[Jj][Uu][Ss][Tt][Ii][Ff][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$LISTGET"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt][Gg][Ee][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$QLENGTH"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ll][Ee][Nn][Gg][Tt][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$QSUBSCR"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ss][Uu][Bb][Ss][Cc][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$REPLACE"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Pp][Ll][Aa][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$REVERSE"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Vv][Ee][Rr][Ss][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$SORTEND"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Oo][Rr][Tt][Ee][Nn][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$TRANSLA"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Aa][Nn][Ss][Ll][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$WISWIDE"
+          "type": "PATTERN",
+          "value": "\\$[Ww][Ii][Ss][Ww][Ii][Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$WLENGTH"
+          "type": "PATTERN",
+          "value": "\\$[Ww][Ll][Ee][Nn][Gg][Tt][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZAHANDL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Hh][Aa][Nn][Dd][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZARCCOS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Rr][Cc][Cc][Oo][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZARCSIN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Rr][Cc][Ss][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZARCTAN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Rr][Cc][Tt][Aa][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZBITAND"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Bb][Ii][Tt][Aa][Nn][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOLLAT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Ll][Ll][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCONVER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Nn][Vv][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDASCII"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Ss][Cc][Ii][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEXTRAC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Xx][Tt][Rr][Aa][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZGETJPI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Gg][Ee][Tt][Jj][Pp][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZISWIDE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Ss][Ww][Ii][Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJUSTIF"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj][Uu][Ss][Tt][Ii][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLASCII"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Aa][Ss][Cc][Ii][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLENGTH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Ee][Nn][Gg][Tt][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMESSAG"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Ee][Ss][Ss][Aa][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPREVIO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr][Ee][Vv][Ii][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZQASCII"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Qq][Aa][Ss][Cc][Ii][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSEARCH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Ee][Aa][Rr][Cc][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSOCKET"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Oo][Cc][Kk][Ee][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSUBSTR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Uu][Bb][Ss][Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSYSLOG"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Yy][Ss][Ll][Oo][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRANSL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Aa][Nn][Ss][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRNLNM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Nn][Ll][Nn][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZWASCII"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ww][Aa][Ss][Cc][Ii][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYSUFFI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ss][Uu][Ff][Ff][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$CHANGE"
+          "type": "PATTERN",
+          "value": "\\$[Cc][Hh][Aa][Nn][Gg][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$DEXTRA"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Xx][Tt][Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$DOUBLE"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Oo][Uu][Bb][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$DPIECE"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Pp][Ii][Ee][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$EXTRAC"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Xx][Tt][Rr][Aa][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$FACTOR"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Aa][Cc][Tt][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$FNUMBE"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Nn][Uu][Mm][Bb][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$HOROLO"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr][Oo][Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$JUSTIF"
+          "type": "PATTERN",
+          "value": "\\$[Jj][Uu][Ss][Tt][Ii][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$LENGTH"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ee][Nn][Gg][Tt][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$LOCATE"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Oo][Cc][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$METHOD"
+          "type": "PATTERN",
+          "value": "\\$[Mm][Ee][Tt][Hh][Oo][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$NUMBER"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Uu][Mm][Bb][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$QLENGT"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ll][Ee][Nn][Gg][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$QSUBSC"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ss][Uu][Bb][Ss][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$RANDOM"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Aa][Nn][Dd][Oo][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$REVERS"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Vv][Ee][Rr][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$SELECT"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Ee][Ll][Ee][Cc][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$TRANSL"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Aa][Nn][Ss][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$VECTOR"
+          "type": "PATTERN",
+          "value": "\\$[Vv][Ee][Cc][Tt][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$WASCII"
+          "type": "PATTERN",
+          "value": "\\$[Ww][Aa][Ss][Cc][Ii][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$XECUTE"
+          "type": "PATTERN",
+          "value": "\\$[Xx][Ee][Cc][Uu][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZAHAND"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Hh][Aa][Nn][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZASCII"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Ss][Cc][Ii][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOLLA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Ll][Ll][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCONVE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Nn][Vv][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATEH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Ee][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDCHAR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Cc][Hh][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEXTRA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Xx][Tt][Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJUSTI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj][Uu][Ss][Tt][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLCHAR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Cc][Hh][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLENGT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Ee][Nn][Gg][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMESSA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Ee][Ss][Ss][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPARSE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Aa][Rr][Ss][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPIECE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Ii][Ee][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPOWER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Oo][Ww][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPREVI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr][Ee][Vv][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZQCHAR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Qq][Cc][Hh][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTRIP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Rr][Ii][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSUBST"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Uu][Bb][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTIMEH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Ii][Mm][Ee][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRANS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Aa][Nn][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZWCHAR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ww][Cc][Hh][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZWIDTH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ww][Ii][Dd][Tt][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZWRITE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ww][Rr][Ii][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYHASH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Hh][Aa][Ss][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYSUFF"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ss][Uu][Ff][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$ASCII"
+          "type": "PATTERN",
+          "value": "\\$[Aa][Ss][Cc][Ii][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$DEXTR"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Xx][Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$DPIEC"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Pp][Ii][Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$EXTRA"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Xx][Tt][Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$FNUMB"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Nn][Uu][Mm][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "$HOROL"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr][Oo][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$JUSTI"
+          "type": "PATTERN",
+          "value": "\\$[Jj][Uu][Ss][Tt][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$LENGT"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ee][Nn][Gg][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$MATCH"
+          "type": "PATTERN",
+          "value": "\\$[Mm][Aa][Tt][Cc][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$MUMPS"
+          "type": "PATTERN",
+          "value": "\\$[Mm][Uu][Mm][Pp][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ORDER"
+          "type": "PATTERN",
+          "value": "\\$[Oo][Rr][Dd][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$PIECE"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Ii][Ee][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$QLENG"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ll][Ee][Nn][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$QSUBS"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ss][Uu][Bb][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$QUERY"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Uu][Ee][Rr][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$RANDO"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Aa][Nn][Dd][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$REVER"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Vv][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$SELEC"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Ee][Ll][Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$STACK"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Aa][Cc][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "$TRANS"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Aa][Nn][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$WCHAR"
+          "type": "PATTERN",
+          "value": "\\$[Ww][Cc][Hh][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$WFIND"
+          "type": "PATTERN",
+          "value": "\\$[Ww][Ff][Ii][Nn][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZAHAN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Hh][Aa][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZASCI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Ss][Cc][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCHAR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Hh][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOLL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Ll][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCONV"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Nn][Vv]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEXTR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Xx][Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZFIND"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ff][Ii][Nn][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJUST"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj][Uu][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLENG"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Ee][Nn][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMESS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Ee][Ss][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPEEK"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Ee][Ee][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPIEC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Ii][Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPREV"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr][Ee][Vv]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSEEK"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Ee][Ee][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSUBS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Uu][Bb][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTIME"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Ii][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRAN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Aa][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZWIDT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ww][Ii][Dd][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYSUF"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ss][Uu][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$ASCI"
+          "type": "PATTERN",
+          "value": "\\$[Aa][Ss][Cc][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$CASE"
+          "type": "PATTERN",
+          "value": "\\$[Cc][Aa][Ss][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$CHAR"
+          "type": "PATTERN",
+          "value": "\\$[Cc][Hh][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$DATA"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Aa][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$DEXT"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Xx][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$DPIE"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Pp][Ii][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$EXTR"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Xx][Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$FIND"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Ii][Nn][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$FNUM"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Nn][Uu][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$HORO"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$JUST"
+          "type": "PATTERN",
+          "value": "\\$[Jj][Uu][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$LENG"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ee][Nn][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$LIST"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ii][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$MUMP"
+          "type": "PATTERN",
+          "value": "\\$[Mm][Uu][Mm][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$NAME"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Aa][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$NEXT"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Ee][Xx][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ORDE"
+          "type": "PATTERN",
+          "value": "\\$[Oo][Rr][Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$PIEC"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Ii][Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$QLEN"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ll][Ee][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$QSUB"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ss][Uu][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "$QUER"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Uu][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$RAND"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Aa][Nn][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$REVE"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Vv][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$SELE"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Ee][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$STAC"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Aa][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$TEXT"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ee][Xx][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$TRAN"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Aa][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$TYPE"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Yy][Pp][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$VIEW"
+          "type": "PATTERN",
+          "value": "\\$[Vv][Ii][Ee][Ww]"
         },
         {
-          "type": "STRING",
-          "value": "$ZABS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Bb][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZAHA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Hh][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZASC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Ss][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCHA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Hh][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCON"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCRC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Rr][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCSC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Ss][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCYC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Yy][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDAT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEXP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Xx][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEXT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Xx][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZFIN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ff][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZHEX"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Hh][Ee][Xx]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJUS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj][Uu][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLEN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Ee][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLOG"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Oo][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMES"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Ee][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPIE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Ii][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPRE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSEC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSIN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSQR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Qq][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSUB"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Uu][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTAN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Aa][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZWID"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ww][Ii][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYSU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ss][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ASC"
+          "type": "PATTERN",
+          "value": "\\$[Aa][Ss][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$BIT"
+          "type": "PATTERN",
+          "value": "\\$[Bb][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$CHA"
+          "type": "PATTERN",
+          "value": "\\$[Cc][Hh][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$DAT"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$DEX"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Xx]"
         },
         {
-          "type": "STRING",
-          "value": "$DPI"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Pp][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$EXT"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Xx][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$FIN"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$FNU"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Nn][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$GET"
+          "type": "PATTERN",
+          "value": "\\$[Gg][Ee][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$HOR"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$JUS"
+          "type": "PATTERN",
+          "value": "\\$[Jj][Uu][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$LEN"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ee][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$MUM"
+          "type": "PATTERN",
+          "value": "\\$[Mm][Uu][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$NAM"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Aa][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$NEX"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Ee][Xx]"
         },
         {
-          "type": "STRING",
-          "value": "$NOW"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Oo][Ww]"
         },
         {
-          "type": "STRING",
-          "value": "$ORD"
+          "type": "PATTERN",
+          "value": "\\$[Oo][Rr][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$PIE"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Ii][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$QLE"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$QSU"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ss][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$QUE"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Uu][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$RAN"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Aa][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$REV"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Vv]"
         },
         {
-          "type": "STRING",
-          "value": "$SEL"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Ee][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$STA"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$TEX"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ee][Xx]"
         },
         {
-          "type": "STRING",
-          "value": "$TRA"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$TYP"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Yy][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$VIE"
+          "type": "PATTERN",
+          "value": "\\$[Vv][Ii][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZAS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEX"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Xx]"
         },
         {
-          "type": "STRING",
-          "value": "$ZFI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ff][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZME"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZWI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ww][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$AS"
+          "type": "PATTERN",
+          "value": "\\$[Aa][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$CH"
+          "type": "PATTERN",
+          "value": "\\$[Cc][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$DA"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$DE"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$DP"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$EX"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Xx]"
         },
         {
-          "type": "STRING",
-          "value": "$FI"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$FN"
+          "type": "PATTERN",
+          "value": "\\$[Ff][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$GE"
+          "type": "PATTERN",
+          "value": "\\$[Gg][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$HO"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$JU"
+          "type": "PATTERN",
+          "value": "\\$[Jj][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$LE"
+          "type": "PATTERN",
+          "value": "\\$[Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$MU"
+          "type": "PATTERN",
+          "value": "\\$[Mm][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$NA"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$NE"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$OR"
+          "type": "PATTERN",
+          "value": "\\$[Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$PI"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$QL"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$QS"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$QU"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$RA"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$RE"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$SE"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ST"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$TE"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$TR"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$TY"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$VI"
+          "type": "PATTERN",
+          "value": "\\$[Vv][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZD"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZF"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJ"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj]"
         },
         {
-          "type": "STRING",
-          "value": "$ZL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZW"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ww]"
         },
         {
-          "type": "STRING",
-          "value": "$A"
+          "type": "PATTERN",
+          "value": "\\$[Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$C"
+          "type": "PATTERN",
+          "value": "\\$[Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$D"
+          "type": "PATTERN",
+          "value": "\\$[Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$E"
+          "type": "PATTERN",
+          "value": "\\$[Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$F"
+          "type": "PATTERN",
+          "value": "\\$[Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$G"
+          "type": "PATTERN",
+          "value": "\\$[Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$H"
+          "type": "PATTERN",
+          "value": "\\$[Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$J"
+          "type": "PATTERN",
+          "value": "\\$[Jj]"
         },
         {
-          "type": "STRING",
-          "value": "$L"
+          "type": "PATTERN",
+          "value": "\\$[Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$M"
+          "type": "PATTERN",
+          "value": "\\$[Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$N"
+          "type": "PATTERN",
+          "value": "\\$[Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$O"
+          "type": "PATTERN",
+          "value": "\\$[Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$P"
+          "type": "PATTERN",
+          "value": "\\$[Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$Q"
+          "type": "PATTERN",
+          "value": "\\$[Qq]"
         },
         {
-          "type": "STRING",
-          "value": "$R"
+          "type": "PATTERN",
+          "value": "\\$[Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$S"
+          "type": "PATTERN",
+          "value": "\\$[Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$T"
+          "type": "PATTERN",
+          "value": "\\$[Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$V"
+          "type": "PATTERN",
+          "value": "\\$[Vv]"
         },
         {
-          "type": "STRING",
-          "value": "$Z"
+          "type": "PATTERN",
+          "value": "\\$[Zz]"
         }
       ]
     },
@@ -3824,1192 +3896,1192 @@
       "type": "CHOICE",
       "members": [
         {
-          "type": "STRING",
-          "value": "$ZININTERRUPT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Ii][Nn][Tt][Ee][Rr][Rr][Uu][Pp][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUNSPECIFIED"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn][Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZININTERRUP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Ii][Nn][Tt][Ee][Rr][Rr][Uu][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPATNUMERIC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Aa][Tt][Nn][Uu][Mm][Ee][Rr][Ii][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUNSPECIFIE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn][Ss][Pp][Ee][Cc][Ii][Ff][Ii][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYJOBPARENT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Jj][Oo][Bb][Pp][Aa][Rr][Ee][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZALLOCSTOR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Ll][Ll][Oo][Cc][Ss][Tt][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDIRECTORY"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Ii][Rr][Ee][Cc][Tt][Oo][Rr][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$ZININTERRU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Ii][Nn][Tt][Ee][Rr][Rr][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZINTERRUPT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Tt][Ee][Rr][Rr][Uu][Pp][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMALLOCLIM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Aa][Ll][Ll][Oo][Cc][Ll][Ii][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMAXTPTIME"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Aa][Xx][Tt][Pp][Tt][Ii][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPATNUMERI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Aa][Tt][Nn][Uu][Mm][Ee][Rr][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZREFERENCE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Ee][Ff][Ee][Rr][Ee][Nn][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTIMESTAMP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Ii][Mm][Ee][Ss][Tt][Aa][Mm][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUNSPECIFI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn][Ss][Pp][Ee][Cc][Ii][Ff][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYJOBPAREN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Jj][Oo][Bb][Pp][Aa][Rr][Ee][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$NAMESPACE"
+          "type": "PATTERN",
+          "value": "\\$[Nn][Aa][Mm][Ee][Ss][Pp][Aa][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$PRINCIPAL"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Ii][Nn][Cc][Ii][Pp][Aa][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$REFERENCE"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Ff][Ee][Rr][Ee][Nn][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATEFORM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Ee][Ff][Oo][Rr][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDIRECTOR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Ii][Rr][Ee][Cc][Tt][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZININTERR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Ii][Nn][Tt][Ee][Rr][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZINTERRUP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Tt][Ee][Rr][Rr][Uu][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMALLOCLI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Aa][Ll][Ll][Oo][Cc][Ll][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMAXTPTIM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Aa][Xx][Tt][Pp][Tt][Ii][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZONLNRLBK"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Oo][Nn][Ll][Nn][Rr][Ll][Bb][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPATNUMER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Aa][Tt][Nn][Uu][Mm][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPOSITION"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Oo][Ss][Ii][Tt][Ii][Oo][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZREALSTOR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Ee][Aa][Ll][Ss][Tt][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZROUTINES"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Oo][Uu][Tt][Ii][Nn][Ee][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTRPLLIM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Rr][Pp][Ll][Ll][Ii][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTIMEZONE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Ii][Mm][Ee][Zz][Oo][Nn][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUNSPECIF"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn][Ss][Pp][Ee][Cc][Ii][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUSEDSTOR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Ss][Ee][Dd][Ss][Tt][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYINTRSIG"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ii][Nn][Tt][Rr][Ss][Ii][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYJOBPARE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Jj][Oo][Bb][Pp][Aa][Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$PRINCIPA"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Ii][Nn][Cc][Ii][Pp][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$REFERENC"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Ff][Ee][Rr][Ee][Nn][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$THROWOBJ"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Hh][Rr][Oo][Ww][Oo][Bb][Jj]"
         },
         {
-          "type": "STRING",
-          "value": "$TRESTART"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Ee][Ss][Tt][Aa][Rr][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$USERNAME"
+          "type": "PATTERN",
+          "value": "\\$[Uu][Ss][Ee][Rr][Nn][Aa][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCMDLINE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Mm][Dd][Ll][Ii][Nn][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOMPILE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Mm][Pp][Ii][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCSTATUS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Ss][Tt][Aa][Tt][Uu][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATEFOR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Ee][Ff][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDIRECTO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Ii][Rr][Ee][Cc][Tt][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZHOROLOG"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Hh][Oo][Rr][Oo][Ll][Oo][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$ZININTER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Ii][Nn][Tt][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZINTERRU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Tt][Ee][Rr][Rr][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMALLOCL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Aa][Ll][Ll][Oo][Cc][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMAXTPTI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Aa][Xx][Tt][Pp][Tt][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMLKHASH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Ll][Kk][Hh][Aa][Ss][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPATNUME"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Aa][Tt][Nn][Uu][Mm][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPOSITIO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Oo][Ss][Ii][Tt][Ii][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZRELDATE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Ee][Ll][Dd][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZROUTINE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Oo][Uu][Tt][Ii][Nn][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTORAGE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Oo][Rr][Aa][Gg][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTRPLLI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Rr][Pp][Ll][Ll][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTIMEOUT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Ii][Mm][Ee][Oo][Uu][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUNSPECI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn][Ss][Pp][Ee][Cc][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZVERSION"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Vv][Ee][Rr][Ss][Ii][Oo][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYJOBPAR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Jj][Oo][Bb][Pp][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$HOROLOG"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr][Oo][Ll][Oo][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$PRINCIP"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Ii][Nn][Cc][Ii][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$REFEREN"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Ff][Ee][Rr][Ee][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$STORAGE"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Oo][Rr][Aa][Gg][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$TRESTAR"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Ee][Ss][Tt][Aa][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCMDLIN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Mm][Dd][Ll][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOMPIL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Mm][Pp][Ii][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCSTATU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Ss][Tt][Aa][Tt][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATEFO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Ee][Ff][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDIRECT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Ii][Rr][Ee][Cc][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZGBLDIR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Gg][Bb][Ll][Dd][Ii][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZHOROLO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Hh][Oo][Rr][Oo][Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZICUVER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Cc][Uu][Vv][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZININTE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Ii][Nn][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZINTERR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Tt][Ee][Rr][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMALLOC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Aa][Ll][Ll][Oo][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZNSPACE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Nn][Ss][Pp][Aa][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPARENT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Aa][Rr][Ee][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPATNUM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Aa][Tt][Nn][Uu][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPOSITI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Oo][Ss][Ii][Tt][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPROMPT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr][Oo][Mm][Pp][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZROUTIN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Oo][Uu][Tt][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSOURCE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Oo][Uu][Rr][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTATUS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Aa][Tt][Uu][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTRPLL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Rr][Pp][Ll][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSYSTEM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Yy][Ss][Tt][Ee][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUNSPEC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn][Ss][Pp][Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZVERSIO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Vv][Ee][Rr][Ss][Ii][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYERROR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ee][Rr][Rr][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYJOBPA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Jj][Oo][Bb][Pp][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$DEVICE"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Vv][Ii][Cc][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ESTACK"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Ss][Tt][Aa][Cc][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "$HOROLO"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr][Oo][Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$PRINCI"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Ii][Nn][Cc][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$REFERE"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Ff][Ee][Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$STORAG"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Oo][Rr][Aa][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$SYSTEM"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Yy][Ss][Tt][Ee][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$TLEVEL"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ll][Ee][Vv][Ee][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$TRESTA"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Ee][Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZAUDIT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa][Uu][Dd][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCHILD"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Hh][Ii][Ll][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCHSET"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Hh][Ss][Ee][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCMDLI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Mm][Dd][Ll][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOMPI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Mm][Pp][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCSTAT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Ss][Tt][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATEF"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Ee][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDIREC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Ii][Rr][Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZERROR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Rr][Rr][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZGBLDI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Gg][Bb][Ll][Dd][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZHOROL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Hh][Oo][Rr][Oo][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZININT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Ii][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZINTER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Tt][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLEVEL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Ee][Vv][Ee][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMALLO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Aa][Ll][Ll][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZORDER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Oo][Rr][Dd][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPATNU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Aa][Tt][Nn][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPOSIT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Oo][Ss][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPROMP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr][Oo][Mm][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZROUTI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Oo][Uu][Tt][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSOURC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Oo][Uu][Rr][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTATU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Aa][Tt][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTRPL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Rr][Pp][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSYSTE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Yy][Ss][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTEXIT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Ee][Xx][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUNSPE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn][Ss][Pp][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZVERSI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Vv][Ee][Rr][Ss][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYERRO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ee][Rr][Rr][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYJOBP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Jj][Oo][Bb][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$DEVIC"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Vv][Ii][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ECODE"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Cc][Oo][Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ESTAC"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Ss][Tt][Aa][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ETRAP"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Tt][Rr][Aa][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$HOROL"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr][Oo][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$PRINC"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Ii][Nn][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$REFER"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Ff][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ROLES"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Oo][Ll][Ee][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$STACK"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Aa][Cc][Kk]"
         },
         {
-          "type": "STRING",
-          "value": "$STORA"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Oo][Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$SYSTE"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Yy][Ss][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$TLEVE"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ll][Ee][Vv][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$TREST"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Ee][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCMDL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Mm][Dd][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOMP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Mm][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCSTA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDATE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDIRE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Ii][Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZERRO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Rr][Rr][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZGBLD"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Gg][Bb][Ll][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZHORO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Hh][Oo][Rr][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZININ"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZINTE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLEVE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Ee][Vv][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMALL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Aa][Ll][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMODE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Oo][Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPATN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Aa][Tt][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPOSI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Oo][Ss][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPROM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Rr][Oo][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZQUIT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Qq][Uu][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZROUT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Oo][Uu][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSOUR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Oo][Uu][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTAT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTEP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Ee][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTRP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Rr][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSYST"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Yy][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTEXI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Ee][Xx][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRAP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Aa][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUNSP"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn][Ss][Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$ZVERS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Vv][Ee][Rr][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYERR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ee][Rr][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYJOB"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Jj][Oo][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "$DEVI"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Vv][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ECOD"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Cc][Oo][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ESTA"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ETRA"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Tt][Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$HALT"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Aa][Ll][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$HORO"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$PRIN"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Ii][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$QUIT"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Uu][Ii][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$REFE"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Ff][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$STAC"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Aa][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$STOR"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$SYST"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Yy][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$TEST"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ee][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$THIS"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Hh][Ii][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$TLEV"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ll][Ee][Vv]"
         },
         {
-          "type": "STRING",
-          "value": "$TRES"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Ee][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCMD"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Mm][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCOM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCST"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDAT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDIR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Ii][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEOF"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Oo][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEOS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Oo][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZERR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Rr][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZGBL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Gg][Bb][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZHOR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Hh][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZINI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZINT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Nn][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJOB"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj][Oo][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLEV"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Ee][Vv]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMOD"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Oo][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPOS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Oo][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZROU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Oo][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSOU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Oo][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSTE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSYS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Yy][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTEX"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Ee][Xx]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTRA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUNS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZVER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Vv][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZYJO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Yy][Jj][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$DEV"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee][Vv]"
         },
         {
-          "type": "STRING",
-          "value": "$ECO"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Cc][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$EST"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ETR"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$HOR"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$JOB"
+          "type": "PATTERN",
+          "value": "\\$[Jj][Oo][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "$KEY"
+          "type": "PATTERN",
+          "value": "\\$[Kk][Ee][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$PRI"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$QUI"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Uu][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$REF"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee][Ff]"
         },
         {
-          "type": "STRING",
-          "value": "$STA"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$STO"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$SYS"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Yy][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$TES"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ee][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$TLE"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$TRE"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCM"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Mm]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZCS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZDI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZEO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZER"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZGB"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Gg][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "$ZHO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Hh][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZIO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ii][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZLE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZMO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Mm][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZPI"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Pp][Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$ZRO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Rr][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSO"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$ZST"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZSY"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZTR"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUN"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Nn]"
         },
         {
-          "type": "STRING",
-          "value": "$ZUT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZVE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Vv][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$DE"
+          "type": "PATTERN",
+          "value": "\\$[Dd][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$EC"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ES"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ET"
+          "type": "PATTERN",
+          "value": "\\$[Ee][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$HO"
+          "type": "PATTERN",
+          "value": "\\$[Hh][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$IO"
+          "type": "PATTERN",
+          "value": "\\$[Ii][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$JO"
+          "type": "PATTERN",
+          "value": "\\$[Jj][Oo]"
         },
         {
-          "type": "STRING",
-          "value": "$KE"
+          "type": "PATTERN",
+          "value": "\\$[Kk][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$PR"
+          "type": "PATTERN",
+          "value": "\\$[Pp][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$QU"
+          "type": "PATTERN",
+          "value": "\\$[Qq][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$RE"
+          "type": "PATTERN",
+          "value": "\\$[Rr][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ST"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$SY"
+          "type": "PATTERN",
+          "value": "\\$[Ss][Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$TE"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$TL"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$TR"
+          "type": "PATTERN",
+          "value": "\\$[Tt][Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$ZA"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Aa]"
         },
         {
-          "type": "STRING",
-          "value": "$ZB"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Bb]"
         },
         {
-          "type": "STRING",
-          "value": "$ZC"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Cc]"
         },
         {
-          "type": "STRING",
-          "value": "$ZD"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$ZE"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ee]"
         },
         {
-          "type": "STRING",
-          "value": "$ZG"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Gg]"
         },
         {
-          "type": "STRING",
-          "value": "$ZH"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$ZJ"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Jj]"
         },
         {
-          "type": "STRING",
-          "value": "$ZL"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ll]"
         },
         {
-          "type": "STRING",
-          "value": "$ZS"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$ZT"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$ZU"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Uu]"
         },
         {
-          "type": "STRING",
-          "value": "$ZV"
+          "type": "PATTERN",
+          "value": "\\$[Zz][Vv]"
         },
         {
-          "type": "STRING",
-          "value": "$D"
+          "type": "PATTERN",
+          "value": "\\$[Dd]"
         },
         {
-          "type": "STRING",
-          "value": "$H"
+          "type": "PATTERN",
+          "value": "\\$[Hh]"
         },
         {
-          "type": "STRING",
-          "value": "$I"
+          "type": "PATTERN",
+          "value": "\\$[Ii]"
         },
         {
-          "type": "STRING",
-          "value": "$J"
+          "type": "PATTERN",
+          "value": "\\$[Jj]"
         },
         {
-          "type": "STRING",
-          "value": "$K"
+          "type": "PATTERN",
+          "value": "\\$[Kk]"
         },
         {
-          "type": "STRING",
-          "value": "$P"
+          "type": "PATTERN",
+          "value": "\\$[Pp]"
         },
         {
-          "type": "STRING",
-          "value": "$Q"
+          "type": "PATTERN",
+          "value": "\\$[Qq]"
         },
         {
-          "type": "STRING",
-          "value": "$R"
+          "type": "PATTERN",
+          "value": "\\$[Rr]"
         },
         {
-          "type": "STRING",
-          "value": "$S"
+          "type": "PATTERN",
+          "value": "\\$[Ss]"
         },
         {
-          "type": "STRING",
-          "value": "$T"
+          "type": "PATTERN",
+          "value": "\\$[Tt]"
         },
         {
-          "type": "STRING",
-          "value": "$X"
+          "type": "PATTERN",
+          "value": "\\$[Xx]"
         },
         {
-          "type": "STRING",
-          "value": "$Y"
+          "type": "PATTERN",
+          "value": "\\$[Yy]"
         },
         {
-          "type": "STRING",
-          "value": "$Z"
+          "type": "PATTERN",
+          "value": "\\$[Zz]"
         }
       ]
     },
@@ -5024,12 +5096,68 @@
             "value": "$$"
           },
           {
-            "type": "SYMBOL",
-            "name": "identifier"
-          },
-          {
             "type": "CHOICE",
             "members": [
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "identifier"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": "^"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "identifier"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  }
+                ]
+              },
+              {
+                "type": "SEQ",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "indirection"
+                  },
+                  {
+                    "type": "CHOICE",
+                    "members": [
+                      {
+                        "type": "SEQ",
+                        "members": [
+                          {
+                            "type": "STRING",
+                            "value": "^"
+                          },
+                          {
+                            "type": "SYMBOL",
+                            "name": "identifier"
+                          }
+                        ]
+                      },
+                      {
+                        "type": "BLANK"
+                      }
+                    ]
+                  }
+                ]
+              },
               {
                 "type": "SEQ",
                 "members": [
@@ -5042,9 +5170,6 @@
                     "name": "identifier"
                   }
                 ]
-              },
-              {
-                "type": "BLANK"
               }
             ]
           },
@@ -5201,6 +5326,22 @@
     [
       "format_tab",
       "pattern_match"
+    ],
+    [
+      "intrinsic_function_keyword",
+      "special_variable_keyword"
+    ],
+    [
+      "local_variable"
+    ],
+    [
+      "global_variable"
+    ],
+    [
+      "by_reference"
+    ],
+    [
+      "entry_reference"
     ]
   ],
   "precedences": [],
