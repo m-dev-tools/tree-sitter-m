@@ -641,17 +641,31 @@ scope (ObjectScript) or non-standard M (Kernel `$PD` idiom).
 - Combined: **98.39% → 98.49% (+0.10pp)** on the full 39,330-routine
   VistA corpus. 633 → 594 failing files.
 
-**Lessons learned about tree-sitter regex / token-level prec:**
+**Lessons learned about tree-sitter regex / token-level prec.**
+Both lessons (and the patterns we used to work around them) are
+written up in `docs/tree-sitter-notes.md` as durable reference for
+future grammar work — read that before adding any rule that involves
+overlapping regex tokens, keyword vs identifier disambiguation, or
+context-sensitive recognition. Short version:
 
-- Token precedence DOMINATES length-based tiebreaking — opposite of
-  parser rule precedence. A `prec(-1)` lexer regex loses to any
-  higher-prec token regardless of which one is longer.
-- Negative lookahead `(?!...)` and look-behind `(?<...)` are
-  rejected outright by tree-sitter's regex engine at generate time.
-  Workaround for lex-level "match unless this exact thing comes
-  next": push the disambiguation into the parser via a GLR
-  alternative.
-- The "special_variable + optional vendor_extension" pattern
-  generalises to any case where a known-set keyword needs to
-  tolerate non-standard trailing characters without consuming them
-  in the keyword token itself.
+- **Token precedence DOMINATES length-based tiebreaking** — opposite
+  of parser rule precedence. A `prec(-1)` lexer regex loses to any
+  higher-prec token regardless of which one is longer. Empirically
+  confirmed: `vendor_dollar_identifier` with `prec(-1)` lost to the
+  shorter `$P` keyword on every input. The mental model "longest
+  wins, prec breaks ties" is wrong; the actual rule is "highest
+  prec wins, length breaks ties WITHIN equal-prec." Implication:
+  precedence is not a soft preference — it's an absolute filter,
+  and "fallback regex via low prec" doesn't work. Push fallback
+  disambiguation into parser-rule alternatives (GLR) instead.
+- **Look-around is rejected at generate time** — `(?!...)`,
+  `(?=...)`, `(?<...)`, `(?<=...)`, and backreferences all error
+  out with an explicit message. Tree-sitter's regex compiles to
+  finite automata; look-around requires non-finite state or
+  back-tracking, breaking the linear-time guarantee. Workaround
+  patterns: push to parser GLR alternative, use an external
+  scanner with byte-level lookahead, or restructure regexes to be
+  disjoint by required structure. The `special_variable +
+  optional vendor_sv_extension` pattern from this commit is the
+  GLR-alternative approach; `io_param_list` requiring `repeat1` of
+  colons is the disjoint-by-structure approach.

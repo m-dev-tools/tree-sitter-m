@@ -40,6 +40,15 @@ bindings/{node,rust,python,go}   (compiled per platform)
 ```
 
 ## Hard rules
+- **Read `docs/tree-sitter-notes.md` before adding grammar rules
+  that involve overlapping regex tokens, keyword vs identifier
+  disambiguation, or context-sensitive recognition.** Two non-
+  obvious tree-sitter constraints have already cost us debugging
+  time: token precedence is dominant (not a tiebreaker for length),
+  and the regex engine has no look-around. The notes document
+  records the workaround patterns we've adopted (GLR parser
+  alternatives, external-scanner byte-level lookahead, disjoint-by-
+  required-structure regexes) and when to pick which.
 - **The parser recognises the union of all sources.** Subsetting
   belongs in the linter layer (`tree-sitter-m-lint`), not the
   grammar. See `docs/spec.md` AD-01.
