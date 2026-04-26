@@ -16,6 +16,10 @@
           "named": true
         },
         {
+          "type": "by_reference",
+          "named": true
+        },
+        {
           "type": "entry_reference",
           "named": true
         },
@@ -98,6 +102,10 @@
           "named": true
         },
         {
+          "type": "by_reference",
+          "named": true
+        },
+        {
           "type": "entry_reference",
           "named": true
         },
@@ -161,6 +169,10 @@
           "named": true
         },
         {
+          "type": "by_reference",
+          "named": true
+        },
+        {
           "type": "entry_reference",
           "named": true
         },
@@ -210,6 +222,25 @@
         },
         {
           "type": "variable",
+          "named": true
+        }
+      ]
+    }
+  },
+  {
+    "type": "by_reference",
+    "named": true,
+    "fields": {},
+    "children": {
+      "multiple": true,
+      "required": true,
+      "types": [
+        {
+          "type": "identifier",
+          "named": true
+        },
+        {
+          "type": "subscripts",
           "named": true
         }
       ]
@@ -292,6 +323,10 @@
       "types": [
         {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "by_reference",
           "named": true
         },
         {
@@ -379,6 +414,10 @@
       "types": [
         {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "by_reference",
           "named": true
         },
         {
@@ -516,6 +555,10 @@
           "named": true
         },
         {
+          "type": "by_reference",
+          "named": true
+        },
+        {
           "type": "entry_reference",
           "named": true
         },
@@ -641,6 +684,10 @@
       "types": [
         {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "by_reference",
           "named": true
         },
         {
@@ -779,6 +826,10 @@
           "named": true
         },
         {
+          "type": "by_reference",
+          "named": true
+        },
+        {
           "type": "entry_reference",
           "named": true
         },
@@ -861,6 +912,10 @@
           "named": true
         },
         {
+          "type": "by_reference",
+          "named": true
+        },
+        {
           "type": "entry_reference",
           "named": true
         },
@@ -921,6 +976,10 @@
       "types": [
         {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "by_reference",
           "named": true
         },
         {
@@ -1028,6 +1087,10 @@
           "named": true
         },
         {
+          "type": "by_reference",
+          "named": true
+        },
+        {
           "type": "entry_reference",
           "named": true
         },
@@ -1088,6 +1151,10 @@
       "types": [
         {
           "type": "binary_expression",
+          "named": true
+        },
+        {
+          "type": "by_reference",
           "named": true
         },
         {
@@ -3698,6 +3765,10 @@
   },
   {
     "type": "-",
+    "named": false
+  },
+  {
+    "type": ".",
     "named": false
   },
   {

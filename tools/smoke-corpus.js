@@ -103,30 +103,36 @@ for (let i = 0; i < chosen.length; i += BATCH) {
     if (!byPackage.has(pkg)) byPackage.set(pkg, { files: 0, clean: 0, errors: 0 });
     byPackage.get(pkg).files++;
   }
-  // Count per-file ERROR nodes by searching the output. Each file's
-  // output starts with its path. Split by the path occurrences.
+  // Count per-file failures by searching the output. Each file's output
+  // starts with its path; tree-sitter prints either `(ERROR ...)` or
+  // `(MISSING ...)` for problematic files (both indicate the file did
+  // NOT parse cleanly). A file is "clean" only if its path is absent
+  // from the output entirely. Earlier this code only counted `(ERROR`
+  // and silently treated MISSING-only files as clean — which inflated
+  // the cleanliness metric and made colon-chain regression analysis
+  // unreliable.
   for (const file of batch) {
     const idx = out.indexOf(file);
     if (idx === -1) {
-      // No output mentioned this file -> parsed cleanly.
       cleanFiles++;
       byPackage.get(packageOf(file)).clean++;
       continue;
     }
-    // Find start of next file in output (or end).
     const nextStart = batch
       .map(f => out.indexOf(f, idx + file.length))
       .filter(j => j > idx)
       .reduce((a, b) => Math.min(a, b), out.length);
     const slice = out.slice(idx, nextStart);
     const errors = (slice.match(/\(ERROR/g) || []).length;
-    if (errors === 0) {
+    const missings = (slice.match(/\(MISSING/g) || []).length;
+    const issues = errors + missings;
+    if (issues === 0) {
       cleanFiles++;
       byPackage.get(packageOf(file)).clean++;
     } else {
-      totalErrors += errors;
-      byPackage.get(packageOf(file)).errors += errors;
-      if (TOP_ERRORS) errorRanking.push({ file, errors });
+      totalErrors += issues;
+      byPackage.get(packageOf(file)).errors += issues;
+      if (TOP_ERRORS) errorRanking.push({ file, errors: issues });
     }
   }
   if (i % (BATCH * 10) === 0 && i > 0) {

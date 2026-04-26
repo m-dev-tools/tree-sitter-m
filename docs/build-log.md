@@ -176,6 +176,9 @@ disambiguation:
 | + negated comparison operators (`'=` etc.) | 532 (53.2%) | +7.5pp | `'=` `'<` `'>` `'[` `']` `']]` as binops |
 | + multi-target SET/KILL/NEW lists | 569 (56.9%) | +3.7pp | `S (A,B,C)=v`, `K (A,B)`, `N (X,Y)` |
 | + trailing-space-before-EOL via SP_TRAILING | 579 (57.9%) | +1.0pp | scanner emits SP_TRAILING for `Q ` + EOL pattern |
+| **smoke-gate counter fix** (count MISSING, not just ERROR) | 363 (36.3%) | — | numbers above were inflated; this is the true corrected baseline |
+| + by-reference parameter `.VAR` in arglists | n/a in old metric | n/a | landed pre-fix; reflected below |
+| + `$S(cond:val,...)` colon-chain in function args | 551 (55.1%) | +18.8pp | from the corrected 36.3% baseline; biggest single fix in the project |
 
 ---
 
@@ -359,3 +362,44 @@ poisons the rest of the line. Worth investigating with
   exploration cost regressed neighbouring parses. Reverted; needs
   a tighter discriminator (e.g. only allow `?N`/`*N` immediately
   after `!` or `#` or at the start of a WRITE arg).
+
+---
+
+## 2026-04-26 (later still still still) — counter fix + by-reference + colon-chain
+
+**Smoke-gate counter bug uncovered.** While debugging why colon-chain
+in function args kept regressing the smoke gate, a per-file vs batch
+diff showed the smoke-corpus tool was over-counting clean files by
+~30pp. Root cause: `tools/smoke-corpus.js` counted `(ERROR` matches
+in tree-sitter's `--quiet` output, but tree-sitter emits BOTH
+`(ERROR ...)` and `(MISSING ...)` for failures. Files that produced
+only `(MISSING ")"` (incomplete parse, e.g. unbalanced parens from
+$S colon-chain failures) were silently counted as clean. Fixed to
+count both — true clean rate dropped from 70.0% to 36.3% under the
+same grammar. **All progression numbers above 36.3% in this log are
+wrong** by varying amounts. Numbers from 2026-04-26 onwards are the
+corrected ones.
+
+**Done (real wins this turn, all confirmed under the fixed counter):**
+
+- `by_reference` expression: `.VAR` (or `.VAR(subs)`) as an
+  expression form. M's pass-by-reference parameter syntax — used
+  pervasively in DO/JOB/$$ calls (`D LABEL(A,.B,C)`,
+  `S X=$$F(.A,B)`). The dot is unambiguous against decimal numbers
+  (`.5`) because the number rule's match wins by length when the
+  next char is a digit; by_reference requires an identifier (letter
+  or `%`) after the dot.
+- `_inner_arglist` colon-chain: function-call arguments now accept
+  `expr (':' expr)*` per arg, enabling `$S(cond:val,cond:val)` and
+  similar patterns. Hidden via `_inner_arg` so colons appear as
+  anonymous tokens in the AST. **+18.8pp on the corrected smoke gate
+  (36.3% → 55.1%) — the largest single fix in the project.**
+  Earlier attempts looked like -12pp regressions only because of the
+  counter bug.
+- 3 new corpus tests: `.VAR` in DO arglist, `.VAR` in extrinsic call,
+  $S with colon-paired args.
+
+**Re-tried + reverted format_control extension** (`?N`/`*N`). Even
+under the corrected counter, real -2.4pp. The extension still has
+the GLR-over-exploration problem. Needs a tighter discriminator;
+deferred again.

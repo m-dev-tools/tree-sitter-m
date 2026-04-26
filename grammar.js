@@ -216,6 +216,7 @@ module.exports = grammar({
       $.function_call,
       $.extrinsic_function,
       $.entry_reference,
+      $.by_reference,
       $.variable,
       $.parenthesized,
       $.binary_expression,
@@ -229,10 +230,8 @@ module.exports = grammar({
     // WRITE chains these without comma separators — `W !!`, `W !,X`.
     // Both characters double as binary operators (logical OR / modulo);
     // GLR resolves via the prec(3) token bias. `?N` (tab-to-column)
-    // and `*N` (ASCII char) are deferred — adding them as
-    // `format_control` extensions regressed the smoke gate because GLR
-    // explored too many parses for `?` (which also opens pattern-match)
-    // and `*` (also a binary multiplication op).
+    // and `*N` (ASCII char) tried; both regressed even after the
+    // smoke-gate counter was fixed. Needs a tighter discriminator.
     format_control: $ => prec(3, repeat1($._format_char)),
 
     _format_char: $ => token(prec(3, /[!#]/)),
@@ -251,6 +250,18 @@ module.exports = grammar({
       $.identifier,
       optional($.subscripts),
     )),
+
+    // Pass-by-reference parameter: `.VAR` (or `.VAR(subscripts)`) in an
+    // argument position passes the variable by reference rather than
+    // by value. Real M code uses this in DO/JOB/$$ calls. `.5` and
+    // other decimals stay as numbers — the number rule's regex
+    // (`\.\d+`) wins by length when followed by a digit; `by_reference`
+    // requires an identifier (letter or `%`) immediately after the dot.
+    by_reference: $ => seq(
+      '.',
+      $.identifier,
+      optional($.subscripts),
+    ),
 
     // M pattern matching: `expr ? pattern` where pattern is a sequence
     // of (repeat_count, atom) pairs. The right side of `?` is its own
@@ -421,9 +432,18 @@ module.exports = grammar({
       optional(seq('(', optional($._inner_arglist), ')')),
     )),
 
+    // Function-call arguments allow colon chains in some intrinsics —
+    // `$S(cond:val,cond:val)` (SELECT). Per AD-01 we accept the union:
+    // every function-call arg can carry an `expr (':' expr)*` chain;
+    // downstream picks meaning by function name.
     _inner_arglist: $ => seq(
+      $._inner_arg,
+      repeat(seq(',', $._inner_arg)),
+    ),
+
+    _inner_arg: $ => seq(
       $._expression,
-      repeat(seq(',', $._expression)),
+      repeat(seq(':', $._expression)),
     ),
   },
 });

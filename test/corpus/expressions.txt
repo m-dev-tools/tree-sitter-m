@@ -243,3 +243,77 @@ KILL with multi-target list (no =RHS)
               (variable (local_variable (identifier)))
               (variable (local_variable (identifier)))
               (variable (local_variable (identifier))))))))))
+
+================================================================================
+Pass-by-reference parameter (.VAR) in function call
+================================================================================
+
+ D LABEL(A,.B,C)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (variable
+              (local_variable
+                (identifier)
+                (subscripts
+                  (variable (local_variable (identifier)))
+                  (by_reference (identifier))
+                  (variable (local_variable (identifier))))))))))))
+
+================================================================================
+Pass-by-reference in extrinsic function call
+================================================================================
+
+ S X=$$F(.A,B)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable (local_variable (identifier)))
+              (operator)
+              (extrinsic_function
+                (identifier)
+                (by_reference (identifier))
+                (variable (local_variable (identifier)))))))))))
+
+================================================================================
+$SELECT with colon-paired arguments
+================================================================================
+
+ S X=$S(A=1:"yes",1:"no")
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable (local_variable (identifier)))
+              (operator)
+              (function_call
+                (intrinsic_function_keyword)
+                (binary_expression
+                  (variable (local_variable (identifier)))
+                  (operator)
+                  (number))
+                (string)
+                (number)
+                (string)))))))))
