@@ -732,3 +732,172 @@ corpus tests, 110 corpus tests total, all pass.
   fixable in principle but each is one-off; diminishing returns.
 
 99.06% is the natural plateau for the parser's actual scope.
+
+---
+
+## B5 retrospective — phase-level lessons (end of B5)
+
+**Phase outcome:** 5.3% (B0+B1+B2 baseline) → **99.06%** clean on
+the full 39,330-routine VistA corpus. ~93pp gain over the B5 phase.
+v1.0 grammar work is substantively complete; B6 (bindings) and B7
+(editor integration) are the remaining critical-path items for
+release.
+
+Cross-cutting lessons worth carrying forward into B6 / future
+grammar work / future tree-sitter projects:
+
+### Workflow — bucket then fix
+
+`tools/error-buckets.js` was the most valuable tool this phase. It
+walks the smoke-gate residual, groups ERROR nodes by syntactic
+shape, and reports counts. Given a pile of failing files, the
+intuitive thing is to pick one and start fixing — but you'll spend
+time on a one-off when there's a 100-node pattern next door.
+Bucketing first turned every fix into "this addresses the largest
+class of remaining failures." Repeated cycle: smoke-gate → bucket
+→ pick the highest-yield class → fix → re-smoke → re-bucket.
+
+The categoriser regexes need tightening as the residual shifts. As
+the obvious patterns get fixed, the remaining "other" bucket needs
+sub-classification. Don't be afraid to throw away the categoriser
+rules and rewrite them once the previous cycle's top buckets are
+gone.
+
+### Workflow — measurement integrity matters more than fix speed
+
+The `(MISSING ...)` counter bug (smoke gate counted only `(ERROR ...)`
+nodes, not `(MISSING ...)`) made several "regressions" appear that
+were actually fixes. Investigating phantom regressions with the
+wrong measurement tool wasted real time. After the fix the apparent
+70% became a true 36.3% — and the colon-chain change that "kept
+regressing" turned out to be the largest single feature win in the
+project (+18.8pp).
+
+`feedback_verify_metric_first.md` captures this as a durable rule.
+When a change has a smaller-than-plausible impact or appears to
+regress in a way that contradicts the plausible effect, suspect
+the measurement before reverting.
+
+### Workflow — sample for iteration, full corpus for milestone calls
+
+The 1000-routine deterministic stride sample runs in ~1 second and
+is great for tight iteration. The full 39,330-routine corpus runs
+in ~34 seconds and is the source of truth for milestone numbers.
+
+The sample slightly overstates coverage because the stride skews
+away from idiom-heavy packages (Kernel was the biggest offender).
+At end-of-B5 we measured 99.0% on the sample but 98.49% on the
+full corpus — 0.6pp gap. Not catastrophic but worth knowing before
+declaring a milestone hit.
+
+Rule: iterate on the sample, gate on the full corpus.
+
+### Architecture — AD-01 (the parser recognises the union) held up
+
+The hard rule from the spec — accept everything M's data sources
+include, defer subsetting to the linter — turned out to be exactly
+right. Every time the grammar tried to be clever about distinguishing
+"valid" vs "invalid" M, it created shift-reduce conflicts and missed
+real-world patterns. Examples:
+- `5.5^X` is a malformed numeric label (decimals can't be labels)
+  but allowing `number` in entry_reference's label slot is benign;
+  the linter rejects.
+- `'?` (negated pattern match) isn't in m-standard's operator list
+  because the negation is morphological, but the parser treats it
+  as a compound token and the linter never has to know.
+- `>=` / `<=` / `!=` aren't in standard M's operator table but
+  show up in 100+ VistA routines; the parser accepts and the
+  linter flags them as YDB/IRIS extensions.
+
+**Generalisation:** when in doubt about whether a syntactic shape
+should parse, parse it. The parse tree captures structure; the
+linter applies policy.
+
+### Architecture — when grammar can't disambiguate, push to the parser via GLR
+
+Tree-sitter's lexer applies token precedence DOMINANT over length
+(see `docs/tree-sitter-notes.md` §1) and rejects regex look-around
+(§2). The result: many natural "match X unless Y comes next"
+disambiguations can't be expressed at the lexer level.
+
+Pattern that worked repeatedly: define a shorter "canonical" rule
+and a longer "vendor extension" rule that share a common prefix,
+let GLR fork at the ambiguous point, declare the conflict, and
+let downstream context prune the wrong branch. Used for:
+- `special_variable` + optional `vendor_sv_extension` (Kernel `$PD`)
+- `format_tab` vs `pattern_match` at `?` (the `[$.format_tab,
+  $.pattern_match]` conflict)
+- Optional-subscripts on every expression-form rule
+  (local_variable, global_variable, by_reference, entry_reference,
+  special_variable, vendor_dollar_identifier all need this)
+
+### Architecture — external scanner with `valid_symbols` is more powerful than it looks
+
+The external scanner sees `valid_symbols[]` from the parser and
+can choose whether to emit a token based on parser state. This
+sidesteps the lexer-precedence problem entirely — emission is
+binary, not ranked. Used for three problems where pure-grammar
+solutions failed:
+- Two-space rule (`SP1` / `SP2PLUS` for argless commands)
+- Trailing whitespace before EOL (`SP_TRAILING`)
+- `?expr` as WRITE tab-to-column vs binary pattern-match operator
+  (`FORMAT_TAB`)
+
+Each of these had multiple regressing pure-grammar attempts before
+the scanner approach landed. Lesson: when an ambiguity is parser-
+state-dependent and your three grammar-only attempts have all
+regressed, stop trying grammar tweaks and write a 20-line external
+scanner case.
+
+### Architecture — vendor extensions and idioms
+
+The cleanest bright line for "in scope" turned out to be: if real
+M code on YottaDB or IRIS's M layer compiles and runs, the parser
+should recognise the syntactic shape. This includes:
+- Case-insensitive keywords (`s X=1`)
+- Multi-letter pattern codes (`?.ANP`)
+- Compound comparison operators (`>=`, `<=`, `!=`)
+- Vendor `$P`-prefixed pseudo-ISVs (`$PD`, `$PT` Kernel idiom)
+- Numeric local labels (`D 12(args)`)
+- System globals (`^$JOB`, `^$ROUTINE`)
+- USE/OPEN parenthesised parameters (`U $I:(NOLINE:ESCAPE)`)
+- Empty-slot postconditional chains (`O IO::1`)
+
+Not in scope (after the 2026-04-26 scope-lock):
+- Anything that requires understanding ObjectScript's class system
+  (`##class`, `obj.method()`, `obj.property=val`, `&sql`).
+
+Borderline cases that ended up in scope: `'?` (negated pattern
+match), `'!` / `'&` (negated logical OR / AND). Borderline cases
+deferred: `LABEL+offset^ROUTINE` (label-with-offset entry refs —
+small bucket, GLR conflicts with binary `+` inside parens).
+
+### What's left for B5 (deferred to post-B6)
+
+Per spec §14, B5 also includes "error recovery tuning for editor
+quality." Coverage tuning naturally improves error recovery
+(tighter ERROR-node scoping when more constructs parse cleanly),
+but the **editor-typing experience** — type a half-line in a real
+editor, see the partial tree, verify the surrounding context isn't
+corrupted — hasn't been profiled. That work depends on B6: a Node
+binding embedded in a real editor extension or REPL where
+interactive typing is testable. Will return to this after B6.
+
+### What's queued for upstream (m-standard)
+
+The m-parser project found these gaps in m-standard's
+grammar-surface during B5. Worth filing tracking notes upstream:
+
+- `ZW` (ZWRITE 2-char abbreviation) — present in YDB/IRIS, missing
+  from current export.
+- `>=`, `<=`, `!=` comparison shorthands — present in YDB/IRIS,
+  missing from current operator export.
+- `'!`, `'&` negated logical operators — same.
+- `$ZBITOR`, `$ZGETSYI`, `$ZC`, `$ZU`, `$ZCALL` — vendor `$Z*`
+  functions used in Kernel routines, missing from current export.
+
+m-parser added the comparison/logical extensions explicitly in
+`grammar.js`'s `operator` rule because they show up in 100+
+routines, but they should ultimately come from the data table.
+The `$Z*` functions stay as ERROR nodes until m-standard ships a
+fix.
