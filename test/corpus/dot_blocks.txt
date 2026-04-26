@@ -100,3 +100,81 @@ Dot-block line with multiple spaces after dots
             (variable
               (local_variable
                 (identifier)))))))))
+
+================================================================================
+Dot-block with no space between dot and command (compact form)
+================================================================================
+
+ .S X=1
+ .I Y=2 Q
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number)))))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number)))))
+      (command
+        (command_keyword)))))
+
+================================================================================
+Dot-block with space-separated dots (IRIS-style)
+================================================================================
+
+ . . S Y=2
+ . . . I Z=3 Q
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number)))))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number)))))
+      (command
+        (command_keyword)))))

@@ -88,10 +88,16 @@ module.exports = grammar({
     // depth matches an enclosing block) is left to a downstream pass
     // since tree-sitter's stateless rules can't track block scope here.
     //
-    // Tokenised as a single chunk to avoid colliding with decimal
-    // number `.5` (which has no following space) and pattern repeat
-    // counts (which appear after `?`, not at line start).
-    dot_block_prefix: $ => token(prec(2, /\.+ +/)),
+    // Three real-world spellings, all accepted:
+    //   ` . S X=1`   — one level, dot then space then command
+    //   ` .. S X=1`  — two levels via doubled dots
+    //   ` . . S X=1` — two levels via space-separated dots (IRIS-style)
+    //   ` .S X=1`    — one level, dot immediately followed by command
+    // Pattern: one or more dots, optionally interleaved with spaces, with
+    // optional trailing whitespace before the body. Tokenised as a single
+    // chunk so it can't collide with decimal number `.5` (number rule
+    // wins by length) or pattern repeat counts (those follow `?`).
+    dot_block_prefix: $ => token(prec(2, /\.( *\.)*[ \t]*/)),
 
     label: $ => /[%A-Za-z][%A-Za-z0-9]*/,
 

@@ -172,6 +172,7 @@ disambiguation:
 | + format_control | 216 (21.6%) | +3.3pp | |
 | + dot-block prefix + unary restrict | 213 (21.3%) | -0.3pp | net stable |
 | + two-space rule (external scanner) | 381 (38.1%) | +16.8pp | argless commands now disambiguated |
+| + dot-block compact + spaced forms | 457 (45.7%) | +7.6pp | `.I X=1` and `. . N X` accepted |
 
 ---
 
@@ -217,3 +218,44 @@ an argless-eligible keyword, forcing it to be the chain separator.
 4. Long opaque chains using indirection in argument positions.
 
 These are next-turn work; none required the scanner.
+
+---
+
+## 2026-04-26 (later) — B5 sub: dot-block prefix relaxation
+
+**Done:**
+
+- `tools/error-buckets.js` — categoriser that walks the smoke-gate
+  sample and groups ERROR nodes by syntactic shape so we can pick
+  the next high-yield grammar fix instead of guessing. First run
+  showed the `other` bucket at 16,661 nodes — a single classifier
+  miss because `.I X=1` (dot-immediately-followed-by-command) was
+  matching no specific pattern. Inspection of examples revealed
+  the actual root cause.
+- `dot_block_prefix` regex relaxed from `/\.+ +/` to
+  `/\.( *\.)*[ \t]*/` — accepts:
+    - `. S X=1` (one dot, space, command)
+    - `.. S X=1` (two dots, doubled)
+    - `. . S X=1` (two dots, space-separated, IRIS style)
+    - `.S X=1` (dot, no space, command directly)
+  The trailing space is now optional and the inter-dot space too.
+  The `.5` decimal case is unaffected because the `number` rule's
+  match (`.5` = 2 chars) outscores `dot_block_prefix`'s match
+  (`.` = 1 char) by length.
+- 2 new corpus tests in `dot_blocks.txt` pin the compact form
+  (`.S X=1`) and the space-separated form (`. . S Y=2`).
+- Smoke gate **38.1% → 45.7% clean (+7.6pp)**. Second-largest
+  feature win after the two-space rule.
+
+**Tried and reverted:**
+
+- Colon-chain in function-call args (`$S(cond:val,cond:val)` —
+  SELECT-style). Modified `_inner_arglist` to allow `expr (':' expr)*`
+  per arg. Corpus tests passed but smoke gate **regressed
+  -11.9pp**. Root cause: `'=` (not-equal) and other `'op` negated
+  binary operators aren't in `K.operators` (only `'` alone is); the
+  parser was already mis-recovering on those, and the colon-chain
+  changed LALR conflict resolution in a way that widened the
+  mis-recovery to neighbouring tokens. Reverted; both fixes
+  (`'op` operators and `$S` colon chain) are entangled and need to
+  land together. Deferred.
