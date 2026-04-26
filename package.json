@@ -26,9 +26,9 @@
   "scripts": {
     "build-grammar": "node tools/build-grammar.js",
     "generate": "tree-sitter generate",
-    "test": "tree-sitter test && node --test lib/",
+    "test": "tree-sitter test && node --test 'lib/**/*.test.js'",
     "test:corpus": "tree-sitter test",
-    "test:lib": "node --test lib/",
+    "test:lib": "node --test 'lib/**/*.test.js'",
     "smoke": "node tools/smoke-corpus.js",
     "regen": "node tools/build-grammar.js && tree-sitter generate && npm test"
   },
