@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx tree-sitter:*)",
+      "Bash(./node_modules/.bin/tree-sitter:*)",
+      "Bash(node tools/smoke-corpus.js)",
+      "Bash(node tools/error-buckets.js)",
+      "Bash(node tools/build-grammar.js)",
+      "Bash(npm test)",
+      "Bash(npm run build-grammar)",
+      "Bash(npm run generate)",
+      "Bash(npm run regen)",
+      "Bash(npm run smoke)",
+      "Bash(npm run test:corpus)",
+      "Bash(npm run test:lib)",
+      "Bash(npm install)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
+    ]
+  }
+}
