@@ -90,3 +90,84 @@ behavior. Real-source corpus assertions wait until B4 lands.
 (2026-04-25 tag) with `schema_version="1"`. Two-source integration
 (AnnoStd + YottaDB); IRIS is in-progress for v2.0 but not yet in
 the consumed `grammar-surface.json`.
+
+---
+
+## 2026-04-25 (later) — B3 + partial B4
+
+**Done:**
+
+- **B3** (AD-03 attribute stamping): `lib/stamp.js` exposes
+  `lookup` / `lookupSingle` / `resolve` / `schemaVersion` for
+  joining parser output against `src/grammar-metadata.json`. Surfaces
+  the 7 known M abbreviation collisions (H → HALT/HANG, $D →
+  $DEVICE/$DATA, $ST → $STACK/$STORAGE, $ZCO/$ZDAT/$ZF/$ZST in
+  function/ISV namespaces) as multi-candidate results; callers
+  disambiguate by context. 18 lib tests pass via `npm test`.
+- **B4 (additive grammar parts):**
+    - per-argument postconditionals on DO/GOTO arguments
+      (`D LABEL:cond,LABEL2:cond2`)
+    - FOR-loop range syntax (`F I=1:1:10`) via generalised
+      `argument_postconditional` chain
+    - indirection (`@X`, `@"Y"`, `@^G@(N)`, `@@X` nested)
+    - pattern matching (`X?1A.E`, `X?1(1A,1N)`, `X?1'A`,
+      `X?1"ABC"`) — all 7 standard codes plus any letter per AD-01
+    - entry references (`LABEL^ROUTINE`, with optional subscripts)
+    - WRITE format control (`!`, `#`, chains like `W !!`)
+    - dot-block prefix recognition (` . S X=1`, ` .. cmd`)
+    - trailing whitespace before EOL
+    - `unary_expression` restricted to actual M unaries (`+ - '`)
+- **Smoke gate**: VistA real-source corpus
+  (`~/vista-meta/vista/vista-m-host/Packages` — 39,330 routines
+  across 176 packages). Deterministic 1000-routine sample; ran after
+  every feature land. **5.3% baseline → 21.3% clean (4x improvement).**
+- **Coverage**: 66 corpus tests across 11 files
+  (`test/corpus/{lines, commands, postconditionals, expressions,
+  functions, special_variables, per_arg_postconds, for_ranges,
+  indirection, pattern_match, entry_references, format_control,
+  dot_blocks}.txt`) — 100% pass via `npm test:corpus`.
+
+**Deferred to B5:**
+
+The remaining 78.7% of failing files cluster around four issues that
+need either an external scanner (`src/scanner.c`) or context-sensitive
+disambiguation:
+
+1. **Two-space rule** (`F  S X=1`, `D  Q`, `Q  ;comment`) — M's
+   "two spaces after a command means it's argless; one space means
+   args follow". Tried implementing via `_single_sp` / `_double_sp`
+   tokens; works at the lexer level but conflicts with FOR's body
+   syntax (`F I=1:1:10 W I` uses single space). Needs an external
+   scanner that knows command type. Reverted; grammar uses a single
+   `_sp` token with `prec.right` greedy-args bias.
+2. **FOR body command** — same root cause as #1. Currently the body
+   on the same line fails when the FOR has args.
+3. **SET / KILL / MERGE list targets** (`S (A,B,C)=val`, `K (A,B)`)
+   — tried adding a `tuple` rule; regressed smoke gate 2pp because
+   of confusion with `parenthesized` / `subscripts`. Needs a
+   command-context-aware approach.
+4. **`?N` tab-to-column** in WRITE — collides with the
+   pattern-match operator. Tried restricting RHS to number/parens;
+   regressed smoke gate.
+
+**Other deferred items (per spec):**
+
+- AD-03 attribute stamping integration into a real Tree object
+  (waits on B6 Node binding so the parser is loadable in JS)
+- B5 error-recovery tuning for editor quality
+- B6 bindings (Node, Rust, Python, Go) — scaffold-only without
+  cross-platform CI verification
+- B7 editor integrations — need explicit user direction (publishing
+  to marketplaces / external PRs)
+
+**Smoke-gate progression (1000-routine sample):**
+
+| Milestone | Clean | Δ | Notes |
+|-----------|------:|--:|-------|
+| B0+B1+B2 baseline | 53 (5.3%) | — | structural grammar + keyword tables only |
+| + per-arg postconds | 119 (11.9%) | +6.6pp | |
+| + FOR ranges | 119 (11.9%) | +0.0pp | gated by other deferred features |
+| + indirection + pattern match | 132 (13.2%) | +1.3pp | |
+| + entry_reference + trailing sp | 183 (18.3%) | +5.1pp | big WRITE/DO unlock |
+| + format_control | 216 (21.6%) | +3.3pp | |
+| + dot-block prefix + unary restrict | 213 (21.3%) | -0.3pp | net stable |
