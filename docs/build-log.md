@@ -13,6 +13,64 @@ implementation, and any drift from `spec.md`.
 
 ---
 
+## 2026-04-26 — Sibling `tree-sitter-m-vscode` Phase 2 (criterion #8 implementation)
+
+Live at `github.com/rafael5/tree-sitter-m-vscode`. Substantively
+closes criterion #8 (editor integration); marketplace publish is the
+only remaining piece, gated on a VS Code Marketplace PAT.
+
+**Architecture — two-layer highlighting:**
+
+1. **TextMate grammar** (`syntaxes/m.tmLanguage.json`) handles the
+   cold-load render via `contributes.grammars`. Regex-based;
+   approximate but readable while the parser warms up.
+2. **`DocumentSemanticTokensProvider`** parses each document with
+   `tree-sitter-m` compiled to WASM (`dist/tree-sitter-m.wasm`,
+   392 KB), walks the parse tree, emits VS Code semantic tokens
+   overlaying the TextMate base. Lazy-init on first use; subsequent
+   calls reuse the cached parser.
+
+**Why WASM not the native Node binding.** VS Code extensions can't
+reliably load `.node` addons across user platforms — without
+prebuilds, users hit a `node-gyp` install build that needs a C
+toolchain. The `web-tree-sitter` runtime loads a single `.wasm`
+file that works everywhere VS Code runs (desktop and web).
+
+**Build pipeline.** `dist/tree-sitter-m.wasm` is committed; consumers
+never need build tooling. Maintainer rebuild via `npm run build-wasm`
+(shells out to `tree-sitter build --wasm --docker`, pulls
+`emscripten/emsdk:4.0.4` once and caches it).
+
+**Node-type → semantic-token map.** `command_keyword` → keyword;
+`intrinsic_function_keyword` → function (defaultLibrary);
+`special_variable_keyword` / `vendor_sv_extension` → variable
+(defaultLibrary, readonly); `pattern_letter` → keyword
+(defaultLibrary); `operator` / `format_control` / `format_tab` /
+`dot_block_prefix` → operator; `global_variable` /
+`numeric_label_call` → variable / function. Child-anchored:
+`(line (label))` → function (declaration); local_variable →
+variable; extrinsic_function / entry_reference children → function;
+formals / by_reference → parameter (with declaration on formals).
+
+**Smoke verified:**
+
+- `npm run lint` (tsc -noEmit) clean.
+- `npm run compile` clean (out/extension.js — 9 KB).
+- `npx vsce package` → 1.27 MB .vsix, 55 files (bundles
+  dist/tree-sitter-m.wasm + web-tree-sitter runtime).
+- Direct WASM smoke: parses sample routine cleanly (hasError=false);
+  expected node counts (6 command_keywords for S/W/I/D/W/Q,
+  3 operators for =/+/>, 1 label, 1 extrinsic_function for
+  $$RESULT^OTHER).
+
+**Status against spec §16 #8:** ⚠️ implementation done; marketplace
+`vsce publish` pending a Personal Access Token from dev.azure.com.
+Once that's in place the extension is one command from the
+marketplace, end users install via Cmd+Shift+X / Extensions search
+"M (MUMPS)".
+
+---
+
 ## 2026-04-26 — Pre-publish polish: README, highlight queries, RELEASE.md
 
 **Done in this session (publish-readiness work):**
