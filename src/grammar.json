@@ -1630,12 +1630,20 @@
             "type": "CHOICE",
             "members": [
               {
-                "type": "SYMBOL",
-                "name": "_expression"
+                "type": "CHOICE",
+                "members": [
+                  {
+                    "type": "SYMBOL",
+                    "name": "_expression"
+                  },
+                  {
+                    "type": "SYMBOL",
+                    "name": "io_param_list"
+                  }
+                ]
               },
               {
-                "type": "SYMBOL",
-                "name": "io_param_list"
+                "type": "BLANK"
               }
             ]
           },
@@ -1652,12 +1660,20 @@
                   "type": "CHOICE",
                   "members": [
                     {
-                      "type": "SYMBOL",
-                      "name": "_expression"
+                      "type": "CHOICE",
+                      "members": [
+                        {
+                          "type": "SYMBOL",
+                          "name": "_expression"
+                        },
+                        {
+                          "type": "SYMBOL",
+                          "name": "io_param_list"
+                        }
+                      ]
                     },
                     {
-                      "type": "SYMBOL",
-                      "name": "io_param_list"
+                      "type": "BLANK"
                     }
                   ]
                 }

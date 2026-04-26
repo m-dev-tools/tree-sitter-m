@@ -257,17 +257,22 @@ module.exports = grammar({
     )),
 
     // Argument postconditional is the `:expr` chain after an argument.
-    // Three uses share the same colon-chain shape:
+    // Four uses share the same colon-chain shape:
     //   - DO/GOTO postconditional: `D LABEL:cond`
     //   - FOR range:                `F I=1:1:N`
     //   - USE/OPEN I/O parameters:  `U $I:(NOLINE:ESCAPE)`,
     //                               `O DEV:(::0):"R"`
-    // The I/O form has a parenthesised colon-list as one of the chain
-    // parts. `io_param_list` covers that — it requires ≥1 colon to
-    // distinguish from a regular `parenthesized` expression.
+    //   - Inline JOB/OPEN/USE w/ positional empty slots:
+    //       `J EN^FOO::5` (skip param 1, timeout 5),
+    //       `O IO::1` (skip param 1, timeout 1),
+    //       `U IO::"TCP"` (skip param 1, mnemonic "TCP")
+    // Each part of the chain may be empty — `::5` is "skip first
+    // slot, then 5". The I/O `(colon:list)` form is `io_param_list`,
+    // which requires ≥1 colon to distinguish from a regular
+    // `parenthesized` expression.
     argument_postconditional: $ => prec.right(seq(
-      ':', choice($._expression, $.io_param_list),
-      repeat(seq(':', choice($._expression, $.io_param_list))),
+      ':', optional(choice($._expression, $.io_param_list)),
+      repeat(seq(':', optional(choice($._expression, $.io_param_list)))),
     )),
 
     // Parenthesised colon-list for USE/OPEN I/O parameters. Slots may
