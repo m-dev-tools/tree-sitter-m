@@ -403,3 +403,45 @@ corrected ones.
 under the corrected counter, real -2.4pp. The extension still has
 the GLR-over-exploration problem. Needs a tighter discriminator;
 deferred again.
+
+---
+
+## 2026-04-26 (later × 7) — naked refs + empty args + numeric labels
+
+**Done:**
+
+- Naked global ref `^(...)` — global_variable now accepts either
+  `IDENT (subs?)` (named) or `subs` (naked, last-used global). Common
+  in VistA. **+14.3pp** (55.1% → 69.4%).
+- Empty/omitted argument slots in `subscripts` and `_inner_arglist`.
+  `D UPDATE^DIE(,"X","Y")` (entry-ref skips first param) and
+  `$$F(,"X")` (extrinsic skips first). subscripts uses
+  `optional($._expression)`; `_inner_arglist` uses a two-branch
+  choice (starts-with-arg vs starts-with-comma) so tree-sitter's
+  empty-rule prohibition doesn't fire. **+6.2pp combined**.
+- Numeric labels `5 S X=1`. M allows pure-numeric labels ("line
+  number" labels), used in VistA. The label rule now accepts either
+  identifier-style or `\d+`. The numeric branch is wrapped in
+  `token(prec(-1, ...))` so a numeric literal in expression
+  position (`S X=5`) wins over treating `5` as a label — labels are
+  only valid in line's first choice branch where the LR state
+  specifically asks for a label. **+3.4pp** (75.6% → 79.0%).
+- 3 new corpus tests: omitted-first-arg, naked global, numeric label.
+
+**Tried again and reverted (third time):** format_control extension
+to accept `?N`/`*N`. Restricted RHS to number / local_variable /
+parenthesised; still regressed -4.5pp. The fundamental issue is GLR
+over-exploration: `?` and `*` both have multiple parser-state
+interpretations and adding a new one widens the state space enough
+to mis-recover on neighbouring tokens. Likely needs a new external
+scanner state ("inside WRITE arg") to gate emission.
+
+**Smoke-gate progression (corrected counter, 1000-routine sample):**
+
+| Milestone | Clean | Δ |
+|-----------|------:|--:|
+| Counter fix baseline (was 70.0% inflated) | 363 (36.3%) | — |
+| + `$S(cond:val,...)` colon-chain + by-ref | 551 (55.1%) | +18.8pp |
+| + naked global ref `^(...)` | 694 (69.4%) | +14.3pp |
+| + empty-arg slots (subscripts + arglist) | 756 (75.6%) | +6.2pp |
+| + numeric labels (`5 S X=1`) | 790 (79.0%) | +3.4pp |

@@ -317,3 +317,51 @@ $SELECT with colon-paired arguments
                 (string)
                 (number)
                 (string)))))))))
+
+================================================================================
+Naked global reference (^(...) — last-used global)
+================================================================================
+
+ S X=$P(^(0),U,3)
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable (local_variable (identifier)))
+              (operator)
+              (function_call
+                (intrinsic_function_keyword)
+                (variable
+                  (global_variable
+                    (subscripts (number))))
+                (variable (local_variable (identifier)))
+                (number)))))))))
+
+================================================================================
+Function call with omitted first argument
+================================================================================
+
+ D UPDATE^DIE(,"X","Y")
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (entry_reference
+              (identifier)
+              (identifier)
+              (subscripts
+                (string)
+                (string)))))))))

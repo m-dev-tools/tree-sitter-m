@@ -122,7 +122,16 @@ module.exports = grammar({
     // wins by length) or pattern repeat counts (those follow `?`).
     dot_block_prefix: $ => token(prec(2, /\.( *\.)*[ \t]*/)),
 
-    label: $ => /[%A-Za-z][%A-Za-z0-9]*/,
+    // Labels: identifier-style or purely numeric ("line number" labels:
+    // `0`, `1`, `100`). Both forms common in VistA. The number form is
+    // wrapped in `token(prec(-1, ...))` so a number literal in an
+    // expression position (e.g. `S X=5`) wins over treating `5` as a
+    // label — labels appear only at column 0 in `line`'s first choice
+    // branch, where the LR state asks for `label` specifically.
+    label: $ => choice(
+      /[%A-Za-z][%A-Za-z0-9]*/,
+      token(prec(-1, /\d+/)),
+    ),
 
     formals: $ => seq(
       '(',
@@ -228,10 +237,12 @@ module.exports = grammar({
 
     // WRITE format control: `!` (newline) and `#` (form feed). M's
     // WRITE chains these without comma separators — `W !!`, `W !,X`.
-    // Both characters double as binary operators (logical OR / modulo);
+    // Both chars double as binary operators (logical OR / modulo);
     // GLR resolves via the prec(3) token bias. `?N` (tab-to-column)
-    // and `*N` (ASCII char) tried; both regressed even after the
-    // smoke-gate counter was fixed. Needs a tighter discriminator.
+    // and `*N` (ASCII char) tried multiple shapes; all regress even
+    // under the corrected counter. Needs a fundamentally different
+    // discriminator (perhaps an external scanner state for "inside
+    // WRITE arglist").
     format_control: $ => prec(3, repeat1($._format_char)),
 
     _format_char: $ => token(prec(3, /[!#]/)),
@@ -395,12 +406,24 @@ module.exports = grammar({
 
     local_variable: $ => seq($.identifier, optional($.subscripts)),
 
-    global_variable: $ => seq('^', $.identifier, optional($.subscripts)),
+    // Global variable: `^NAME`, `^NAME(subs)`, or naked `^(subs)`.
+    // The naked form omits the global name and refers to the most
+    // recently used global at the same subscript depth ("naked
+    // indicator"). Common in VistA. Disambiguated by the lexer:
+    // `^(` is the naked form; `^IDENT` is the named form.
+    global_variable: $ => seq('^', choice(
+      seq($.identifier, optional($.subscripts)),
+      $.subscripts,
+    )),
 
+    // Subscripts allow empty slots for omitted arguments in entry-ref
+    // calls: `D UPDATE^DIE(,"X","Y")` (skip first parameter). The first
+    // slot uses `optional($._expression)` so `(,"X")` parses as
+    // empty-then-X.
     subscripts: $ => seq(
       '(',
-      $._expression,
-      repeat(seq(',', $._expression)),
+      optional($._expression),
+      repeat(seq(',', optional($._expression))),
       ')',
     ),
 
@@ -432,13 +455,15 @@ module.exports = grammar({
       optional(seq('(', optional($._inner_arglist), ')')),
     )),
 
-    // Function-call arguments allow colon chains in some intrinsics —
-    // `$S(cond:val,cond:val)` (SELECT). Per AD-01 we accept the union:
-    // every function-call arg can carry an `expr (':' expr)*` chain;
-    // downstream picks meaning by function name.
-    _inner_arglist: $ => seq(
-      $._inner_arg,
-      repeat(seq(',', $._inner_arg)),
+    // Function-call arguments. Two patterns merged:
+    //   - colon chains in some intrinsics: `$S(cond:val,cond:val)`
+    //     (SELECT) and similar. Per AD-01 every arg can carry
+    //     `expr (':' expr)*`; downstream picks meaning by function.
+    //   - omitted args: `$$F(,"X")` skips the first parameter (some
+    //     intrinsics and most extrinsics support default values).
+    _inner_arglist: $ => choice(
+      seq($._inner_arg, repeat(seq(',', optional($._inner_arg)))),
+      seq(',', optional($._inner_arg), repeat(seq(',', optional($._inner_arg)))),
     ),
 
     _inner_arg: $ => seq(
