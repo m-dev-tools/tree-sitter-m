@@ -4,14 +4,18 @@ name: Prebuilds
 # Release for the pushed tag. Runs on `v*` tag push. Two parallel tracks:
 #
 #   1. Node N-API binaries (via `prebuildify`) for linux x64/arm64,
-#      macos x64/arm64, windows x64. Consumed by `node-gyp-build` at
+#      macos arm64, windows x64. Consumed by `node-gyp-build` at
 #      npm-install time so end users don't need a C toolchain.
 #
-#   2. Python wheels (via `cibuildwheel`) for the same five (os, arch)
+#   2. Python wheels (via `cibuildwheel`) for the same four (os, arch)
 #      pairs. Built once per platform with `cp310-abi3` (forward-compat
 #      with cp310+) so a single wheel covers Python 3.10 through 3.13+.
 #      Downstream Python consumers (notably `m-cli`) URL-pin to the
 #      release artifact instead of cloning a sibling checkout.
+#
+# macOS x86_64 (Intel) is intentionally NOT in the matrix — Apple Silicon
+# is the modern macOS target, and GitHub's free `macos-13` Intel queue
+# is unreliable enough to block release uploads when it stalls.
 #
 # To consume Node prebuilds locally before `npm publish` (RELEASE.md §3):
 #   gh release download "v$NEW" -p 'prebuilds-*.tar.gz' -D /tmp/ts-m-prebuilds
@@ -52,9 +56,6 @@ jobs:
           - os: linux
             arch: arm64
             runner: ubuntu-22.04-arm
-          - os: macos
-            arch: x64
-            runner: macos-13
           - os: macos
             arch: arm64
             runner: macos-14
@@ -105,9 +106,6 @@ jobs:
           - os: linux
             arch: aarch64
             runner: ubuntu-22.04-arm
-          - os: macos
-            arch: x86_64
-            runner: macos-13
           - os: macos
             arch: arm64
             runner: macos-14

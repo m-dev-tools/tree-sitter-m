@@ -6,12 +6,15 @@ checklist; do not skip steps.
 
 > **Python binding.** The Python binding is **not** published to
 > PyPI. Instead, `cibuildwheel` builds prebuilt wheels for linux
-> x64/arm64, macos x64/arm64, and windows x64 on every `v*` tag
-> push (`.github/workflows/prebuilds.yml`), and attaches them to
-> the GitHub Release. Python consumers (notably `m-cli`) URL-pin
-> to those release assets — no PyPI account, no `twine`, no
-> sibling clone required. See §5.5 below for the wheel-pinning
-> pattern downstream consumers use.
+> x64/arm64, macos arm64, and windows x64 on every `v*` tag push
+> (`.github/workflows/prebuilds.yml`), and attaches them to the
+> GitHub Release. Python consumers (notably `m-cli`) URL-pin to
+> those release assets — no PyPI account, no `twine`, no sibling
+> clone required. See §5.5 below for the wheel-pinning pattern
+> downstream consumers use. **macOS Intel (x86_64) is not in the
+> matrix** — Apple Silicon is the modern target and GitHub's
+> `macos-13` Intel queue is unreliable enough to stall release
+> uploads.
 
 > **First-publish note.** The initial public release is **0.1.0**
 > — all four binding scaffolds work locally and across the CI
@@ -121,7 +124,7 @@ node -e "const P=require('tree-sitter'); const M=require('tree-sitter-m');
 
 **Prebuilds** (now wired): `.github/workflows/prebuilds.yml` runs
 on `v*` tag push and produces two parallel artifact tracks for the
-same five (os, arch) pairs (linux-x64/arm64, macos-x64/arm64,
+same four (os, arch) pairs (linux-x64/arm64, macos-arm64,
 windows-x64):
 
 - **Node N-API binaries** — one `prebuilds-<os>-<arch>.tar.gz` per
@@ -221,14 +224,13 @@ go run main.go
 ## 5.5. Python wheels — verify, then update consumer pins
 
 The `prebuilds.yml` workflow (triggered by step 5's tag push) builds
-five wheels via `cibuildwheel`. After the workflow's
+four wheels via `cibuildwheel`. After the workflow's
 `attach-to-release` job finishes, the GitHub Release for `v$NEW`
 will carry:
 
 ```
 tree_sitter_m-$NEW-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
 tree_sitter_m-$NEW-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
-tree_sitter_m-$NEW-cp310-abi3-macosx_10_9_x86_64.whl
 tree_sitter_m-$NEW-cp310-abi3-macosx_11_0_arm64.whl
 tree_sitter_m-$NEW-cp310-abi3-win_amd64.whl
 ```
@@ -258,8 +260,6 @@ tree-sitter-m = [
       marker = "sys_platform == 'linux' and platform_machine == 'x86_64'" },
     { url = "https://github.com/m-dev-tools/tree-sitter-m/releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
       marker = "sys_platform == 'linux' and platform_machine == 'aarch64'" },
-    { url = "https://github.com/m-dev-tools/tree-sitter-m/releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-macosx_10_9_x86_64.whl",
-      marker = "sys_platform == 'darwin' and platform_machine == 'x86_64'" },
     { url = "https://github.com/m-dev-tools/tree-sitter-m/releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-macosx_11_0_arm64.whl",
       marker = "sys_platform == 'darwin' and platform_machine == 'arm64'" },
     { url = "https://github.com/m-dev-tools/tree-sitter-m/releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-win_amd64.whl",
@@ -291,7 +291,7 @@ gh release create "v$NEW" \
 - crates.io: https://crates.io/crates/tree-sitter-m/$NEW
 - Go: `go get github.com/m-dev-tools/tree-sitter-m@v$NEW`
 - Python wheels: attached to this release (linux x64/arm64,
-  macos x64/arm64, windows x64). cp310-abi3 — one wheel covers
+  macos arm64, windows x64). cp310-abi3 — one wheel covers
   Python 3.10 through the latest stable.
 
 ## Status
