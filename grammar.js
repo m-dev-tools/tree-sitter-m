@@ -159,11 +159,13 @@ module.exports = grammar({
     //   ` .. S X=1`  — two levels via doubled dots
     //   ` . . S X=1` — two levels via space-separated dots (IRIS-style)
     //   ` .S X=1`    — one level, dot immediately followed by command
-    // Pattern: one or more dots, optionally interleaved with spaces, with
-    // optional trailing whitespace before the body. Tokenised as a single
-    // chunk so it can't collide with decimal number `.5` (number rule
-    // wins by length) or pattern repeat counts (those follow `?`).
-    dot_block_prefix: $ => token(prec(2, /\.( *\.)*[ \t]*/)),
+    //   `\t. S X=1`  — tab-indented (real-world YottaDB / YDBOcto)
+    // Pattern: one or more dots, optionally interleaved with spaces or
+    // tabs, with optional trailing space/tab before the body. Tokenised
+    // as a single chunk so it can't collide with decimal number `.5`
+    // (number rule wins by length) or pattern repeat counts (those
+    // follow `?`).
+    dot_block_prefix: $ => token(prec(2, /\.([ \t]*\.)*[ \t]*/)),
 
     // Labels: identifier-style or purely numeric ("line number" labels:
     // `0`, `1`, `100`). Both forms common in VistA. The number form is

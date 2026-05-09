@@ -107,14 +107,16 @@ marketplace, end users install via Cmd+Shift+X / Extensions search
 
 **Done in this session (publish-readiness work):**
 
-- **`RELEASE.md`** — 280-line step-by-step publish checklist
-  covering pre-flight gates, version coordination across the six
+- **`RELEASE.md`** — step-by-step publish checklist covering
+  pre-flight gates, version coordination across the six
   declarations (`package.json`, `tree-sitter.json`, `Cargo.toml`,
   `pyproject.toml`, `CMakeLists.txt`, `Makefile`), credential
-  prep, per-ecosystem publish (npm / crates.io / PyPI / Go /
+  prep, per-ecosystem publish (npm / crates.io / Go module tag /
   GitHub release), post-publish smoke verification, and rollback
-  options. First publish stays at **0.1.0** intentionally — bump
-  to 1.0 only after editor integration (#8) absorbs real usage.
+  options. The Python binding is consumed via local checkout (no
+  PyPI publication planned). First publish stays at **0.1.0**
+  intentionally — bump to 1.0 only after editor integration (#8)
+  absorbs real usage.
 - **README refresh.** Front-matter status block updated to reflect
   end-of-B6 reality (was mid-B5 stale). Added a `Bindings` section
   with per-ecosystem install snippets, a load-bearing **Node 22
@@ -204,9 +206,9 @@ the AD-03 stamping library.
   (down to two opt-out exceptions, both documented), ✅ 12.
 
 Remaining v1.0 must-dos: **publish bindings (#7)** — irreversible name
-claims on npm / crates.io / PyPI / Go module — and **at least one
-editor integration (#8)**. The remaining ⚠️ on #11 is a documentation
-choice not a missing piece.
+claims on npm / crates.io / Go module (Python binding stays clone-and-
+install) — and **at least one editor integration (#8)**. The remaining
+⚠️ on #11 is a documentation choice not a missing piece.
 
 ---
 
@@ -269,9 +271,10 @@ choice not a missing piece.
   not yet published), ❌ 8, ⚠️ 9, ⚠️ 10 (perf budget not in CI yet;
   needs the corpus), ⚠️ 11, ✅ 12.
 
-Remaining v1.0 must-dos: publish (npm / crates.io / PyPI / Go module
-tag), at least one editor integration. Polish: split spec §3 into
-per-ADR files (#9), license headers on generated artifacts (#11).
+Remaining v1.0 must-dos: publish (npm / crates.io / Go module tag;
+Python binding stays clone-and-install), at least one editor
+integration. Polish: split spec §3 into per-ADR files (#9), license
+headers on generated artifacts (#11).
 
 ---
 

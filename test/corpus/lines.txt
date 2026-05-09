@@ -179,3 +179,44 @@ Numeric label (M line-number labels)
               (variable (local_variable (identifier)))
               (operator)
               (number))))))))
+
+================================================================================
+Tab as leading whitespace + tab as command-arg separator
+================================================================================
+
+	S	X=1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable (local_variable (identifier)))
+              (operator)
+              (number))))))))
+
+================================================================================
+Argless command followed by next command via tab+tab (SP2PLUS via tabs)
+================================================================================
+
+	F		S X=1
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command (command_keyword))
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable (local_variable (identifier)))
+              (operator)
+              (number))))))))

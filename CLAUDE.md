@@ -1,3 +1,66 @@
+---
+# Machine-readable project descriptor — schema v1 (2026-05-05).
+name: tree-sitter-m
+kind: [parser, grammar, library]
+status: active                             # B5 done; B6 bindings + CI wired; remaining: publish + per-tier coverage gate
+languages: [javascript, c, rust, python, go, typescript]
+
+runtime:
+  needs:
+    - "node>=18 (for tree-sitter CLI + bindings build)"
+  optional:
+    - "rust toolchain (rust binding)"
+    - "python>=3.10 (python binding)"
+    - "go (go binding)"
+  excludes: []
+
+distribution:
+  pypi: null                                # python binding consumed via local checkout (no PyPI publication planned)
+  npm: null                                 # node binding present but not yet on npm
+  cargo: null
+  github: rafael5/tree-sitter-m
+
+location: ~/projects/tree-sitter-m
+
+exposes:
+  grammar: "grammar.js (committed; generated from m-standard's grammar-surface.json)"
+  parser: "src/parser.c (generated, committed)"
+  bindings:
+    - "bindings/node/"
+    - "bindings/rust/"
+    - "bindings/python/"
+    - "bindings/go/"
+  wasm: "tree-sitter-m.wasm build artefact (consumed by tree-sitter-m-vscode)"
+  formats_produced:
+    - "AST + grammar-metadata.json (for downstream tools)"
+
+consumes:
+  formats: [".m", ".mac", ".int"]
+  services: []
+  upstream_data:
+    - "m-standard/integrated/grammar-surface.json (commands, ISVs, functions, etc.)"
+
+companions:
+  - project: m-standard
+    relation: "input — grammar-surface.json drives the build-grammar.js code generator; rebuild grammar when m-standard updates"
+  - project: m-cli
+    relation: "consumer — m-cli's lint/fmt rules walk the tree-sitter AST"
+  - project: tree-sitter-m-vscode
+    relation: "consumer — loads the WASM build for VS Code syntax highlighting"
+  - project: vista-meta
+    relation: "primary validation corpus — 39,330 routines at ~/vista-meta/vista/vista-m-host/Packages (99.06% clean as of B5)"
+  - project: m-modern-corpus
+    relation: "secondary validation corpus — confirms grammar handles modern non-VistA idioms"
+
+incompatibilities:
+  - "ObjectScript out of scope — M only."
+  - "Generated `src/parser.c` is committed so consumers don't need tree-sitter-cli or m-standard at install time."
+
+docs:
+  primary: README.md
+  spec: docs/spec.md
+---
+
 # Claude project context — tree-sitter-m
 
 ## What this is

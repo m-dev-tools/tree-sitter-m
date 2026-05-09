@@ -1,8 +1,13 @@
 # Release checklist — tree-sitter-m
 
 A walk-through for publishing `tree-sitter-m` to npm, crates.io,
-PyPI, the Go module proxy, and GitHub releases. Run against this
+the Go module proxy, and GitHub releases. Run against this
 checklist; do not skip steps.
+
+> **Python binding.** The Python binding is **not** published to
+> any package registry. Python consumers (notably `m-cli`) install
+> it from a local git checkout (`pip install /path/to/tree-sitter-m`).
+> All PyPI / `twine` / `cibuildwheel` plumbing has been removed.
 
 > **First-publish note.** The initial public release is **0.1.0**
 > — all four binding scaffolds work locally and across the CI
@@ -47,7 +52,9 @@ Also check:
 ## 1. Coordinate the version bump
 
 Six files declare the version. Bump them together — drift here
-breaks the npm/crates/PyPI metadata link.
+breaks the npm/crates metadata link. (`pyproject.toml` is included
+because the Python binding still carries its own version even though
+it isn't published to any registry.)
 
 ```
 package.json        line 3   "version": "0.1.0"
@@ -81,9 +88,6 @@ first.
       account). Set up 2FA if not already.
 - [ ] **crates.io** — `cargo login` token in `~/.cargo/credentials.toml`,
       account at https://crates.io/me/.
-- [ ] **PyPI** — API token in `~/.pypirc` under `[pypi]`. Generate
-      at https://pypi.org/manage/account/token/. Scope to
-      `tree-sitter-m` after first publish.
 - [ ] **Go** — no account; the proxy picks up tagged releases from
       the public GitHub repo automatically.
 - [ ] **GitHub** — `gh auth status` shows logged in.
@@ -165,35 +169,7 @@ EOF
 cargo run
 ```
 
-## 5. Publish to PyPI
-
-```bash
-pip install --upgrade build twine
-rm -rf dist/ build/ *.egg-info
-python -m build                                     # builds sdist + wheel
-twine check dist/*
-twine upload dist/*                                 # API token prompt
-```
-
-PyPI also doesn't allow re-uploading the same version. If the
-upload partially fails, bump the version (e.g. 0.1.0 → 0.1.0.post1
-for a metadata-only fix).
-
-**Verify:**
-```bash
-uv venv /tmp/ts-m-pypi-verify --python 3.12 --managed-python
-source /tmp/ts-m-pypi-verify/bin/activate
-uv pip install "tree-sitter>=0.24" tree-sitter-m
-python -c "
-from tree_sitter import Language, Parser
-import tree_sitter_m
-p = Parser(Language(tree_sitter_m.language()))
-t = p.parse(b'TEST ;sample\n S X=1\n Q\n')
-print('python binding:', t.root_node.type, 'hasError=', t.root_node.has_error)
-"
-```
-
-## 6. Tag for Go module proxy
+## 5. Tag for Go module proxy
 
 Go modules consume directly from the GitHub repo via tagged
 releases. No registry push.
@@ -229,7 +205,7 @@ EOF
 go run main.go
 ```
 
-## 7. Cut a GitHub release
+## 6. Cut a GitHub release
 
 Anchor the changelog and link the published artifacts.
 
@@ -245,8 +221,8 @@ gh release create "v$NEW" \
 
 - npm: https://www.npmjs.com/package/tree-sitter-m/v/$NEW
 - crates.io: https://crates.io/crates/tree-sitter-m/$NEW
-- PyPI: https://pypi.org/project/tree-sitter-m/$NEW/
 - Go: `go get github.com/rafael5/tree-sitter-m@v$NEW`
+- Python: clone-and-install (no PyPI publication)
 
 ## Status
 
@@ -260,16 +236,16 @@ EOF
 create` complains about variable expansion in the notes, edit the
 notes in-place after creation: `gh release edit "v$NEW"`.)
 
-## 8. Post-publish smoke
+## 7. Post-publish smoke
 
-After all four registries are up:
+After the registries are up:
 
-- [ ] All four `verify` blocks above print `hasError=false`.
+- [ ] All `verify` blocks above print `hasError=false`.
 - [ ] Each registry's package page renders the README.
 - [ ] The Go badge resolves at `https://pkg.go.dev/github.com/rafael5/tree-sitter-m`.
 - [ ] Update `STATUS.md` criterion #7 from ⚠️ to ✅.
 
-## 9. Rollback options if something is wrong
+## 8. Rollback options if something is wrong
 
 In rough order of severity:
 
@@ -277,19 +253,16 @@ In rough order of severity:
 |---|---|
 | npm | `npm deprecate tree-sitter-m@$NEW "reason"` (warns on install). Cannot delete after 24 hours. Best: bump the patch version with the fix. |
 | crates.io | `cargo yank --version $NEW`. Cannot delete. Yanked versions stay installable but won't resolve from `^` deps. |
-| PyPI | "Yank" via the PyPI web UI. Cannot delete (administrators only, for serious reasons). |
 | Go | Nothing to do — modules are immutable. Publish a higher-version tag with the fix; the proxy will surface it. |
 | GitHub release | `gh release delete "v$NEW"` works but the git tag persists and Go still serves from it. |
 
-In all four cases the practical fix is **publish a new patch
-version** with the correction. Treat any published version as
-immutable.
+In all cases the practical fix is **publish a new patch version**
+with the correction. Treat any published version as immutable.
 
-## 10. After the first release lands
+## 9. After the first release lands
 
-- [ ] Watch `npm view tree-sitter-m` downloads, the crates.io
-      reverse-deps page, and PyPI BigQuery for early-adopter
-      activity.
+- [ ] Watch `npm view tree-sitter-m` downloads and the crates.io
+      reverse-deps page for early-adopter activity.
 - [ ] Open issues for any platform-specific install failures
       reported by users; the prebuildify rollout is the lever for
       most of them.

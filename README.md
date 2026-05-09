@@ -76,7 +76,8 @@ m-standard      →   integrated/grammar-surface.json   →   tree-sitter-m
    (data)              (versioned data contract)         (this project)
 
 tree-sitter-m   →   bindings: Node / Rust / Python / Go    →   tree-sitter-m-lint
- (this project)     (npm, crates.io, PyPI, go modules)         (sibling project)
+ (this project)     (npm, crates.io, go modules; Python:        (sibling project)
+                     clone-and-install — no PyPI publication)
                                                            →   editor plugins
                                                            →   AI agents
 ```
@@ -106,14 +107,22 @@ node tools/error-buckets.js ~/vista-meta/vista/vista-m-host/Packages --sample 10
 
 ## Bindings
 
-Once published (see [`RELEASE.md`](RELEASE.md)), `tree-sitter-m`
-will be installable from the four standard tree-sitter ecosystems:
+Once published (see [`RELEASE.md`](RELEASE.md)), the Node, Rust,
+and Go bindings will be installable from their respective
+ecosystems:
 
 ```bash
 npm install tree-sitter-m tree-sitter            # Node
 cargo add tree-sitter-m tree-sitter              # Rust
-pip install tree-sitter-m tree-sitter            # Python
 go get github.com/rafael5/tree-sitter-m          # Go
+```
+
+The Python binding is consumed via a local checkout — there is
+no PyPI publication planned:
+
+```bash
+git clone https://github.com/rafael5/tree-sitter-m
+pip install ./tree-sitter-m tree-sitter          # Python
 ```
 
 **Node version requirement.** The Node binding requires
@@ -136,7 +145,7 @@ CI; see [`RELEASE.md`](RELEASE.md) §3 for the rollout plan.
 | File | What's in it |
 |------|---|
 | [`STATUS.md`](STATUS.md) | Progression vs spec, v1.0 punch list, prioritised TODOs |
-| [`RELEASE.md`](RELEASE.md) | Step-by-step publish checklist (npm / crates.io / PyPI / Go / GitHub) |
+| [`RELEASE.md`](RELEASE.md) | Step-by-step publish checklist (npm / crates.io / Go / GitHub) |
 | [`docs/spec.md`](docs/spec.md) | Full design, milestones, success criteria |
 | [`docs/adr/`](docs/adr/) | Architectural decisions (AD-01..06) — one file per decision |
 | [`docs/build-log.md`](docs/build-log.md) | Chronological per-feature progression (every commit) |

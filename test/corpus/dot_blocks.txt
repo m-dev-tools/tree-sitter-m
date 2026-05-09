@@ -141,6 +141,79 @@ Dot-block with no space between dot and command (compact form)
         (command_keyword)))))
 
 ================================================================================
+Tab-indented dot block (real-world YottaDB / YDBOcto style)
+================================================================================
+
+ D
+	. S X=1
+	. W X
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number)))))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (variable
+              (local_variable
+                (identifier)))))))))
+
+================================================================================
+Tab-indented nested dot block (YottaDB pattern with tab + space-separated dots)
+================================================================================
+
+ D
+	. D
+	. . S Y=2
+
+--------------------------------------------------------------------------------
+
+(source_file
+  (line
+    (command_sequence
+      (command
+        (command_keyword))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword))))
+  (line
+    (dot_block_prefix)
+    (command_sequence
+      (command
+        (command_keyword)
+        (argument_list
+          (argument
+            (binary_expression
+              (variable
+                (local_variable
+                  (identifier)))
+              (operator)
+              (number))))))))
+
+================================================================================
 Dot-block with space-separated dots (IRIS-style)
 ================================================================================
 

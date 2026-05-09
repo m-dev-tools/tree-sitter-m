@@ -31,7 +31,7 @@ in entry_reference's routine slot.
 | B3 | AD-03 attribute stamping | ⚠️ partial | `lib/stamp.js` exposes `lookup` / `lookupSingle` / `resolve` / `schemaVersion` against `src/grammar-metadata.json`. Stamping is **post-parse** (consumer joins the AST against the metadata table); it is **not** materialised onto the parse tree itself. Per-binding integration waits on B6. |
 | B4 | Indirection, dot-blocks, pattern matching | ✅ done | `@expr` / `@expr@(subs)` / `@@x` nesting; dot-block prefix accepts `.`/`..`/`. .`/`.S X=1`; pattern matching with multi-letter codes, alternation with multi-atom branches, `'?` negation, and `?@expr` runtime indirection. |
 | B5 | Real-source coverage + error recovery | ⚠️ partial | Coverage tuning landed (5.3% → 99.0% on the VistA smoke gate). Error-recovery *tuning* (the editor-quality experience for partial-source typing) hasn't been explicitly tuned beyond tree-sitter defaults. |
-| B6 | Bindings (Node, Rust, Python, Go) | ⚠️ scaffolded + locally verified | All four scaffolds in place via `tree-sitter init --update`; each has a `parses_sample_routine` test that loads the parser and asserts no `ERROR` on a tiny M routine. **Not yet published** (npm / crates.io / PyPI / go modules) and **no CI** running them. Local matrix: Rust (cargo 1.94, tree-sitter-language 0.1, tree-sitter 0.25.10) ✅; Go (1.26, go-tree-sitter v0.25.0 — bumped from v0.24 for ABI 15) ✅; Python (cpython 3.12 via uv-managed Python; system Python lacked `Python.h`) ✅; Node 22.22 LTS ✅ — Node 24 fails because upstream `tree-sitter@0.25.0` JS runtime doesn't compile on Node 24. |
+| B6 | Bindings (Node, Rust, Python, Go) | ⚠️ scaffolded + locally verified | All four scaffolds in place via `tree-sitter init --update`; each has a `parses_sample_routine` test that loads the parser and asserts no `ERROR` on a tiny M routine. **Not yet published** to npm / crates.io / Go-module proxy and **no CI** running them. The Python binding is consumed via local checkout — no PyPI publication is planned. Local matrix: Rust (cargo 1.94, tree-sitter-language 0.1, tree-sitter 0.25.10) ✅; Go (1.26, go-tree-sitter v0.25.0 — bumped from v0.24 for ABI 15) ✅; Python (cpython 3.12 via uv-managed Python; system Python lacked `Python.h`) ✅; Node 22.22 LTS ✅ — Node 24 fails because upstream `tree-sitter@0.25.0` JS runtime doesn't compile on Node 24. |
 | B7 | Editor integrations | ❌ not started | Depends on B6 + a published npm package. |
 | v1.0 | Tag and release | ❌ blocked on B6 + B7 + CI | See success-criteria checklist below. |
 
@@ -72,7 +72,7 @@ naked global refs (`^(...)`), case-insensitive keywords.
 | 4 | Real-source corpus parses cleanly (XINDEX, VistA Kernel, YottaDB sample) | ✅ at 99.0% on 1000 VistA routines; XINDEX-only assertion not yet a CI gate |
 | 5 | Per-tier coverage gate (every `(canonical_name, standard_status)` pair has a corpus test) | ✅ `tools/coverage-gate.js` walks `test/corpus/*.txt` + `test/coverage/keywords.m` (auto-generated from `grammar-metadata.json`); 347/347 triples covered; wired into `npm test` and the `grammar` CI job |
 | 6 | Performance: 10k-line routine under 100ms | ✅ `tools/perf-bench.js`: synthesised 10k-line single routine parses in **78.63 ms** (range 78–83 ms over 5 runs); largest real VistA routine (1,597 lines) 12.20 ms; sample p95 2.30 ms. Logged in `docs/build-log.md` 2026-04-26. |
-| 7 | Bindings published (`npm install tree-sitter-m`, etc.) | ⚠️ scaffolds green locally; not yet published |
+| 7 | Bindings published (`npm install tree-sitter-m`, `cargo add tree-sitter-m`, Go module tag — Python binding stays clone-and-install) | ⚠️ scaffolds green locally; not yet published |
 | 8 | Editor demonstration (VS Code extension or nvim-treesitter PR) | ⚠️ implementation done; marketplace publish pending. Sibling repo `tree-sitter-m-vscode` (https://github.com/rafael5/tree-sitter-m-vscode) ships a two-layer extension: TextMate grammar for cold-load + a `DocumentSemanticTokensProvider` powered by `tree-sitter-m` compiled to WASM via `tree-sitter build --wasm --docker`. `vsce package` produces a 1.27 MB .vsix bundling the parser .wasm + web-tree-sitter runtime. Marketplace `vsce publish` needs a personal access token from dev.azure.com — gated on user. |
 | 9 | ADR set complete (AD-01..06 documented) | ✅ per-ADR files under `docs/adr/` (context / decision / consequences / status); `docs/spec.md §3` is the one-line index |
 | 10 | CI gates (build + corpus + coverage + perf budget on every PR) | ⚠️ `.github/workflows/ci.yml` runs corpus + lib + per-tier coverage gate + parser-regen-clean check + node/rust/go/python matrix on Linux/macOS/Windows; perf budget not yet wired |
@@ -122,9 +122,10 @@ Ordered roughly by what blocks the release.
    and attaches them to the GitHub Release for the tag. RELEASE.md §3
    documents the consumer-bundle flow (`gh release download` →
    extract → `npm publish`). Remaining: maintainer-gated registry
-   publishes to npm / crates.io / PyPI / Go module tag — runbook is
-   `RELEASE.md` (requires npm 2FA, cargo token, PyPI API token; not
-   automatable from a session).
+   publishes to npm / crates.io / Go module tag — runbook is
+   `RELEASE.md` (requires npm 2FA, cargo token; not automatable
+   from a session). The Python binding is consumed via local checkout
+   (no PyPI publication planned).
 2. **CI workflow.** `.github/workflows/ci.yml` landed 2026-04-26:
    five jobs — `grammar` (corpus + lib + per-tier coverage gate +
    parser-regen-clean check), `node` / `rust` / `go` / `python`

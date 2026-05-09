@@ -18,8 +18,10 @@ Downstream consumers reach `tree-sitter-m` through several channels:
 
 Each ecosystem already knows how to consume tree-sitter parsers via
 the standard binding shapes: `tree-sitter-<lang>` on npm,
-`tree-sitter-<lang>` on crates.io, `tree-sitter-<lang>` on PyPI,
-`github.com/<org>/tree-sitter-<lang>` Go module.
+`tree-sitter-<lang>` on crates.io, and
+`github.com/<org>/tree-sitter-<lang>` as a Go module. (Python
+consumers install the binding from a local checkout — `tree-sitter-m`
+is not published to PyPI.)
 
 Two reasonable approaches:
 
@@ -70,5 +72,6 @@ the binding code that exists.
 All four bindings scaffolded and parsing a sample M routine on local
 toolchains (Rust 1.94, Go 1.26 with `go-tree-sitter` v0.25, Python
 3.12, Node 22.22 LTS). CI matrix runs them on Linux/macOS/Windows.
-Publishing to npm / crates.io / PyPI / Go module tag is the remaining
-B6 item — not started.
+Publishing to npm / crates.io / Go module tag is the remaining
+B6 item — not started. The Python binding stays clone-and-install
+(no PyPI publication planned).

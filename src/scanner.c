@@ -6,8 +6,8 @@
 // Solves the deferred items from B4 by emitting context-aware space
 // tokens that the auto-generated regex lexer can't produce:
 //
-//   _sp1     — exactly one space character
-//   _sp2plus — two or more space characters
+//   _sp1     — exactly one space-or-tab character
+//   _sp2plus — two or more space-or-tab characters
 //
 // M's two-space rule disambiguates command-with-args from argless-command
 // chains. In the grammar, _sp1 is the separator between a command keyword
@@ -16,8 +16,15 @@
 // `_sp1 + W` (FOR with body), and `F  S X=1` parses as `F` (no args
 // because `_sp1` won't match 2 spaces) then `_sp2plus + S X=1`.
 //
+// Tab handling: a TAB (0x09) is treated as one unit of horizontal
+// whitespace, equivalent to a single space. Real-world VistA and
+// YottaDB code (notably YDBOcto and YDBTest) uses tabs in dot-block
+// indentation and elsewhere; the M-95 standard permits tabs as
+// horizontal whitespace. Mixed runs (e.g. `\t \t`) count each char
+// as one unit, so `\t.` parses as SP1 + dot_block_prefix.
+//
 // The scanner is stateless. Both tokens are derived purely from the
-// number of consecutive space characters in the input.
+// number of consecutive horizontal-whitespace characters in the input.
 
 #include "tree_sitter/parser.h"
 
@@ -72,24 +79,24 @@ bool tree_sitter_m_external_scanner_scan(void *payload,
     return true;
   }
 
-  // Fast path: if the next char isn't a space, this scanner has nothing
-  // more to contribute; let the auto-lexer try.
-  if (lexer->lookahead != ' ') return false;
+  // Fast path: if the next char isn't space-or-tab, this scanner has
+  // nothing more to contribute; let the auto-lexer try.
+  if (lexer->lookahead != ' ' && lexer->lookahead != '\t') return false;
 
   // Neither token is needed in the current parser state — bail so the
-  // auto-lexer can match its own tokens (which it won't for ' ', but
-  // keeping the early-out makes intent clear).
+  // auto-lexer can match its own tokens (which it won't for ' '/'\t',
+  // but keeping the early-out makes intent clear).
   if (!valid_symbols[SP1] && !valid_symbols[SP2PLUS] && !valid_symbols[SP_TRAILING]) {
     return false;
   }
 
-  // Consume contiguous spaces and count them.
+  // Consume contiguous horizontal whitespace (space or tab) and count.
   int count = 0;
-  while (lexer->lookahead == ' ') {
+  while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
     lexer->advance(lexer, false);
     count++;
     if (count == 2) {
-      while (lexer->lookahead == ' ') {
+      while (lexer->lookahead == ' ' || lexer->lookahead == '\t') {
         lexer->advance(lexer, false);
       }
       break;

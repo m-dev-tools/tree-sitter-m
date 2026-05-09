@@ -184,7 +184,7 @@
         "value": 2,
         "content": {
           "type": "PATTERN",
-          "value": "\\.( *\\.)*[ \\t]*"
+          "value": "\\.([ \\t]*\\.)*[ \\t]*"
         }
       }
     },

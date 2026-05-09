@@ -73,7 +73,8 @@ m-standard      →   integrated/grammar-surface.json   →   tree-sitter-m
    (data)              (versioned data contract)         (consumer)
 
 tree-sitter-m   →   bindings: Node / Rust / Python / Go    →   tree-sitter-m-lint
- (this project)     (npm, crates.io, PyPI, go modules)         (sibling project)
+ (this project)     (npm, crates.io, go modules; Python:        (sibling project)
+                     clone-and-install — no PyPI publication)
                                                            →   editor plugins
                                                            →   AI agents
 ```
@@ -385,8 +386,9 @@ query language:
   distribution form (matches `tree-sitter-javascript`,
   `tree-sitter-python`, etc.).
 * **crates.io crate** `tree-sitter-m`.
-* **PyPI package** `tree-sitter-m`.
 * **Go module** `github.com/rafael5/tree-sitter-m`.
+* **Python binding**: clone-and-install from the GitHub repo (no
+  PyPI publication planned).
 
 All generated artifacts are committed so consumers don't need
 tree-sitter-cli or `m-standard` to install and use the parser. The
@@ -491,8 +493,8 @@ under 100ms on a modern laptop. CI tracks regression.
 | --- | --- | --- |
 | Node | `tree-sitter-m` on npm | `npm install tree-sitter-m` |
 | Rust | `tree-sitter-m` on crates.io | `cargo add tree-sitter-m` |
-| Python | `tree-sitter-m` on PyPI | `pip install tree-sitter-m` |
-| Go | `github.com/m-standard/tree-sitter-m` | `go get github.com/m-standard/tree-sitter-m` |
+| Python | clone-and-install (no PyPI) | `git clone …/tree-sitter-m && pip install ./tree-sitter-m` |
+| Go | `github.com/rafael5/tree-sitter-m` | `go get github.com/rafael5/tree-sitter-m` |
 
 Editor integrations consume the npm package via:
 
@@ -567,7 +569,7 @@ tree-sitter-m/
 ├── .github/
 │   └── workflows/
 │       ├── ci.yml                 # build, test, lint
-│       └── release.yml            # npm/crates.io/PyPI publish
+│       └── release.yml            # npm/crates.io publish + Go tag
 ├── package.json                   # npm metadata + m-standard.schema_version pin
 ├── Cargo.toml                     # crate metadata
 ├── pyproject.toml                 # python binding
@@ -591,7 +593,7 @@ tree-sitter-m/
 | **B3** | AD-03 attribute stamping. `standard_status` on every keyword node. Query-language examples in docs. | Tree-sitter queries can filter by tier. |
 | **B4** | Indirection, dot-blocks, pattern matching. The "weird" syntax. | Real-source corpus parses VistA Kernel + YottaDB samples cleanly. |
 | **B5** | Error recovery. Malformed source produces partial AST with `ERROR` nodes scoped tightly. | Editor-quality experience: typing in a partial routine still yields a useful tree. |
-| **B6** | Bindings: Node, Rust, Python, Go. CI builds wheels/binaries for each. | `npm install tree-sitter-m` works end-to-end on Linux/macOS/Windows. |
+| **B6** | Bindings: Node, Rust, Go. CI builds binaries for each. Python binding stays clone-and-install. | `npm install tree-sitter-m` works end-to-end on Linux/macOS/Windows. |
 | **B7** | Editor integrations published: VS Code extension, nvim-treesitter PR, Emacs registration. | At least one editor ships syntax highlighting using tree-sitter-m. |
 | **v1.0** | Tag and release. | All §16 success criteria met. |
 
@@ -679,8 +681,9 @@ The following must all be true for v1.0 release:
 6. **Performance.** 10k-line routine parses in under 100ms on
    reference hardware (documented in `docs/build-log.md`).
 7. **Bindings published.** `npm install tree-sitter-m`,
-   `cargo add tree-sitter-m`, `pip install tree-sitter-m` all
-   work on Linux, macOS, Windows.
+   `cargo add tree-sitter-m`, and the Go-module tag all work on
+   Linux, macOS, Windows. The Python binding is consumed via local
+   checkout (no PyPI publication planned).
 8. **Editor demonstration.** At least one editor integration
    (VS Code extension or nvim-treesitter PR) ships syntax
    highlighting using tree-sitter-m.
