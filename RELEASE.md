@@ -5,9 +5,13 @@ the Go module proxy, and GitHub releases. Run against this
 checklist; do not skip steps.
 
 > **Python binding.** The Python binding is **not** published to
-> any package registry. Python consumers (notably `m-cli`) install
-> it from a local git checkout (`pip install /path/to/tree-sitter-m`).
-> All PyPI / `twine` / `cibuildwheel` plumbing has been removed.
+> PyPI. Instead, `cibuildwheel` builds prebuilt wheels for linux
+> x64/arm64, macos x64/arm64, and windows x64 on every `v*` tag
+> push (`.github/workflows/prebuilds.yml`), and attaches them to
+> the GitHub Release. Python consumers (notably `m-cli`) URL-pin
+> to those release assets — no PyPI account, no `twine`, no
+> sibling clone required. See §5.5 below for the wheel-pinning
+> pattern downstream consumers use.
 
 > **First-publish note.** The initial public release is **0.1.0**
 > — all four binding scaffolds work locally and across the CI
@@ -116,10 +120,19 @@ node -e "const P=require('tree-sitter'); const M=require('tree-sitter-m');
 ```
 
 **Prebuilds** (now wired): `.github/workflows/prebuilds.yml` runs
-on `v*` tag push and produces N-API binaries for
-linux-x64/arm64, macos-x64/arm64, windows-x64. Each matrix leg
-uploads a `prebuilds-<os>-<arch>.tar.gz` artifact, then a final
-job attaches all five tarballs to the GitHub Release for the tag.
+on `v*` tag push and produces two parallel artifact tracks for the
+same five (os, arch) pairs (linux-x64/arm64, macos-x64/arm64,
+windows-x64):
+
+- **Node N-API binaries** — one `prebuilds-<os>-<arch>.tar.gz` per
+  leg; consumed by `node-gyp-build` at npm-install time.
+- **Python wheels** — one `tree_sitter_m-<ver>-cp310-abi3-<plat>.whl`
+  per leg, built with `cibuildwheel`. cp310-abi3 means a single
+  wheel works on Python 3.10 through the latest stable; consumers
+  URL-pin to the release asset (see §5.5).
+
+A final `attach-to-release` job uploads every tarball and wheel to
+the GitHub Release for the tag.
 
 To bundle them into the npm package before `npm publish`:
 
@@ -205,6 +218,61 @@ EOF
 go run main.go
 ```
 
+## 5.5. Python wheels — verify, then update consumer pins
+
+The `prebuilds.yml` workflow (triggered by step 5's tag push) builds
+five wheels via `cibuildwheel`. After the workflow's
+`attach-to-release` job finishes, the GitHub Release for `v$NEW`
+will carry:
+
+```
+tree_sitter_m-$NEW-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl
+tree_sitter_m-$NEW-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl
+tree_sitter_m-$NEW-cp310-abi3-macosx_10_9_x86_64.whl
+tree_sitter_m-$NEW-cp310-abi3-macosx_11_0_arm64.whl
+tree_sitter_m-$NEW-cp310-abi3-win_amd64.whl
+```
+
+**Verify** (any one platform — typically the maintainer's):
+```bash
+TAG="v$NEW"
+gh release download "$TAG" -p '*.whl' -D /tmp/ts-m-wheel-verify
+python -m venv /tmp/ts-m-wheel-verify/.venv
+. /tmp/ts-m-wheel-verify/.venv/bin/activate
+pip install /tmp/ts-m-wheel-verify/tree_sitter_m-*-linux_*.whl tree-sitter
+python -c "from tree_sitter import Language, Parser
+import tree_sitter_m
+p = Parser(Language(tree_sitter_m.language()))
+t = p.parse(b'TEST ;sample\n S X=1\n Q\n')
+print('python binding:', t.root_node.type, 'hasError=', t.root_node.has_error)"
+```
+
+**Update downstream consumer pins.** `m-cli` and any other Python
+consumer that previously used a path-dep should switch to a
+release-asset URL with platform markers (uv `[tool.uv.sources]`):
+
+```toml
+[tool.uv.sources]
+tree-sitter-m = [
+    { url = "https://github.com/m-dev-tools/tree-sitter-m/releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl",
+      marker = "sys_platform == 'linux' and platform_machine == 'x86_64'" },
+    { url = "https://github.com/m-dev-tools/tree-sitter-m/releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-manylinux_2_17_aarch64.manylinux2014_aarch64.whl",
+      marker = "sys_platform == 'linux' and platform_machine == 'aarch64'" },
+    { url = "https://github.com/m-dev-tools/tree-sitter-m/releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-macosx_10_9_x86_64.whl",
+      marker = "sys_platform == 'darwin' and platform_machine == 'x86_64'" },
+    { url = "https://github.com/m-dev-tools/tree-sitter-m/releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-macosx_11_0_arm64.whl",
+      marker = "sys_platform == 'darwin' and platform_machine == 'arm64'" },
+    { url = "https://github.com/m-dev-tools/tree-sitter-m/releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-win_amd64.whl",
+      marker = "sys_platform == 'win32' and platform_machine == 'AMD64'" },
+]
+```
+
+After bumping the consumer's pin, run `uv sync --frozen` from a
+checkout that has **no** sibling `tree-sitter-m/` directory and
+confirm the wheel installs cleanly. That's the contract for
+"self-contained" — fresh clone of the consumer repo on a stock
+machine should `uv sync` without any sibling checkouts present.
+
 ## 6. Cut a GitHub release
 
 Anchor the changelog and link the published artifacts.
@@ -222,7 +290,9 @@ gh release create "v$NEW" \
 - npm: https://www.npmjs.com/package/tree-sitter-m/v/$NEW
 - crates.io: https://crates.io/crates/tree-sitter-m/$NEW
 - Go: `go get github.com/m-dev-tools/tree-sitter-m@v$NEW`
-- Python: clone-and-install (no PyPI publication)
+- Python wheels: attached to this release (linux x64/arm64,
+  macos x64/arm64, windows x64). cp310-abi3 — one wheel covers
+  Python 3.10 through the latest stable.
 
 ## Status
 

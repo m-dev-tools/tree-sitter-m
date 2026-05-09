@@ -1,17 +1,28 @@
 name: Prebuilds
 
-# Builds prebuilt N-API binaries (via `prebuildify`) for every supported
-# (os, arch) and attaches them to the GitHub Release for the pushed tag.
+# Builds prebuilt distribution artifacts and attaches them to the GitHub
+# Release for the pushed tag. Runs on `v*` tag push. Two parallel tracks:
 #
-# Runs on `v*` tag push. The matrix produces `prebuilds/<platform>-<arch>/`
-# directories that `node-gyp-build` consumes at npm-install time so end
-# users do not need a C toolchain.
+#   1. Node N-API binaries (via `prebuildify`) for linux x64/arm64,
+#      macos x64/arm64, windows x64. Consumed by `node-gyp-build` at
+#      npm-install time so end users don't need a C toolchain.
 #
-# To consume locally before `npm publish` (RELEASE.md §3):
+#   2. Python wheels (via `cibuildwheel`) for the same five (os, arch)
+#      pairs. Built once per platform with `cp310-abi3` (forward-compat
+#      with cp310+) so a single wheel covers Python 3.10 through 3.13+.
+#      Downstream Python consumers (notably `m-cli`) URL-pin to the
+#      release artifact instead of cloning a sibling checkout.
+#
+# To consume Node prebuilds locally before `npm publish` (RELEASE.md §3):
 #   gh release download "v$NEW" -p 'prebuilds-*.tar.gz' -D /tmp/ts-m-prebuilds
 #   for f in /tmp/ts-m-prebuilds/prebuilds-*.tar.gz; do tar -xzf "$f"; done
 #   npm pack --dry-run                    # confirm prebuilds/ is included
 #   npm publish --access public
+#
+# Python wheels need no extra packaging step — consumers reference them
+# by URL. Example consumer pin (uv):
+#   tree-sitter-m = { url = "https://github.com/m-dev-tools/tree-sitter-m/\
+#     releases/download/v$NEW/tree_sitter_m-$NEW-cp310-abi3-...whl" }
 
 on:
   push:
@@ -81,20 +92,83 @@ jobs:
           if-no-files-found: error
           retention-days: 14
 
+  python-wheels:
+    name: python wheel (${{ matrix.os }} / ${{ matrix.arch }})
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: linux
+            arch: x86_64
+            runner: ubuntu-latest
+          - os: linux
+            arch: aarch64
+            runner: ubuntu-22.04-arm
+          - os: macos
+            arch: x86_64
+            runner: macos-13
+          - os: macos
+            arch: arm64
+            runner: macos-14
+          - os: windows
+            arch: AMD64
+            runner: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      # Build a single cp310-abi3 wheel per (os, arch). setup.py declares
+      # `py_limited_api=True` and overrides bdist_wheel to emit the
+      # cp310-abi3 tag, so one wheel covers Python 3.10 through the
+      # latest stable. CIBW_BUILD restricts cibuildwheel to one Python
+      # interpreter per leg (otherwise it would rebuild the same wheel
+      # 3-4 times redundantly).
+      - name: Build wheel
+        uses: pypa/cibuildwheel@v2.21
+        env:
+          CIBW_BUILD: cp310-*
+          CIBW_ARCHS: ${{ matrix.arch }}
+          CIBW_TEST_REQUIRES: tree-sitter>=0.24
+          CIBW_TEST_COMMAND: python -m unittest discover -s {project}/bindings/python/tests
+      - name: Verify wheel directory exists
+        shell: bash
+        run: |
+          if [ ! -d wheelhouse ] || [ -z "$(ls -A wheelhouse 2>/dev/null)" ]; then
+            echo "::error::wheelhouse/ directory missing or empty after cibuildwheel"
+            exit 1
+          fi
+          echo "Wheels produced:"
+          ls -la wheelhouse/
+      - name: Upload wheel artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: python-wheel-${{ matrix.os }}-${{ matrix.arch }}
+          path: wheelhouse/*.whl
+          if-no-files-found: error
+          retention-days: 14
+
   attach-to-release:
     name: Attach prebuilds to GitHub Release
-    needs: build
+    needs: [build, python-wheels]
     runs-on: ubuntu-latest
     if: startsWith(github.ref, 'refs/tags/v')
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v4
-      - name: Download all prebuild artifacts
+      - name: Download all Node prebuild artifacts
         uses: actions/download-artifact@v4
         with:
           path: dist/
           pattern: prebuilds-*
+          merge-multiple: true
+      - name: Download all Python wheel artifacts
+        uses: actions/download-artifact@v4
+        with:
+          path: dist/
+          pattern: python-wheel-*
           merge-multiple: true
       - name: List downloaded artifacts
         run: ls -la dist/
@@ -106,6 +180,9 @@ jobs:
           if ! gh release view "$TAG" >/dev/null 2>&1; then
             echo "Release $TAG does not exist yet — creating draft."
             gh release create "$TAG" --draft --title "$TAG" \
-              --notes "Prebuilds attached by CI; see RELEASE.md for the full publish runbook."
+              --notes "Prebuilds and Python wheels attached by CI; see RELEASE.md for the full publish runbook."
           fi
-          gh release upload "$TAG" dist/prebuilds-*.tar.gz --clobber
+          gh release upload "$TAG" \
+            dist/prebuilds-*.tar.gz \
+            dist/*.whl \
+            --clobber
