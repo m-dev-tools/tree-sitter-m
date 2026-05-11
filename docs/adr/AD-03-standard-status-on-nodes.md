@@ -1,3 +1,10 @@
+---
+created: 2026-04-26
+last_modified: 2026-04-26
+revisions: 1
+doc_type: [ADR]
+---
+
 # AD-03: Stamp `standard_status` as an AST node attribute
 
 **Status:** accepted (B0, 2026-04); partial implementation (B3)

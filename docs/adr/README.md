@@ -1,3 +1,10 @@
+---
+created: 2026-04-26
+last_modified: 2026-04-26
+revisions: 1
+doc_type: [REFERENCE]
+---
+
 # Architectural decisions — tree-sitter-m
 
 The six decisions that drive the rest of [`docs/spec.md`](../spec.md).

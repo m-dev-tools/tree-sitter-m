@@ -1,3 +1,10 @@
+---
+created: 2026-04-26
+last_modified: 2026-05-09
+revisions: 3
+doc_type: [GAP-ANALYSIS, NOTES]
+---
+
 # tree-sitter-m discoveries log
 
 Findings surfaced by real-world use of the parser — gaps in the

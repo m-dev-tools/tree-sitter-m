@@ -1,3 +1,10 @@
+---
+created: 2026-04-26
+last_modified: 2026-05-09
+revisions: 2
+doc_type: [ADR]
+---
+
 # AD-06: Provide language bindings via tree-sitter's standard scaffold
 
 **Status:** accepted (B0, 2026-04); scaffolded + locally verified (B6,

@@ -1,3 +1,10 @@
+---
+created: 2026-04-26
+last_modified: 2026-04-26
+revisions: 1
+doc_type: [ADR]
+---
+
 # AD-05: Test against a corpus of real M code from multiple sources
 
 **Status:** accepted (B0, 2026-04); validated end of B5 (99.06% on full

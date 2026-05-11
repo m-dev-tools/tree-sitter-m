@@ -1,3 +1,10 @@
+---
+created: 2026-04-26
+last_modified: 2026-04-26
+revisions: 1
+doc_type: [ADR]
+---
+
 # AD-02: Hand-code the language structure; data-drive the keyword tables
 
 **Status:** accepted (B0, 2026-04)
