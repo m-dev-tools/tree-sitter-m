@@ -1,3 +1,10 @@
+---
+created: 2026-04-26
+last_modified: 2026-04-26
+revisions: 2
+doc_type: [REFERENCE, NOTES]
+---
+
 # Tree-sitter implementation notes
 
 Things about tree-sitter's lexer/parser that aren't obvious from the

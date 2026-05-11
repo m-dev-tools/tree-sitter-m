@@ -1,3 +1,10 @@
+---
+created: 2026-05-06
+last_modified: 2026-05-06
+revisions: 1
+doc_type: [GAP-ANALYSIS, PLAN]
+---
+
 # VistA parse-error triage — patterns to close
 
 Living document. Triage of the 376 parse-error files in the

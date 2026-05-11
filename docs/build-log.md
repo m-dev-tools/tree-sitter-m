@@ -1,3 +1,10 @@
+---
+created: 2026-04-25
+last_modified: 2026-05-09
+revisions: 23
+doc_type: [BUILD-LOG, HISTORY]
+---
+
 # Build log — tree-sitter-m
 
 Chronological notes on milestone deliveries, decisions made during

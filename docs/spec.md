@@ -1,3 +1,10 @@
+---
+created: 2026-04-25
+last_modified: 2026-05-09
+revisions: 7
+doc_type: [SPEC, DESIGN]
+---
+
 # tree-sitter-m — Specification v0.1
 
 **Status:** draft for review

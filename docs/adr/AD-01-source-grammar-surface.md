@@ -1,3 +1,10 @@
+---
+created: 2026-04-26
+last_modified: 2026-04-26
+revisions: 1
+doc_type: [ADR]
+---
+
 # AD-01: Source the keyword tables from `m-standard`'s grammar-surface, not from any single standard
 
 **Status:** accepted (B0, 2026-04)
